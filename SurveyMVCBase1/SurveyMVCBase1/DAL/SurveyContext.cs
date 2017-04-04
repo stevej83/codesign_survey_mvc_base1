@@ -6,7 +6,7 @@ namespace SurveyMVCBase1.DAL
 {
     public class SurveyContext : DbContext
     {
-        public SurveyContext() : base("SurveyContext")
+        public SurveyContext() : base("aspnet-CodeSignSurveyBase1")
         {
 
         }
