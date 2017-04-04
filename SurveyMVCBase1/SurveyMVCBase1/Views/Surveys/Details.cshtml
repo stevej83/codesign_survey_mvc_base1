@@ -1,0 +1,50 @@
+﻿@model SurveyMVCBase1.Models.Survey
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Survey</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.S1Q1Answer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S1Q1Answer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S1Q1Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S1Q1Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S1Q2Answer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S1Q2Answer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S1Q2Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S1Q2Score)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SurveyID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
