@@ -25,12 +25,38 @@ namespace SurveyMVCBase1.Controllers
         // direct to page - Workflow
         public ActionResult Workflow()
         {
+            Survey survyCreate = new Survey();
+            survyCreate.SurveyID = Guid.NewGuid().ToString();
+
             return View();
         }
 
-        public ActionResult S1Page1()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Workflow([Bind(Include = "SurveyID,S1Q1Answer,S1Q2Answer,S1Q3Answer,S1Q3Score,S1Q4Answer,S1Q5Answer,S1Q6Answer,S1Q6Score,S1Q7Answer,S1Q8Answer")] Survey survey)
         {
-            return View("Section1/S1Page1");
+            if (ModelState.IsValid)
+            {
+                db.Surveys.Add(survey);
+                db.SaveChanges();
+                return RedirectToAction("Section1 / S1Page1");
+            }
+
+            return View();
+        }
+
+        public ActionResult S1Page1(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Survey survey = db.Surveys.Find(id);
+            if (survey == null)
+            {
+                return HttpNotFound();
+            }
+            return View("Section1 / S1Page1");
         }
 
         [HttpPost]
@@ -39,12 +65,12 @@ namespace SurveyMVCBase1.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Surveys.Add(survey);
+                db.Entry(survey).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Section1/S1Page2");
+                return RedirectToAction("Section1 / S1Page2");
             }
 
-            return View();
+            return View("Section1 / S1Page1");
         }
 
         public ActionResult S1Page2()

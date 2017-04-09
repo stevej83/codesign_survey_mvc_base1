@@ -2,9 +2,20 @@
     ViewBag.Title = "Workflow";
 }
 
-<h2>Page - Worflow</h2>
+<h2>Page - Worflow - Create Survey Id</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+}
 
 <p>
-    @Html.ActionLink("link to S1Page1", "S1Page1")
+    @Html.ActionLink("link to S1Page1", "S1Page1", new { id = Model.SurveyID })
 </p>
 
