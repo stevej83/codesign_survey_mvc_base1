@@ -25,8 +25,8 @@ namespace SurveyMVCBase1.Controllers
         // direct to page - Workflow
         public ActionResult Workflow()
         {
-            Survey survyCreate = new Survey();
-            survyCreate.SurveyID = Guid.NewGuid().ToString();
+            //Survey survyCreate = new Survey();
+            //survyCreate.SurveyID = Guid.NewGuid().ToString();
 
             return View();
         }
@@ -37,17 +37,31 @@ namespace SurveyMVCBase1.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Surveys.Add(survey);
+                Survey surveyCreate = new Survey();
+                surveyCreate.SurveyID = Guid.NewGuid().ToString();
+                surveyCreate.S1Q1Answer = "";
+                surveyCreate.S1Q2Answer = DateTime.Now;
+                surveyCreate.S1Q3Answer = "";
+                surveyCreate.S1Q3Score = 0;
+                surveyCreate.S1Q4Answer = "";
+                surveyCreate.S1Q5Answer = "";
+                surveyCreate.S1Q6Answer = "";
+                surveyCreate.S1Q6Score = 0;
+                surveyCreate.S1Q7Answer = "";
+                surveyCreate.S1Q8Answer = "";
+
+                db.Surveys.Add(surveyCreate);
                 db.SaveChanges();
-                return RedirectToAction("Section1 / S1Page1");
+                return RedirectToAction("S1Page1");
             }
 
             return View();
         }
 
-        public ActionResult S1Page1(string id)
+        //public ActionResult S1Page1(string id)
+        public ActionResult S1Page1()
         {
-            if (id == null)
+            /*if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -55,8 +69,8 @@ namespace SurveyMVCBase1.Controllers
             if (survey == null)
             {
                 return HttpNotFound();
-            }
-            return View("Section1 / S1Page1");
+            }*/
+            return View("Section1/S1Page1");
         }
 
         [HttpPost]
