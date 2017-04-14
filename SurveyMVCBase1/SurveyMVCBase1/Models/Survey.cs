@@ -9,26 +9,61 @@ namespace SurveyMVCBase1.Models
     public class Survey
     {
         public string SurveyID { get; set; }
+
+        //[Required(ErrorMessage = "test test")]
         [Display(Name = "1. 姓名:")]
         public string S1Q1Answer { get; set; }
+
+        //[Required(ErrorMessage = "请点选你的生日")]
         [DataType(DataType.Date)]
         [Display(Name = "2. 生日:")]
         public DateTime S1Q2Answer { get; set; }
+
+        //[Required(ErrorMessage = "请选择您的本科院校所在国家")]
         [Display(Name = "3. 本科就读国:")]
         public string S1Q3Answer { get; set; }
+
         public int S1Q3Score { get; set; }
+
+        //[Required(ErrorMessage = "请填写您的本科院校名称")]
         [Display(Name = "4. 本科院校:")]
         public string S1Q4Answer { get; set; }
+
+        //[Required(ErrorMessage = "请填写您的本科专业")]
         [Display(Name = "5. 本科专业:")]
         public string S1Q5Answer { get; set; }
+
+        //[Required(ErrorMessage = "请选择您的硕士院校所在国家")]
         [Display(Name = "6. 硕士所在国:")]
         public string S1Q6Answer { get; set; }
+
         public int S1Q6Score { get; set; }
+
+        //[Required(ErrorMessage = "请填写您的硕士院校名称")]
         [Display(Name = "7. 硕士院校名称:")]
         public string S1Q7Answer { get; set; }
+
+        //[Required(ErrorMessage = "请填写您的本科专业")]
         [Display(Name = "8. 硕士专业:")]
         public string S1Q8Answer { get; set; }
 
         //public virtual Gate Gate { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (string.IsNullOrEmpty(S1Q1Answer))
+            {
+                yield return new ValidationResult("Q1 is mandatory", new[] { "S1Q1Answer" });
+            }
+            if (S1Q2Answer == null)
+            {
+                yield return new ValidationResult("Q2 is mandatory", new[] { "S1Q2Answer" });
+            }
+            if (string.IsNullOrEmpty(S1Q3Answer))
+            {
+                yield return new ValidationResult("Q3 is mandatory", new[] { "S1Q3Answer" });
+                //yield return new ValidationResult("Color is mandatory"});
+            }
+        }
     }
 }

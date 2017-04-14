@@ -6,7 +6,6 @@
 
 <h2>Create</h2>
 
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -30,8 +29,6 @@
                 @Html.ValidationMessageFor(model => model.S1Q1Answer, "", new { @class = "text-danger" })
             </div>
         </div>
-
-
 
         <div class="form-group">
             @Html.LabelFor(model => model.S1Q2Answer, htmlAttributes: new { @class = "control-label col-md-2" })

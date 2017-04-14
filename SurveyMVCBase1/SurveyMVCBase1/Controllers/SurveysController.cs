@@ -52,24 +52,24 @@ namespace SurveyMVCBase1.Controllers
 
                 db.Surveys.Add(surveyCreate);
                 db.SaveChanges();
+                Session["viewKey"] = surveyCreate.SurveyID;
                 return RedirectToAction("S1Page1");
             }
+            else
+            {
+                return View();
+            }
+        }
 
+        // direct to page - Workflow
+        public ActionResult ErrorSessionOut()
+        {
             return View();
         }
 
         //public ActionResult S1Page1(string id)
         public ActionResult S1Page1()
         {
-            /*if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Survey survey = db.Surveys.Find(id);
-            if (survey == null)
-            {
-                return HttpNotFound();
-            }*/
             return View("Section1/S1Page1");
         }
 
@@ -79,18 +79,27 @@ namespace SurveyMVCBase1.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(survey).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Section1 / S1Page2");
+                if (Session["viewKey"].ToString() == survey.SurveyID)
+                {
+                    db.Entry(survey).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("S1Page2");
+                }
+                else
+                {
+                    return RedirectToAction("ErrorSessionOut");
+                }
             }
 
-            return View("Section1 / S1Page1");
+            return View("Section1/S1Page1");
         }
 
         public ActionResult S1Page2()
         {
             return View("Section1/S1Page2");
         }
+
+        
 
         public ActionResult S1Page3()
         {

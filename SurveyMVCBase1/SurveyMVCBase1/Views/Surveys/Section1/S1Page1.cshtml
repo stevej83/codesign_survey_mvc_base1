@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.S1Q1Answer, htmlAttributes: new { @class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.S1Q1Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "在此处填写您的姓名..." } })
+                @Html.EditorFor(model => model.S1Q1Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写姓名" }})
                 @Html.ValidationMessageFor(model => model.S1Q1Answer, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.S1Q2Answer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.S1Q2Answer, new { id="datepicker", @class = "form-control", placeholder = "在此处点选您的生日..." })
+                @Html.TextBoxFor(model => model.S1Q2Answer, new { id="datepicker", @class = "form-control", placeholder = "请点选生日" })
                 @Html.ValidationMessageFor(model => model.S1Q2Answer, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -62,7 +62,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.S1Q4Answer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.S1Q4Answer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.S1Q4Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写本科院校 或 ‘无’" } })
                 @Html.ValidationMessageFor(model => model.S1Q4Answer, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -70,7 +70,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.S1Q5Answer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.S1Q5Answer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.S1Q5Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写本科专业 或 ‘无’" } })
                 @Html.ValidationMessageFor(model => model.S1Q5Answer, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -105,7 +105,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.S1Q7Answer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.S1Q7Answer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.S1Q7Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写硕士院校 或 ‘无’" } })
                 @Html.ValidationMessageFor(model => model.S1Q7Answer, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -113,7 +113,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.S1Q8Answer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.S1Q8Answer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.S1Q8Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写硕士专业 或 ‘无’" } })
                 @Html.ValidationMessageFor(model => model.S1Q8Answer, "", new { @class = "text-danger" })
             </div>
         </div>
