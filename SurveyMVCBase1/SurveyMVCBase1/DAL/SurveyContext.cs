@@ -12,7 +12,6 @@ namespace SurveyMVCBase1.DAL
         }
 
         public DbSet<Survey> Surveys { get; set; }
-        public DbSet<Gate> Gates { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

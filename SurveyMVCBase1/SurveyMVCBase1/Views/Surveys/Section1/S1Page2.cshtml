@@ -1,13 +1,89 @@
-﻿@model IEnumerable<SurveyMVCBase1.Models.Survey>
+﻿@model SurveyMVCBase1.Models.Survey
 
 @{
-    ViewBag.Title = "S1Page3";
+    ViewBag.Title = "S1Page2";
 }
 
 <h2>Survey section1 - page2</h2>
 
-<p>
-    @Html.ActionLink("link to S1Page3", "S1Page3")
-</p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.SurveyID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S1Q6Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> S1Q6AnswerListItems = new List<SelectListItem>();
+                    S1Q6AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "中国",
+                        Value = "China"
+                    });
+                    S1Q6AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "英国",
+                        Value = "UK"
+                        //Selected = true
+
+                    });
+                    S1Q6AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "无",
+                        Value = "NA"
+                    });
+                }
+                @Html.DropDownListFor(model => model.S1Q6Answer, S1Q6AnswerListItems, "-- 请选择国家 --", new { @class = "form-control control-label col-md-2 dropdown" })
+                @Html.ValidationMessageFor(model => model.S1Q6Answer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S1Q7Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.S1Q7Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写硕士院校 或 ‘无’" } })
+                @Html.ValidationMessageFor(model => model.S1Q7Answer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S1Q8Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.S1Q8Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写硕士专业 或 ‘无’" } })
+                @Html.ValidationMessageFor(model => model.S1Q8Answer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S1Q9Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.S1Q9Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请在此输入" } })
+                @Html.ValidationMessageFor(model => model.S1Q9Answer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="继续" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
 
 

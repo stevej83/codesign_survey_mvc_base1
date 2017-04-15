@@ -23,6 +23,7 @@ namespace SurveyMVCBase1.Models
         [Display(Name = "3. 本科就读国:")]
         public string S1Q3Answer { get; set; }
 
+        // 得分：S1Q3 0/10
         public int S1Q3Score { get; set; }
 
         //[Required(ErrorMessage = "请填写您的本科院校名称")]
@@ -37,6 +38,7 @@ namespace SurveyMVCBase1.Models
         [Display(Name = "6. 硕士所在国:")]
         public string S1Q6Answer { get; set; }
 
+        // 得分：S1Q6 0/10
         public int S1Q6Score { get; set; }
 
         //[Required(ErrorMessage = "请填写您的硕士院校名称")]
@@ -47,7 +49,39 @@ namespace SurveyMVCBase1.Models
         [Display(Name = "8. 硕士专业:")]
         public string S1Q8Answer { get; set; }
 
-        //public virtual Gate Gate { get; set; }
+        [Display(Name = "9. 最近一个工作单位:")]
+        public string S1Q9Answer { get; set; }
+
+        [Display(Name = "10. 工作时间总长度:")]
+        public string S1Q10Answer { get; set; }
+
+        // 得分：S1Q10 0/5/10
+        public int S1Q10Score { get; set; }
+
+        [Display(Name = "11. 工作单位是否与英国相关:")]
+        public string S1Q11Answer { get; set; }
+
+        // 得分：S1Q11 0/10
+        public int S1Q11Score { get; set; }
+
+        [Display(Name = "12. 工作职位:")]
+        public string S1Q12Answer { get; set; }
+
+        [Display(Name = "13. 在英国停留累计时间:")]
+        public string S1Q13Answer { get; set; }
+
+        // 得分：S1Q13 0/10/20/30
+        public int S1Q13Score { get; set; }
+
+        [Display(Name = "14. 电话:")]
+        public string S1Q14Answer { get; set; }
+
+        [Display(Name = "15. 邮箱:")]
+        public string S1Q15Answer { get; set; }
+
+        [Display(Name = "16. 微信:")]
+        public string S1Q16Answer { get; set; }
+
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

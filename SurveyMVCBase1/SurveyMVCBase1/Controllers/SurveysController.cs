@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SurveyMVCBase1.DAL;
 using SurveyMVCBase1.Models;
+using System.Data.Entity.Infrastructure;
 
 namespace SurveyMVCBase1.Controllers
 {
@@ -33,7 +34,9 @@ namespace SurveyMVCBase1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Workflow([Bind(Include = "SurveyID,S1Q1Answer,S1Q2Answer,S1Q3Answer,S1Q3Score,S1Q4Answer,S1Q5Answer,S1Q6Answer,S1Q6Score,S1Q7Answer,S1Q8Answer")] Survey survey)
+        public ActionResult Workflow([Bind(
+            Include = "SurveyID,S1Q1Answer,S1Q2Answer,S1Q3Answer,S1Q3Score,S1Q4Answer,S1Q5Answer,S1Q6Answer,S1Q6Score,S1Q7Answer,S1Q8Answer," +
+            "S1Q9Answer,S1Q10Answer,S1Q10Score,S1Q11Answer,S1Q11Score,S1Q12Answer,S1Q13Answer,S1Q13Score,S1Q14Answer,S1Q15Answer,S1Q16Answer")] Survey survey)
         {
             if (ModelState.IsValid)
             {
@@ -49,10 +52,22 @@ namespace SurveyMVCBase1.Controllers
                 surveyCreate.S1Q6Score = 0;
                 surveyCreate.S1Q7Answer = "";
                 surveyCreate.S1Q8Answer = "";
+                surveyCreate.S1Q9Answer = "";
+                surveyCreate.S1Q10Answer = "";
+                surveyCreate.S1Q10Score = 0;
+                surveyCreate.S1Q11Answer = "";
+                surveyCreate.S1Q11Score = 0;
+                surveyCreate.S1Q12Answer = "";
+                surveyCreate.S1Q13Answer = "";
+                surveyCreate.S1Q13Score = 0;
+                surveyCreate.S1Q14Answer = "";
+                surveyCreate.S1Q15Answer = "";
+                surveyCreate.S1Q16Answer = "";
 
                 db.Surveys.Add(surveyCreate);
                 db.SaveChanges();
                 Session["viewKey"] = surveyCreate.SurveyID;
+
                 return RedirectToAction("S1Page1");
             }
             else
@@ -61,19 +76,106 @@ namespace SurveyMVCBase1.Controllers
             }
         }
 
-        // direct to page - Workflow
+        // Get: ErrorSessionOut
         public ActionResult ErrorSessionOut()
         {
             return View();
         }
 
-        //public ActionResult S1Page1(string id)
-        public ActionResult S1Page1()
+        // Get: ErrorDbNull
+        public ActionResult ErrorDbNull()
         {
-            return View("Section1/S1Page1");
+            return View();
         }
 
-        [HttpPost]
+        // Get: ErrorModelStateInvalid
+        public ActionResult ErrorModelStateInvalid()
+        {
+            return View();
+        }
+
+        // Get: ErrorUpdateModel
+        public ActionResult ErrorUpdateModel()
+        {
+            return View();
+        }
+
+        // Get: S1Page1
+        public ActionResult S1Page1()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                return View("Error/ErrorSessionOut");
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            if (survey != null)
+            {
+                return View("Section1/S1Page1");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        // Post: S1Page1
+        [HttpPost, ActionName("S1Page1")]
+        [ValidateAntiForgeryToken]
+        public ActionResult S1Page1Post()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                return View("Error/ErrorSessionOut");
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            if (ModelState.IsValid)
+            {
+                if (survey != null)
+                {
+                    if (TryUpdateModel(survey, "", new string[] { "S1Q1Answer", "S1Q2Answer", "S1Q3Answer", "S1Q4Answer", "S1Q5Answer" }))
+                    {
+                        try
+                        {
+                            db.SaveChanges();
+                            return RedirectToAction("S1Page2");
+                        }
+                        catch (RetryLimitExceededException)
+                        {
+                            ModelState.AddModelError("", "Unable to save changes for S1Page1. Try again, and if the problem persists, see your system administrator.");
+                        }
+                    }
+                    return RedirectToAction("Error/ErrorUpdateModel");
+                }
+                else
+                {
+                    return RedirectToAction("Error/ErrorDbNull");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Error/ErrorModelStateInvalid");
+            }
+        }
+
+
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult S1Page1([Bind(Include = "SurveyID,S1Q1Answer,S1Q2Answer,S1Q3Answer,S1Q3Score,S1Q4Answer,S1Q5Answer,S1Q6Answer,S1Q6Score,S1Q7Answer,S1Q8Answer")] Survey survey)
         {
@@ -92,52 +194,266 @@ namespace SurveyMVCBase1.Controllers
             }
 
             return View("Section1/S1Page1");
-        }
+        }*/
 
+        // Get: S1Page2
         public ActionResult S1Page2()
         {
-            return View("Section1/S1Page2");
-        }
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                return View("Error/ErrorSessionOut");
+            }
 
-        
-
-        public ActionResult S1Page3()
-        {
-            return View("Section1/S1Page3");
-        }
-
-        public ActionResult S1Page4()
-        {
-            return View("Section1/S1Page4");
-        }
-
-        public ActionResult S1Page5()
-        {
-            return View("Section1/S1Page5");
-        }
-
-
-
-
-        // GET: Surveys/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
+            if (string.IsNullOrEmpty(id))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Survey survey = db.Surveys.Find(id);
-            if (survey == null)
+            if (survey != null)
+            {
+                return View("Section1/S1Page2");
+            }
+            else
             {
                 return HttpNotFound();
             }
-            return View(survey);
         }
 
-        public ActionResult Start()
+        // Post: S1Page2
+        [HttpPost, ActionName("S1Page2")]
+        [ValidateAntiForgeryToken]
+        public ActionResult S1Page2Post()
         {
-            return View();
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                return View("Error/ErrorSessionOut");
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            if (ModelState.IsValid)
+            {
+                if (survey != null)
+                {
+                    if (TryUpdateModel(survey, "", new string[] { "S1Q6Answer", "S1Q7Answer", "S1Q8Answer", "S1Q9Answer" }))
+                    {
+                        try
+                        {
+                            db.SaveChanges();
+                            return RedirectToAction("S1Page3");
+                        }
+                        catch (RetryLimitExceededException)
+                        {
+                            ModelState.AddModelError("", "Unable to save changes for S1Page2. Try again, and if the problem persists, see your system administrator.");
+                        }
+                    }
+                    return RedirectToAction("Error/ErrorUpdateModel");
+                }
+                else
+                {
+                    return RedirectToAction("Error/ErrorDbNull");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Error/ErrorModelStateInvalid");
+            }
         }
+
+
+        // Get: S1Page3
+        public ActionResult S1Page3()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                return View("Error/ErrorSessionOut");
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            if (survey != null)
+            {
+                return View("Section1/S1Page3");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        // Post: S1Page3
+        [HttpPost, ActionName("S1Page3")]
+        [ValidateAntiForgeryToken]
+        public ActionResult S1Page3Post()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                return View("Error/ErrorSessionOut");
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            if (ModelState.IsValid)
+            {
+                if (survey != null)
+                {
+                    if (TryUpdateModel(survey, "", new string[] { "S1Q10Answer", "S1Q11Answer", "S1Q12Answer", "S1Q13Answer" }))
+                    {
+                        try
+                        {
+                            db.SaveChanges();
+                            return RedirectToAction("S1Page4");
+                        }
+                        catch (RetryLimitExceededException)
+                        {
+                            ModelState.AddModelError("", "Unable to save changes for S1Page3. Try again, and if the problem persists, see your system administrator.");
+                        }
+                    }
+                    return RedirectToAction("Error/ErrorUpdateModel");
+                }
+                else
+                {
+                    return RedirectToAction("Error/ErrorDbNull");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Error/ErrorModelStateInvalid");
+            }
+        }
+
+
+        // Get: S1Page4
+        public ActionResult S1Page4()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                return View("Error/ErrorSessionOut");
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            if (survey != null)
+            {
+                return View("Section1/S1Page2");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        // Post: S1Page4
+        [HttpPost, ActionName("S1Page4")]
+        [ValidateAntiForgeryToken]
+        public ActionResult S1Page4Post()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                return View("Error/ErrorSessionOut");
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            if (ModelState.IsValid)
+            {
+                if (survey != null)
+                {
+                    if (TryUpdateModel(survey, "", new string[] { "S1Q14Answer", "S1Q15Answer", "S1Q16Answer" }))
+                    {
+                        try
+                        {
+                            db.SaveChanges();
+                            return RedirectToAction("S1PageSum");
+                        }
+                        catch (RetryLimitExceededException)
+                        {
+                            ModelState.AddModelError("", "Unable to save changes for S1Page4. Try again, and if the problem persists, see your system administrator.");
+                        }
+                    }
+                    return RedirectToAction("Error/ErrorUpdateModel");
+                }
+                else
+                {
+                    return RedirectToAction("Error/ErrorDbNull");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Error/ErrorModelStateInvalid");
+            }
+        }
+
+
+        // Get: S1PageSum
+        public ActionResult S1PageSum()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                return View("Error/ErrorSessionOut");
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            if (survey != null)
+            {
+                return View("Section1/S1PageSum");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+
+
+
+
 
 
         // GET: Surveys/Create
@@ -185,12 +501,20 @@ namespace SurveyMVCBase1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "SurveyID,S1Q1Answer,S1Q1Score,S1Q2Answer,S1Q2Score")] Survey survey)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(survey).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(survey).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+
             return View(survey);
         }
 

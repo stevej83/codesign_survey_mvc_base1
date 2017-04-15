@@ -13,16 +13,10 @@ namespace SurveyMVCBase1
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            /*routes.MapRoute(
-                name: "Surveys",
-                url: "./{controller}/{action}",
-                defaults: new { controller = "Section1", action = "Index" }
-            );*/
-
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Surveys", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Surveys", action = "Index", id = UrlParameter.Optional.ToString() }
             );
         }
     }
