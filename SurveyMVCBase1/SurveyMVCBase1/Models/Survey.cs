@@ -10,7 +10,7 @@ namespace SurveyMVCBase1.Models
     {
         public string SurveyID { get; set; }
 
-        //[Required(ErrorMessage = "test test")]
+        [Required(ErrorMessage = "test test")]
         [Display(Name = "1. 姓名:")]
         public string S1Q1Answer { get; set; }
 
@@ -82,22 +82,5 @@ namespace SurveyMVCBase1.Models
         [Display(Name = "16. 微信:")]
         public string S1Q16Answer { get; set; }
 
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (string.IsNullOrEmpty(S1Q1Answer))
-            {
-                yield return new ValidationResult("Q1 is mandatory", new[] { "S1Q1Answer" });
-            }
-            if (S1Q2Answer == null)
-            {
-                yield return new ValidationResult("Q2 is mandatory", new[] { "S1Q2Answer" });
-            }
-            if (string.IsNullOrEmpty(S1Q3Answer))
-            {
-                yield return new ValidationResult("Q3 is mandatory", new[] { "S1Q3Answer" });
-                //yield return new ValidationResult("Color is mandatory"});
-            }
-        }
     }
 }

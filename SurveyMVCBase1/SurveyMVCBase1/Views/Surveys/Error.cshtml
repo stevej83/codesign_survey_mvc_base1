@@ -1,10 +1,10 @@
 ﻿@{
-    ViewBag.Title = "Error - model state invalid";
+    ViewBag.Title = "Error - seesion out";
 }
 
 <h2>Error</h2>
 
-<p>model state invalid !</p>
+<p>@Session["error"]</p>
 
 <p>
     @Html.ActionLink("back to index", "Index")

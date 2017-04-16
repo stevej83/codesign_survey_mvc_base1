@@ -271,10 +271,7 @@
     <Content Include="Views\Surveys\Section1\S1Page3.cshtml" />
     <Content Include="Views\Surveys\Section1\S1Page4.cshtml" />
     <Content Include="Views\Surveys\Section1\S1Page5.cshtml" />
-    <Content Include="Views\Surveys\Error\ErrorSessionOut.cshtml" />
-    <Content Include="Views\Surveys\Error\ErrorModelStateInvalid.cshtml" />
-    <Content Include="Views\Surveys\Error\ErrorUpdateModel.cshtml" />
-    <Content Include="Views\Surveys\Error\ErrorDbNull.cshtml" />
+    <Content Include="Views\Surveys\Error.cshtml" />
     <Content Include="Views\Surveys\Section1\S1PageSum.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -67,12 +67,14 @@ namespace SurveyMVCBase1.Controllers
                 db.Surveys.Add(surveyCreate);
                 db.SaveChanges();
                 Session["viewKey"] = surveyCreate.SurveyID;
+                Session["error"] = "null";
 
                 return RedirectToAction("S1Page1");
             }
             else
             {
-                return View();
+                Session["error"] = "ModelState is ivalid.";
+                return View("Error");
             }
         }
 
@@ -110,7 +112,8 @@ namespace SurveyMVCBase1.Controllers
             }
             else
             {
-                return View("Error/ErrorSessionOut");
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
 
             if (string.IsNullOrEmpty(id))
@@ -141,7 +144,8 @@ namespace SurveyMVCBase1.Controllers
             }
             else
             {
-                return View("Error/ErrorSessionOut");
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
 
             Survey survey = db.Surveys.Find(id);
@@ -161,16 +165,19 @@ namespace SurveyMVCBase1.Controllers
                             ModelState.AddModelError("", "Unable to save changes for S1Page1. Try again, and if the problem persists, see your system administrator.");
                         }
                     }
-                    return RedirectToAction("Error/ErrorUpdateModel");
+                    Session["error"] = "Cant update model";
+                    return View("Error");
                 }
                 else
                 {
-                    return RedirectToAction("Error/ErrorDbNull");
+                    Session["error"] = "Db is null";
+                    return View("Error");
                 }
             }
             else
             {
-                return RedirectToAction("Error/ErrorModelStateInvalid");
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
         }
 
@@ -206,7 +213,8 @@ namespace SurveyMVCBase1.Controllers
             }
             else
             {
-                return View("Error/ErrorSessionOut");
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
 
             if (string.IsNullOrEmpty(id))
@@ -237,7 +245,8 @@ namespace SurveyMVCBase1.Controllers
             }
             else
             {
-                return View("Error/ErrorSessionOut");
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
 
             Survey survey = db.Surveys.Find(id);
@@ -257,16 +266,19 @@ namespace SurveyMVCBase1.Controllers
                             ModelState.AddModelError("", "Unable to save changes for S1Page2. Try again, and if the problem persists, see your system administrator.");
                         }
                     }
-                    return RedirectToAction("Error/ErrorUpdateModel");
+                    Session["error"] = "Cant update model";
+                    return View("Error");
                 }
                 else
                 {
-                    return RedirectToAction("Error/ErrorDbNull");
+                    Session["error"] = "Db is null";
+                    return View("Error");
                 }
             }
             else
             {
-                return RedirectToAction("Error/ErrorModelStateInvalid");
+                Session["error"] = "Model state is invalid";
+                return View("Error");
             }
         }
 
@@ -281,7 +293,8 @@ namespace SurveyMVCBase1.Controllers
             }
             else
             {
-                return View("Error/ErrorSessionOut");
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
 
             if (string.IsNullOrEmpty(id))
@@ -312,7 +325,8 @@ namespace SurveyMVCBase1.Controllers
             }
             else
             {
-                return View("Error/ErrorSessionOut");
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
 
             Survey survey = db.Surveys.Find(id);
@@ -332,16 +346,19 @@ namespace SurveyMVCBase1.Controllers
                             ModelState.AddModelError("", "Unable to save changes for S1Page3. Try again, and if the problem persists, see your system administrator.");
                         }
                     }
-                    return RedirectToAction("Error/ErrorUpdateModel");
+                    Session["error"] = "Cant update model";
+                    return View("Error");
                 }
                 else
                 {
-                    return RedirectToAction("Error/ErrorDbNull");
+                    Session["error"] = "Db is null";
+                    return View("Error");
                 }
             }
             else
             {
-                return RedirectToAction("Error/ErrorModelStateInvalid");
+                Session["error"] = "Model state is invalid";
+                return View("Error");
             }
         }
 
@@ -356,7 +373,8 @@ namespace SurveyMVCBase1.Controllers
             }
             else
             {
-                return View("Error/ErrorSessionOut");
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
 
             if (string.IsNullOrEmpty(id))
@@ -387,7 +405,8 @@ namespace SurveyMVCBase1.Controllers
             }
             else
             {
-                return View("Error/ErrorSessionOut");
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
 
             Survey survey = db.Surveys.Find(id);
@@ -407,16 +426,19 @@ namespace SurveyMVCBase1.Controllers
                             ModelState.AddModelError("", "Unable to save changes for S1Page4. Try again, and if the problem persists, see your system administrator.");
                         }
                     }
-                    return RedirectToAction("Error/ErrorUpdateModel");
+                    Session["error"] = "Cant update model";
+                    return View("Error");
                 }
                 else
                 {
-                    return RedirectToAction("Error/ErrorDbNull");
+                    Session["error"] = "Db is null";
+                    return View("Error");
                 }
             }
             else
             {
-                return RedirectToAction("Error/ErrorModelStateInvalid");
+                Session["error"] = "Model start is invalid";
+                return View("Error");
             }
         }
 
@@ -431,7 +453,8 @@ namespace SurveyMVCBase1.Controllers
             }
             else
             {
-                return View("Error/ErrorSessionOut");
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
 
             if (string.IsNullOrEmpty(id))
