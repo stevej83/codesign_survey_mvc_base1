@@ -19,7 +19,7 @@ namespace SurveyMVCBase1.Controllers
         // GET: Surveys
         public ActionResult Index()
         {
-            return View(db.Surveys.ToList());
+            return View();
         }
 
 
@@ -73,7 +73,8 @@ namespace SurveyMVCBase1.Controllers
             }
             else
             {
-                Session["error"] = "ModelState is ivalid.";
+                var allErrors = ModelState.Values.SelectMany(x => x.Errors);
+                Session["error"] = "Model state is invalid" + allErrors.ToString();
                 return View("Error");
             }
         }
@@ -357,7 +358,8 @@ namespace SurveyMVCBase1.Controllers
             }
             else
             {
-                Session["error"] = "Model state is invalid";
+                var allErrors = ModelState.Values.SelectMany(x => x.Errors);
+                Session["error"] = "Model state is invalid" + allErrors.ToString();
                 return View("Error");
             }
         }
