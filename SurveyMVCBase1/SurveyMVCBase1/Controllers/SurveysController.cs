@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SurveyMVCBase1.DAL;
+using SurveyMVCBase1.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using SurveyMVCBase1.DAL;
-using SurveyMVCBase1.Models;
-using System.Data.Entity.Infrastructure;
 
 namespace SurveyMVCBase1.Controllers
 {
@@ -21,7 +19,6 @@ namespace SurveyMVCBase1.Controllers
         {
             return View();
         }
-
 
         // direct to page - Workflow
         public ActionResult Workflow()
@@ -38,7 +35,6 @@ namespace SurveyMVCBase1.Controllers
             Include = "SurveyID,S1Q1Answer,S1Q2Answer,S1Q3Answer,S1Q3Score,S1Q4Answer,S1Q5Answer,S1Q6Answer,S1Q6Score,S1Q7Answer,S1Q8Answer," +
             "S1Q9Answer,S1Q10Answer,S1Q10Score,S1Q11Answer,S1Q11Score,S1Q12Answer,S1Q13Answer,S1Q13Score,S1Q14Answer,S1Q15Answer,S1Q16Answer")] Survey survey)
         {
-
             if (ModelState.IsValid)
             {
                 Survey surveyCreate = new Survey();
@@ -280,7 +276,6 @@ namespace SurveyMVCBase1.Controllers
             }
         }
 
-
         // Get: S1Page3
         public ActionResult S1Page3()
         {
@@ -396,7 +391,6 @@ namespace SurveyMVCBase1.Controllers
             }
         }
 
-
         // Get: S1Page4
         public ActionResult S1Page4()
         {
@@ -417,13 +411,88 @@ namespace SurveyMVCBase1.Controllers
             }
 
             Survey survey = db.Surveys.Find(id);
-            if (survey != null)
+            int S1Q10ScoreLocal = 0;
+            int S1Q11ScoreLocal = 0;
+            int S1Q13ScoreLocal = 0;
+
+            if (ModelState.IsValid)
             {
-                return View("Section1/S1Page2");
+                if (survey != null)
+                {
+                    if (!string.IsNullOrEmpty(survey.S1Q10Answer))
+                    {
+                        if (survey.S1Q10Answer == "exp3")
+                        {
+                            S1Q10ScoreLocal = 10;
+                        }
+                        else if (survey.S1Q10Answer == "exp2")
+                        {
+                            S1Q10ScoreLocal = 5;
+                        }
+                        else
+                        {
+                            S1Q10ScoreLocal = 0;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S1Q11Answer))
+                    {
+                        if (survey.S1Q11Answer == "yes")
+                        {
+                            S1Q11ScoreLocal = 10;
+                        }
+                        else
+                        {
+                            S1Q11ScoreLocal = 0;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S1Q13Answer))
+                    {
+                        if (survey.S1Q13Answer == "time4")
+                        {
+                            S1Q13ScoreLocal = 30;
+                        }
+                        else if (survey.S1Q13Answer == "time3")
+                        {
+                            S1Q13ScoreLocal = 20;
+                        }
+                        else if (survey.S1Q13Answer == "time2")
+                        {
+                            S1Q13ScoreLocal = 10;
+                        }
+                        else
+                        {
+                            S1Q13ScoreLocal = 0;
+                        }
+                    }
+
+                    if (TryUpdateModel(survey, "", new string[] { "S1Q10Score", "S1Q11Score", "S1Q13Score" }))
+                    {
+                        try
+                        {
+                            survey.S1Q10Score = S1Q10ScoreLocal;
+                            survey.S1Q11Score = S1Q11ScoreLocal;
+                            survey.S1Q13Score = S1Q13ScoreLocal;
+                            db.SaveChanges();
+                            return View("Section1/S1Page4");
+                        }
+                        catch (RetryLimitExceededException)
+                        {
+                            ModelState.AddModelError("", "Unable to save changes for S1Page1. Try again, and if the problem persists, see your system administrator.");
+                        }
+                    }
+                    else
+                    {
+                        return HttpNotFound();
+                    }
+                }
+                return View("Section1/S1Page4");
             }
             else
             {
-                return HttpNotFound();
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
         }
 
@@ -476,7 +545,6 @@ namespace SurveyMVCBase1.Controllers
             }
         }
 
-
         // Get: S1PageSum
         public ActionResult S1PageSum()
         {
@@ -507,12 +575,6 @@ namespace SurveyMVCBase1.Controllers
             }
         }
 
-
-
-
-
-
-
         // GET: Surveys/Create
         public ActionResult Create()
         {
@@ -520,7 +582,7 @@ namespace SurveyMVCBase1.Controllers
         }
 
         // POST: Surveys/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -552,7 +614,7 @@ namespace SurveyMVCBase1.Controllers
         }
 
         // POST: Surveys/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

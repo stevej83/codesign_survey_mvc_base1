@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SurveyMVCBase1.Models.Survey>
+﻿@model SurveyMVCBase1.Models.Survey
 
 @{
     ViewBag.Title = "S1Page3";
@@ -6,8 +6,108 @@
 
 <h2>Survey section1 - page3</h2>
 
-<p>
-    @Html.ActionLink("link to S1Page4", "S1Page4")
-</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.SurveyID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S1Q10Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> S1Q10AnswerListItems = new List<SelectListItem>();
+                    S1Q10AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "一年以内",
+                        Value = "exp1"
+                    });
+                    S1Q10AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "一到三年",
+                        Value = "exp2"
+                    });
+                    S1Q10AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "三年以上",
+                        Value = "exp3"
+                    });
+                }
+                @Html.DropDownListFor(model => model.S1Q10Answer, S1Q10AnswerListItems, "-- 请选择 --", new { @class = "form-control", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S1Q11Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> S1Q11AnswerListItems = new List<SelectListItem>();
+                    S1Q11AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "是",
+                        Value = "yes"
+                    });
+                    S1Q11AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "否",
+                        Value = "no"
+                    });
+                }
+                @Html.DropDownListFor(model => model.S1Q11Answer, S1Q11AnswerListItems, "-- 请选择 --", new { @class = "form-control", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S1Q12Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.S1Q12Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写工作职位" } })
+                @Html.ValidationMessageFor(model => model.S1Q12Answer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S1Q13Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> S1Q13AnswerListItems = new List<SelectListItem>();
+                    S1Q13AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "半年以内",
+                        Value = "time1"
+                    });
+                    S1Q13AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "半年到一年",
+                        Value = "time2"
+                    });
+                    S1Q13AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "一年到三年",
+                        Value = "time3"
+                    });
+                    S1Q13AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "三年以上",
+                        Value = "time4"
+                    });
+                }
+                @Html.DropDownListFor(model => model.S1Q13Answer, S1Q13AnswerListItems, "-- 请选择 --", new { @class = "form-control", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="继续" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+                    }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 
