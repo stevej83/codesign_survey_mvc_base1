@@ -25,30 +25,25 @@ namespace SurveyMVCBase1.Models
         // 得分：S1Q3 0/10
         public int S1Q3Score { get; set; }
 
-        //[Required(ErrorMessage = "请填写您的本科院校名称")]
         [Display(Name = "4. 本科院校:")]
         public string S1Q4Answer { get; set; }
 
-        //[Required(ErrorMessage = "请填写您的本科专业")]
         [Display(Name = "5. 本科专业:")]
         public string S1Q5Answer { get; set; }
 
-        //[Required(ErrorMessage = "请选择您的硕士院校所在国家")]
         [Display(Name = "6. 硕士所在国:")]
         public string S1Q6Answer { get; set; }
 
         // 得分：S1Q6 0/10
         public int S1Q6Score { get; set; }
 
-        //[Required(ErrorMessage = "请填写您的硕士院校名称")]
         [Display(Name = "7. 硕士院校名称:")]
         public string S1Q7Answer { get; set; }
 
-        //[Required(ErrorMessage = "请填写您的本科专业")]
         [Display(Name = "8. 硕士专业:")]
         public string S1Q8Answer { get; set; }
 
-        [Display(Name = "9. 最近一个工作单位:")]
+        [Display(Name = "9. 现/最近工作单位:")]
         public string S1Q9Answer { get; set; }
 
         [Display(Name = "10. 工作时间总长度:")]

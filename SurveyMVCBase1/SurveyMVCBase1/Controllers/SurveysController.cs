@@ -87,24 +87,6 @@ namespace SurveyMVCBase1.Controllers
             return View();
         }
 
-        // Get: ErrorDbNull
-        public ActionResult ErrorDbNull()
-        {
-            return View();
-        }
-
-        // Get: ErrorModelStateInvalid
-        public ActionResult ErrorModelStateInvalid()
-        {
-            return View();
-        }
-
-        // Get: ErrorUpdateModel
-        public ActionResult ErrorUpdateModel()
-        {
-            return View();
-        }
-
         // Get: S1Page1
         public ActionResult S1Page1()
         {
@@ -184,28 +166,6 @@ namespace SurveyMVCBase1.Controllers
             }
         }
 
-
-        /*[HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult S1Page1([Bind(Include = "SurveyID,S1Q1Answer,S1Q2Answer,S1Q3Answer,S1Q3Score,S1Q4Answer,S1Q5Answer,S1Q6Answer,S1Q6Score,S1Q7Answer,S1Q8Answer")] Survey survey)
-        {
-            if (ModelState.IsValid)
-            {
-                if (Session["viewKey"].ToString() == survey.SurveyID)
-                {
-                    db.Entry(survey).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("S1Page2");
-                }
-                else
-                {
-                    return RedirectToAction("ErrorSessionOut");
-                }
-            }
-
-            return View("Section1/S1Page1");
-        }*/
-
         // Get: S1Page2
         public ActionResult S1Page2()
         {
@@ -226,13 +186,48 @@ namespace SurveyMVCBase1.Controllers
             }
 
             Survey survey = db.Surveys.Find(id);
-            if (survey != null)
+            int S1Q3ScoreLocal = 0;
+            if (ModelState.IsValid)
             {
-                return View("Section1/S1Page2");
+                if (survey != null)
+                {
+                    if (!string.IsNullOrEmpty(survey.S1Q3Answer))
+                    {
+                        if (survey.S1Q3Answer == "UK")
+                        {
+                            S1Q3ScoreLocal = 10;
+                        }
+                        else
+                        {
+                            S1Q3ScoreLocal = 0;
+                        }
+
+                        if (TryUpdateModel(survey, "", new string[] { "S1Q3Score" }))
+                        {
+                            try
+                            {
+                                survey.S1Q3Score = S1Q3ScoreLocal;
+                                db.SaveChanges();
+                                return View("Section1/S1Page2");
+                            }
+                            catch (RetryLimitExceededException)
+                            {
+                                ModelState.AddModelError("", "Unable to save changes for S1Page1. Try again, and if the problem persists, see your system administrator.");
+                            }
+                        }
+                    }
+
+                    return View("Section1/S1Page2");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
             }
             else
             {
-                return HttpNotFound();
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
         }
 
@@ -306,13 +301,48 @@ namespace SurveyMVCBase1.Controllers
             }
 
             Survey survey = db.Surveys.Find(id);
-            if (survey != null)
+            int S1Q6ScoreLocal = 0;
+
+            if (ModelState.IsValid)
             {
-                return View("Section1/S1Page3");
+                if (survey != null)
+                {
+                    if (!string.IsNullOrEmpty(survey.S1Q6Answer))
+                    {
+                        if (survey.S1Q6Answer == "UK")
+                        {
+                            S1Q6ScoreLocal = 10;
+                        }
+                        else
+                        {
+                            S1Q6ScoreLocal = 0;
+                        }
+
+                        if (TryUpdateModel(survey, "", new string[] { "S1Q6Score" }))
+                        {
+                            try
+                            {
+                                survey.S1Q6Score = S1Q6ScoreLocal;
+                                db.SaveChanges();
+                                return View("Section1/S1Page3");
+                            }
+                            catch (RetryLimitExceededException)
+                            {
+                                ModelState.AddModelError("", "Unable to save changes for S1Page1. Try again, and if the problem persists, see your system administrator.");
+                            }
+                        }
+                    }
+                    return View("Section1/S1Page3");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
             }
             else
             {
-                return HttpNotFound();
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
         }
 
