@@ -17,9 +17,8 @@ namespace SurveyMVCBase1.Models
         public string S1Q1Answer { get; set; }
 
         [Display(Name = "2. 生日:")]
-        public DateTime S1Q2Answer { get; set; }
+        public string S1Q2Answer { get; set; }
 
-        //[Required(ErrorMessage = "请选择您的本科院校所在国家")]
         [Display(Name = "3. 本科就读国:")]
         public string S1Q3Answer { get; set; }
 

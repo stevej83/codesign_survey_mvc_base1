@@ -44,7 +44,8 @@ namespace SurveyMVCBase1.Controllers
                 Survey surveyCreate = new Survey();
                 surveyCreate.SurveyID = Guid.NewGuid().ToString();
                 surveyCreate.S1Q1Answer = "";
-                surveyCreate.S1Q2Answer = new DateTime(1980, 01, 01);
+                //surveyCreate.S1Q2Answer = new DateTime(1980, 01, 01);
+                surveyCreate.S1Q2Answer = "";
                 surveyCreate.S1Q3Answer = "";
                 surveyCreate.S1Q3Score = 0;
                 surveyCreate.S1Q4Answer = "";
