@@ -53,7 +53,13 @@
     <script type="text/javascript">
         $(function () {
             // This will make every element with the class "date-picker" into a DatePicker element
-            $("#datepicker").datepicker();
+            $("#datepicker").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1920:2020',
+                dateFormat: 'dd-mm-yy',
+                defaultDate: new Date(1985, 00, 01)
+            });
         })
     </script>
     <!-- end of jquery datepicker -->

@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.ModelBinding;
+using System.Web.Mvc;
 
 namespace SurveyMVCBase1.Models
 {
     public class Survey
     {
+        [Key]
         public string SurveyID { get; set; }
 
-        [Required(ErrorMessage = "请填写您的姓名")]
         [Display(Name = "1. 姓名:")]
         public string S1Q1Answer { get; set; }
 
-        [Required(ErrorMessage = "请点选你的生日")]
-        [DataType(DataType.Date)]
         [Display(Name = "2. 生日:")]
         public DateTime S1Q2Answer { get; set; }
 
-        [Required(ErrorMessage = "请选择您的本科院校所在国家")]
+        //[Required(ErrorMessage = "请选择您的本科院校所在国家")]
         [Display(Name = "3. 本科就读国:")]
         public string S1Q3Answer { get; set; }
 

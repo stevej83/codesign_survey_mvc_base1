@@ -38,12 +38,13 @@ namespace SurveyMVCBase1.Controllers
             Include = "SurveyID,S1Q1Answer,S1Q2Answer,S1Q3Answer,S1Q3Score,S1Q4Answer,S1Q5Answer,S1Q6Answer,S1Q6Score,S1Q7Answer,S1Q8Answer," +
             "S1Q9Answer,S1Q10Answer,S1Q10Score,S1Q11Answer,S1Q11Score,S1Q12Answer,S1Q13Answer,S1Q13Score,S1Q14Answer,S1Q15Answer,S1Q16Answer")] Survey survey)
         {
+
             if (ModelState.IsValid)
             {
                 Survey surveyCreate = new Survey();
                 surveyCreate.SurveyID = Guid.NewGuid().ToString();
                 surveyCreate.S1Q1Answer = "";
-                surveyCreate.S1Q2Answer = DateTime.Now;
+                surveyCreate.S1Q2Answer = new DateTime(1980, 01, 01);
                 surveyCreate.S1Q3Answer = "";
                 surveyCreate.S1Q3Score = 0;
                 surveyCreate.S1Q4Answer = "";
