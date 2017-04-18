@@ -256,11 +256,9 @@
     <Content Include="Views\Surveys\Index.cshtml" />
     <Content Include="Views\Surveys\Workflow.cshtml" />
     <Content Include="Views\Surveys\Section1\S1Page1.cshtml" />
-    <Content Include="Views\Surveys\Section1\S1Page6.cshtml" />
     <Content Include="Views\Surveys\Section1\S1Page2.cshtml" />
     <Content Include="Views\Surveys\Section1\S1Page3.cshtml" />
     <Content Include="Views\Surveys\Section1\S1Page4.cshtml" />
-    <Content Include="Views\Surveys\Section1\S1Page5.cshtml" />
     <Content Include="Views\Surveys\Error.cshtml" />
     <Content Include="Views\Surveys\Section1\S1PageSum.cshtml" />
   </ItemGroup>
