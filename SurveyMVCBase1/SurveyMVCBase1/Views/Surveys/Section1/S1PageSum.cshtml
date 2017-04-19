@@ -15,28 +15,8 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.SurveyID)
 
-        @{
-            int S1Score = 0;
-            string S1Msg = "";
-
-            S1Score = Model.S1Q3Score + Model.S1Q6Score + Model.S1Q10Score + Model.S1Q11Score + Model.S1Q13Score;
-
-            if (S1Score > 50)
-            {
-                S1Msg = "基本符合英国移民局关于企业家移民要求，可以进入下一步评测。";
-            }
-            else if (S1Score >= 30 && S1Score <= 50)
-            {
-                S1Msg = "有可能符合英国移民局关于企业家移民要求，可以进入下一步评测。";
-            }
-            else if (S1Score < 30)
-            {
-                S1Msg = "不太符合英国移民局关于企业家签证要求，但是您仍然可以继续下一步评测，如果总分合格，仍然有机会尝试。";
-            }
-        }
-
-        <p>您第一部分的得分是 @S1Score 分</p>
-        <p>@S1Msg</p>
+        <p>您第一部分的得分是 @ViewBag.Section1Score 分</p>
+        <p>@ViewBag.Section1Message</p>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

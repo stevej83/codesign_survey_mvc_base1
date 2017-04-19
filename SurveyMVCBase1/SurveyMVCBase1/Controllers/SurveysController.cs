@@ -565,14 +565,87 @@ namespace SurveyMVCBase1.Controllers
             }
 
             Survey survey = db.Surveys.Find(id);
-            if (survey != null)
+            int S1Score = 0;
+            string S1ScoreMsg = "";
+
+            if (ModelState.IsValid)
             {
-                return View("Section1/S1PageSum");
+                if (survey != null)
+                {
+                    S1Score = survey.S1Q3Score + survey.S1Q6Score + survey.S1Q10Score + survey.S1Q11Score + survey.S1Q13Score;
+
+                    if (S1Score > 50)
+                    {
+                        S1ScoreMsg = "基本符合英国移民局关于企业家移民要求，可以进入下一步评测。";
+                    }
+                    else if (S1Score >= 30 && S1Score <= 50)
+                    {
+                        S1ScoreMsg = "有可能符合英国移民局关于企业家移民要求，可以进入下一步评测。";
+                    }
+                    else if (S1Score < 30)
+                    {
+                        S1ScoreMsg = "不太符合英国移民局关于企业家签证要求，但是您仍然可以继续下一步评测，如果总分合格，仍然有机会尝试。";
+                    }
+
+                    ViewBag.Section1Score = S1Score;
+                    ViewBag.Section1Message = S1ScoreMsg;
+
+                    return View("Section1/S1PageSum");
+                }
+                else
+                {
+                    Session["error"] = "database is empty!";
+                    return View("Error");
+                }
             }
             else
             {
-                return HttpNotFound();
+                Session["error"] = "Session timeout";
+                return View("Error");
             }
         }
+
+        // Post: S1PageSum
+        [HttpPost, ActionName("S1PageSum")]
+        [ValidateAntiForgeryToken]
+        public ActionResult S1PageSumPost()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+
+            return RedirectToAction("S2Page1");
+        }
+
+        // Get: S2Page1
+
+        // Post: S2Page1
+
+        // Get: S2Page2
+
+        // Post: S2Page2
+
+        // Get: S2Page3
+
+        // Post: S2Page3
+
+        // Get: S2Page4
+
+        // Post: S2Page4
+
+        // Get: S2Page5
+
+        // Post: S2Page5
+
+        // Get: S2PageSum
+
+        // Post: S2PageSum
     }
 }
