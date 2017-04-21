@@ -751,7 +751,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q3Answer))
                     {
-                        if (survey.S2Q3Answer == "IELTS5")
+                        if (survey.S2Q3Answer == "ielts5")
                         {
                             S2Q3ScoreLocal = 10;
                         }
@@ -912,7 +912,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q9Answer))
                     {
-                        if (survey.S2Q9Answer == "2employee")
+                        if (survey.S2Q9Answer == "2emp")
                         {
                             S2Q9ScoreLocal = 10;
                         }
@@ -939,16 +939,17 @@ namespace SurveyMVCBase1.Controllers
 
                             S2Score = survey.S2Q1Score + survey.S2Q2Score + survey.S2Q3Score + survey.S2Q4Score + survey.S2Q5Score + survey.S2Q6Score + survey.S2Q7Score + survey.S2Q8Score + survey.S2Q9Score + survey.S2Q10Score;
 
-                            if (S2Score > 100)
+                            if (S2Score == 100)
                             {
                                 S2ScoreMsg = "您对英国企业家移民签证政策充分了解，可以进入下一步评测。";
                             }
-                            else if (S2Score >= 60 && S2Score <= 90)
+                            else if (S2Score >= 60 && S2Score < 100)
                             {
                                 S2ScoreMsg = "您对英国企业家移民签证政策基本了解，可以进入下一步评测。";
                             }
                             else if (S2Score < 60)
                             {
+                                // 退出测试按键？
                                 S2ScoreMsg = "您对英国企业家移民签证政策不够了解，建议您充分了解政策后再进入下一步评测。";
                             }
 
@@ -995,5 +996,395 @@ namespace SurveyMVCBase1.Controllers
             return RedirectToAction("S3Page1");
         }
 
+        // Get: S3Page1
+        public ActionResult S3Page1()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            if (survey != null)
+            {
+                return View("Section3/S3Page1");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        // Post: S3Page1
+        [HttpPost, ActionName("S3Page1")]
+        [ValidateAntiForgeryToken]
+        public ActionResult S3Page1Post()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            if (ModelState.IsValid)
+            {
+                if (survey != null)
+                {
+                    if (TryUpdateModel(survey, "", new string[] { "S3Q1Answer", "S3Q2Answer", "S3Q3Answer", "S3Q4Answer", "S3Q5Answer" }))
+                    {
+                        try
+                        {
+                            db.SaveChanges();
+                            return RedirectToAction("S3Page2");
+                        }
+                        catch (RetryLimitExceededException)
+                        {
+                            ModelState.AddModelError("", "Unable to save changes for S2Page1. Try again, and if the problem persists, see your system administrator.");
+                        }
+                    }
+                    Session["error"] = "Cant update model";
+                    return View("Error");
+                }
+                else
+                {
+                    Session["error"] = "Db is null";
+                    return View("Error");
+                }
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+        }
+
+        // Get: S3Page2
+        public ActionResult S3Page2()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            int S3Q1ScoreLocal = 0;
+            int S3Q2ScoreLocal = 0;
+            int S3Q3ScoreLocal = 0;
+            int S3Q4ScoreLocal = 0;
+            int S3Q5ScoreLocal = 0;
+
+            if (ModelState.IsValid)
+            {
+                if (survey != null)
+                {
+                    if (!string.IsNullOrEmpty(survey.S3Q1Answer))
+                    {
+                        if (survey.S3Q1Answer == "20pct")
+                        {
+                            S3Q1ScoreLocal = 10;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S3Q2Answer))
+                    {
+                        if (survey.S3Q2Answer == "yes")
+                        {
+                            S3Q2ScoreLocal = 10;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S3Q3Answer))
+                    {
+                        if (survey.S3Q3Answer == "7.50")
+                        {
+                            S3Q3ScoreLocal = 10;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S3Q4Answer))
+                    {
+                        if (survey.S3Q4Answer == "25k")
+                        {
+                            S3Q4ScoreLocal = 10;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S3Q5Answer))
+                    {
+                        if (survey.S3Q5Answer == "2k")
+                        {
+                            S3Q5ScoreLocal = 10;
+                        }
+                    }
+
+                    if (TryUpdateModel(survey, "", new string[] { "S3Q1Score", "S3Q2Score", "S3Q3Score", "S3Q4Score", "S3Q5Score" }))
+                    {
+                        try
+                        {
+                            survey.S3Q1Score = S3Q1ScoreLocal;
+                            survey.S3Q2Score = S3Q2ScoreLocal;
+                            survey.S3Q3Score = S3Q3ScoreLocal;
+                            survey.S3Q4Score = S3Q4ScoreLocal;
+                            survey.S3Q5Score = S3Q5ScoreLocal;
+                            db.SaveChanges();
+                            return View("Section3/S3Page2");
+                        }
+                        catch (RetryLimitExceededException)
+                        {
+                            ModelState.AddModelError("", "Unable to save changes for S3Page2. Try again, and if the problem persists, see your system administrator.");
+                        }
+                    }
+                    else
+                    {
+                        return HttpNotFound();
+                    }
+                }
+                return View("Section3/S3Page2");
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+        }
+
+        // Post: S3Page2
+        [HttpPost, ActionName("S3Page2")]
+        [ValidateAntiForgeryToken]
+        public ActionResult S3Page2Post()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            if (ModelState.IsValid)
+            {
+                if (survey != null)
+                {
+                    if (TryUpdateModel(survey, "", new string[] { "S3Q6Answer", "S3Q7Answer", "S3Q8Answer", "S3Q9Answer", "S3Q10Answer" }))
+                    {
+                        try
+                        {
+                            db.SaveChanges();
+                            return RedirectToAction("S3PageSum");
+                        }
+                        catch (RetryLimitExceededException)
+                        {
+                            ModelState.AddModelError("", "Unable to save changes for S3Page2. Try again, and if the problem persists, see your system administrator.");
+                        }
+                    }
+                    Session["error"] = "Cant update model";
+                    return View("Error");
+                }
+                else
+                {
+                    Session["error"] = "Db is null";
+                    return View("Error");
+                }
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+        }
+
+        // Get: S3PageSum
+        public ActionResult S3PageSum()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Survey survey = db.Surveys.Find(id);
+            int S3Q6ScoreLocal = 0;
+            int S3Q7ScoreLocal = 0;
+            int S3Q8ScoreLocal = 0;
+            int S3Q9ScoreLocal = 0;
+            int S3Q10ScoreLocal = 0;
+
+            int S3Score = 0;
+            string S3ScoreMsg = "";
+
+            if (ModelState.IsValid)
+            {
+                if (survey != null)
+                {
+                    if (!string.IsNullOrEmpty(survey.S3Q6Answer))
+                    {
+                        if (survey.S3Q6Answer == "20pct")
+                        {
+                            S3Q6ScoreLocal = 10;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S3Q7Answer))
+                    {
+                        if (survey.S3Q7Answer == "yes")
+                        {
+                            S3Q7ScoreLocal = 10;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S3Q8Answer))
+                    {
+                        if (survey.S3Q3Answer == "2000")
+                        {
+                            S3Q8ScoreLocal = 10;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S3Q9Answer))
+                    {
+                        if (survey.S3Q9Answer == "500")
+                        {
+                            S3Q9ScoreLocal = 10;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S3Q10Answer))
+                    {
+                        if (survey.S3Q10Answer == "yes")
+                        {
+                            S3Q10ScoreLocal = 10;
+                        }
+                    }
+
+                    if (TryUpdateModel(survey, "", new string[] { "S3Q6Score", "S3Q7Score", "S3Q8Score", "S3Q9Score", "S3Q10Score" }))
+                    {
+                        try
+                        {
+                            survey.S3Q6Score = S3Q6ScoreLocal;
+                            survey.S3Q7Score = S3Q7ScoreLocal;
+                            survey.S3Q8Score = S3Q8ScoreLocal;
+                            survey.S3Q9Score = S3Q9ScoreLocal;
+                            survey.S3Q10Score = S3Q10ScoreLocal;
+                            db.SaveChanges();
+
+                            S3Score = survey.S3Q1Score + survey.S3Q2Score + survey.S3Q3Score + survey.S3Q4Score + survey.S3Q5Score + survey.S3Q6Score + survey.S3Q7Score + survey.S3Q8Score + survey.S3Q9Score + survey.S3Q10Score;
+
+                            if (S3Score == 100)
+                            {
+                                S3ScoreMsg = "您对英国基本商业知识比较了解，可以进入下一步评测。";
+                            }
+                            else if (S3Score >= 60 && S3Score < 100)
+                            {
+                                S3ScoreMsg = "您对英国基本商业知识有一定了解，可以进入下一步评测。";
+                            }
+                            else if (S3Score < 60)
+                            {
+                                // 退出测试按键？
+                                S3ScoreMsg = "您对英国基本商业知识不够了解，建议您充分了解政策后再进入下一步评测。";
+                            }
+
+                            ViewBag.Section3Score = S3Score;
+                            ViewBag.Section3Message = S3ScoreMsg;
+
+                            return View("Section3/S3PageSum");
+                        }
+                        catch (RetryLimitExceededException)
+                        {
+                            ModelState.AddModelError("", "Unable to save changes for S2PageSum. Try again, and if the problem persists, see your system administrator.");
+                        }
+                    }
+                    else
+                    {
+                        return HttpNotFound();
+                    }
+                }
+                return View("Section3/S3PageSum");
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+        }
+
+        // Post: S3PageSum
+        [HttpPost, ActionName("S3PageSum")]
+        [ValidateAntiForgeryToken]
+        public ActionResult S3PageSumPost4a()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+
+            return RedirectToAction("S4aPage1");
+        }
+
+        // Post: S3PageSum
+        [HttpPost, ActionName("S3PageSum")]
+        [ValidateAntiForgeryToken]
+        public ActionResult S3PageSumPost4b()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+
+            return RedirectToAction("S4bPage1");
+        }
     }
 }

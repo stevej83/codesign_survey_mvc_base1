@@ -262,10 +262,14 @@
     <Content Include="Views\Surveys\Error.cshtml" />
     <Content Include="Views\Surveys\Section1\S1PageSum.cshtml" />
     <Content Include="Views\Surveys\Section2\S2Page1.cshtml" />
+    <Content Include="Views\Surveys\Section2\S2Page2.cshtml" />
+    <Content Include="Views\Surveys\Section2\S2PageSum.cshtml" />
+    <Content Include="Views\Surveys\Section3\S3Page1.cshtml" />
+    <Content Include="Views\Surveys\Section3\S3Page2.cshtml" />
+    <Content Include="Views\Surveys\Section3\S3PageSum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Surveys\Section3\" />
     <Folder Include="Views\Surveys\Section4a\" />
     <Folder Include="Views\Surveys\Section4b\" />
   </ItemGroup>
