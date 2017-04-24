@@ -1,10 +1,10 @@
 ﻿@model SurveyMVCBase1.Models.Survey
 
 @{
-    ViewBag.Title = "S2Page1";
+    ViewBag.Title = "S3Page2";
 }
 
-<h2>Survey section2 - page1</h2>
+<h2>Survey section3 - page2</h2>
 
 @using (Html.BeginForm())
 {
@@ -15,59 +15,123 @@
         @Html.HiddenFor(model => model.SurveyID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.S1Q1Answer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.S1Q1Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写姓名", @title = "请填写姓名", @required = true, @oninvalid = "this.setCustomValidity('请填写姓名')", @oninput = "setCustomValidity('')" } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.S1Q2Answer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.S1Q2Answer, new { id = "datepicker", @class = "form-control", placeholder = "请填写生日", @title = "请填写生日", @required = true, @oninvalid = "this.setCustomValidity('请填写生日')", @onSelect = "setCustomValidity('')" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.S1Q3Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.S3Q6Answer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @{
-                    List<SelectListItem> S1Q3AnswerListItems = new List<SelectListItem>();
-                    S1Q3AnswerListItems.Add(new SelectListItem
+                    List<SelectListItem> S3Q6AnswerListItems = new List<SelectListItem>();
+                    S3Q6AnswerListItems.Add(new SelectListItem
                     {
-                        Text = "中国",
-                        Value = "China"
+                        Text = "20%",
+                        Value = "20pct"
                     });
-                    S1Q3AnswerListItems.Add(new SelectListItem
+                    S3Q6AnswerListItems.Add(new SelectListItem
                     {
-                        Text = "英国",
-                        Value = "UK"
-                        //Selected = true
+                        Text = "25%",
+                        Value = "25pct"
                     });
-                    S1Q3AnswerListItems.Add(new SelectListItem
+                    S3Q6AnswerListItems.Add(new SelectListItem
 
                     {
-                        Text = "无",
-                        Value = "NA"
+                        Text = "28%",
+                        Value = "28pct"
                     });
                 }
-                @Html.DropDownListFor(model => model.S1Q3Answer, S1Q3AnswerListItems, "-- 请选择国家 --", new { @class = "form-control", @title = "请选择国家", @required = true, @oninvalid = "this.setCustomValidity('请选择国家')", @oninput = "setCustomValidity('')" })
+                @Html.DropDownListFor(model => model.S3Q6Answer, S3Q6AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.S1Q4Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.S3Q7Answer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.S1Q4Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写本科院校", @title = "请填写本科院校" } })
+                @{
+                    List<SelectListItem> S3Q7AnswerListItems = new List<SelectListItem>();
+                    S3Q7AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "YES",
+                        Value = "yes"
+                    });
+                    S3Q7AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "NO",
+                        Value = "no"
+                    });
+                }
+                @Html.DropDownListFor(model => model.S3Q7Answer, S3Q7AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.S1Q5Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.S3Q8Answer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.S1Q5Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写本科专业", @title = "请填写本科专业" } })
+                @{
+                    List<SelectListItem> S3Q8AnswerListItems = new List<SelectListItem>();
+                    S3Q8AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "1000",
+                        Value = "1000"
+                    });
+                    S3Q8AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "2000",
+                        Value = "2000"
+                    });
+                    S3Q8AnswerListItems.Add(new SelectListItem
+
+                    {
+                        Text = "3000",
+                        Value = "3000"
+                    });
+                }
+                @Html.DropDownListFor(model => model.S3Q8Answer, S3Q8AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S3Q9Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> S3Q9AnswerListItems = new List<SelectListItem>();
+                    S3Q9AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "500",
+                        Value = "500"
+                    });
+                    S3Q9AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "1000",
+                        Value = "1000"
+                    });
+                    S3Q9AnswerListItems.Add(new SelectListItem
+
+                    {
+                        Text = "2000",
+                        Value = "2000"
+                    });
+                }
+                @Html.DropDownListFor(model => model.S3Q9Answer, S3Q9AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S3Q10Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> S3Q10AnswerListItems = new List<SelectListItem>();
+                    S3Q10AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "YES",
+                        Value = "yes"
+                    });
+                    S3Q10AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "NO",
+                        Value = "no"
+                    });
+                }
+                @Html.DropDownListFor(model => model.S3Q10Answer, S3Q10AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="继续" class="btn btn-default" />
