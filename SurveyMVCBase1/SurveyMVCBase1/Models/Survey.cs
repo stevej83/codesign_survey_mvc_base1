@@ -375,5 +375,189 @@ namespace SurveyMVCBase1.Models
 
         [Display(Name = "57. 家属是否打算工作？")]
         public string S4aQ57Answer { get; set; }
+
+        // 英国创业项目测试 - 加入创业
+        [Display(Name = "1. 进入英国的目的是什么？")]
+        public string S4bQ1Answer { get; set; }
+
+        [Display(Name = "2. 提交的什么签证？")]
+        public string S4bQ2Answer { get; set; }
+
+        [Display(Name = "3. 为什么提交这个签证？")]
+        public string S4bQ3Answer { get; set; }
+
+        [Display(Name = "4. 为什么在英国创业？是否考虑过其他国家市场？")]
+        public string S4bQ4Answer { get; set; }
+
+        [Display(Name = "5. 现有企业的商业模式是什么？（最多三句话，限制字数50字以内）")]
+        public string S4bQ5Answer { get; set; }
+
+        [Display(Name = "6. 商业短期，中期，长期的发展规划，目标是什么？")]
+        public string S4bQ6Answer { get; set; }
+
+        [Display(Name = "7. 有没有做过市场调查？调查方式是什么？")]
+        public string S4bQ7Answer { get; set; }
+
+        [Display(Name = "8.	市场调查的结果是什么？")]
+        public string S4bQ8Answer { get; set; }
+
+        [Display(Name = "9.	为什么要加入一个企业创业？")]
+        public string S4bQ9Answer { get; set; }
+
+        [Display(Name = "10. 加入的企业叫什么名字？")]
+        public string S4bQ10Answer { get; set; }
+
+        [Display(Name = "11. 如何找到的加入企业？")]
+        public string S4bQ11Answer { get; set; }
+
+        [Display(Name = "12. 加入企业现有股东几个？董事几个？持股比例分别是多少？")]
+        public string S4bQ12Answer { get; set; }
+
+        [Display(Name = "13. 办公地点的邮政编码是什么？")]
+        public string S4bQ13Answer { get; set; }
+
+        [Display(Name = "14. 办公地点租金一年多少钱？")]
+        public string S4bQ14Answer { get; set; }
+
+        [Display(Name = "15. 是否去过计划加入的企业？")]
+        public string S4bQ15Answer { get; set; }
+
+        [Display(Name = "16. 加入的企业目前负责人是谁？职位是什么？")]
+        public string S4bQ16Answer { get; set; }
+
+        [Display(Name = "17. 加入的企业负责人的基本背景是什么？")]
+        public string S4bQ17Answer { get; set; }
+
+        [Display(Name = "18. 是否见过负责人，上一次见是什么时候？交谈内容主要是什么？")]
+        public string S4bQ18Answer { get; set; }
+
+        [Display(Name = "19. 企业目前现有员工多少人？")]
+        public string S4bQ19Answer { get; set; }
+
+        [Display(Name = "20. 企业成立时间？")]
+        public string S4bQ20Answer { get; set; }
+
+        [Display(Name = "21. 企业过去两年的营业额及利润率是多少？")]
+        public string S4bQ21Answer { get; set; }
+
+        [Display(Name = "22. 如果亏损，为什么要投资一个现在亏损的企业？")]
+        public string S4bQ22Answer { get; set; }
+
+        [Display(Name = "23. 如果盈利，企业为什么吸收你的20万英镑投资？")]
+        public string S4bQ23Answer { get; set; }
+
+        [Display(Name = "24. 投资20万英镑，你占有的股份比例是多少？")]
+        public string S4bQ24Answer { get; set; }
+
+        [Display(Name = "25. 如果是董事借款，借款的条款是什么？")]
+        public string S4bQ25Answer { get; set; }
+
+        [Display(Name = "26. 如果是股份比例，为什么占有这个比例？")]
+        public string S4bQ26Answer { get; set; }
+
+        [Display(Name = "27. 企业的估值方法是什么？")]
+        public string S4bQ27Answer { get; set; }
+
+        [Display(Name = "28. 你加入企业后，主要负责什么，主要职位是什么？")]
+        public string S4bQ28Answer { get; set; }
+
+        [Display(Name = "29. 加入企业后，你是否有工资？如果有，多少钱？")]
+        public string S4bQ29Answer { get; set; }
+
+        [Display(Name = "30. 是否打算新增雇佣员工？")]
+        public string S4bQ30Answer { get; set; }
+
+        [Display(Name = "31. 什么时候计划雇佣新员工？")]
+        public string S4bQ31Answer { get; set; }
+
+        [Display(Name = "32. 雇佣的员工职位是什么？")]
+        public string S4bQ32Answer { get; set; }
+
+        [Display(Name = "33. 招聘的标准是什么？")]
+        public string S4bQ33Answer { get; set; }
+
+        [Display(Name = "34. 招聘方法是什么？从哪里招聘？")]
+        public string S4bQ34Answer { get; set; }
+
+        [Display(Name = "35. 招聘成本是多少钱？")]
+        public string S4bQ35Answer { get; set; }
+
+        [Display(Name = "36. 雇佣员工的工资是多少？")]
+        public string S4bQ36Answer { get; set; }
+
+        [Display(Name = "37. 如果是贸易类，平均毛利率是多少？")]
+        public string S4bQ37Answer { get; set; }
+
+        [Display(Name = "38. 税前利润是多少？税后利润是多少？ （3年数据）")]
+        public string S4bQ38Answer { get; set; }
+
+        [Display(Name = "39. 竞争对手有多少？")]
+        public string S4bQ39Answer { get; set; }
+
+        [Display(Name = "40. 竞争对手的核心优势是什么？")]
+        public string S4bQ40Answer { get; set; }
+
+        [Display(Name = "41. 你的商业核心竞争优势是什么？")]
+        public string S4bQ41Answer { get; set; }
+
+        [Display(Name = "42. 企业是否购买了保险？")]
+        public string S4bQ42Answer { get; set; }
+
+        [Display(Name = "43. 企业购买了什么类型的保险？")]
+        public string S4bQ43Answer { get; set; }
+
+        [Display(Name = "44. 保险一年多少钱？")]
+        public string S4bQ44Answer { get; set; }
+
+        [Display(Name = "45. 公司是否注册了 VAT？")]
+        public string S4bQ45Answer { get; set; }
+
+        [Display(Name = "46. VAT 的 FULL NAME 是什么？")]
+        public string S4bQ46Answer { get; set; }
+
+        [Display(Name = "47. VAT 税率是多少？")]
+        public string S4bQ47Answer { get; set; }
+
+        [Display(Name = "48. 营业税的税率是多少？")]
+        public string S4bQ48Answer { get; set; }
+
+        [Display(Name = "49. 有没有会计？ 叫什么公司，什么名字？")]
+        public string S4bQ49Answer { get; set; }
+
+        [Display(Name = "50. 会计服务一年多少钱？")]
+        public string S4bQ50Answer { get; set; }
+
+        [Display(Name = "51. 您的最高学历是什么？")]
+        public string S4bQ51Answer { get; set; }
+
+        [Display(Name = "52. 所学专业是否和创业思路相关联或者有帮助？ 简单阐述，如果有")]
+        public string S4bQ52Answer { get; set; }
+
+        [Display(Name = "53. 上一次进入英国是什么时候？")]
+        public string S4bQ53Answer { get; set; }
+
+        [Display(Name = "54. 是否在英国有贸易或者商业工作经验？")]
+        public string S4bQ54Answer { get; set; }
+
+        [Display(Name = "55. 资金来源是什么？")]
+        public string S4bQ55Answer { get; set; }
+
+        [Display(Name = "56. 如果是父母赠与，父母的工作单位是什么，年薪多少？")]
+        public string S4bQ56Answer { get; set; }
+
+        [Display(Name = "57. 如果商业失败怎么办？")]
+        public string S4bQ57Answer { get; set; }
+
+        [Display(Name = "58. 你打算居住在哪里？")]
+        public string S4bQ58Answer { get; set; }
+
+        [Display(Name = "59. 一年的生活成本是多少？")]
+        public string S4bQ59Answer { get; set; }
+
+        [Display(Name = "60. 有没有家属同行？")]
+        public string S4bQ60Answer { get; set; }
+
+        [Display(Name = "61. 家属是否打算工作？")]
+        public string S4bQ61Answer { get; set; }
     }
 }
