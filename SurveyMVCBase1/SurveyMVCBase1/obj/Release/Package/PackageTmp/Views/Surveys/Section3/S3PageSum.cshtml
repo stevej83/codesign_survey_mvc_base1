@@ -6,25 +6,31 @@
 
 <h2>Survey section3 - PageSum</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <hr />
+    <p>您第三部分的得分是 @ViewBag.Section3Score 分</p>
+    <p>@ViewBag.Section3Message</p>
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.SurveyID)
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
 
-        <p>您第三部分的得分是 @ViewBag.Section3Score 分</p>
-        <p>@ViewBag.Section3Message</p>
+            @using (Html.BeginForm("S3PageSum1"))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.SurveyID)
+                <input type="submit" value="继续 Section 4a" class="btn btn-default" name="action:go4a" />
+            }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="继续" class="btn btn-default" />
-            </div>
+            @using (Html.BeginForm("S3PageSum2"))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.SurveyID)
+                <input type="submit" value="继续 Section 4b" class="btn btn-default" name="action:go4b" />
+            }
+
         </div>
     </div>
-                    }
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

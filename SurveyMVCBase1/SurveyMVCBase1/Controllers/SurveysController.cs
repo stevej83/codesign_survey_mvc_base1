@@ -1350,7 +1350,7 @@ namespace SurveyMVCBase1.Controllers
         }
 
         // Post: S3PageSum
-        [HttpPost, ActionName("S3PageSum")]
+        [HttpPost, ActionName("S3PageSum1")]
         [ValidateAntiForgeryToken]
         public ActionResult S3PageSumPost4a()
         {
@@ -1369,7 +1369,7 @@ namespace SurveyMVCBase1.Controllers
         }
 
         // Post: S3PageSum
-        [HttpPost, ActionName("S3PageSum")]
+        [HttpPost, ActionName("S3PageSum2")]
         [ValidateAntiForgeryToken]
         public ActionResult S3PageSumPost4b()
         {

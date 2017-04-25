@@ -267,10 +267,10 @@
     <Content Include="Views\Surveys\Section3\S3Page1.cshtml" />
     <Content Include="Views\Surveys\Section3\S3Page2.cshtml" />
     <Content Include="Views\Surveys\Section3\S3PageSum.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Surveys\Section4a\" />
     <Folder Include="Views\Surveys\Section4b\" />
   </ItemGroup>
   <ItemGroup>
