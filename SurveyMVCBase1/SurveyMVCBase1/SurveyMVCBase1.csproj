@@ -273,6 +273,18 @@
     <Content Include="Views\Surveys\Section4a\S4aPage4.cshtml" />
     <Content Include="Views\Surveys\Section4a\S4aPage5.cshtml" />
     <Content Include="Views\Surveys\Section4a\S4aPage6.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage7.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage8.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage9.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage10.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage11.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage12.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage13.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage14.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage15.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage16.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage17.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage18.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
