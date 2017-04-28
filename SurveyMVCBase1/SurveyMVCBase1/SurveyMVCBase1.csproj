@@ -295,6 +295,9 @@
     <Content Include="Views\Surveys\Section4b\S4bPage7.cshtml" />
     <Content Include="Views\Surveys\Section4b\S4bPage8.cshtml" />
     <Content Include="Views\Surveys\Section4b\S4bPage9.cshtml" />
+    <Content Include="Views\Surveys\Section4b\S4bPage10.cshtml" />
+    <Content Include="Views\Surveys\Section4b\S4bPage11.cshtml" />
+    <Content Include="Views\Surveys\Section4b\S4bPage12.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
