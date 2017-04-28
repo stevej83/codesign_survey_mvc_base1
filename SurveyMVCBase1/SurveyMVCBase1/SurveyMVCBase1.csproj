@@ -285,10 +285,13 @@
     <Content Include="Views\Surveys\Section4a\S4aPage16.cshtml" />
     <Content Include="Views\Surveys\Section4a\S4aPage17.cshtml" />
     <Content Include="Views\Surveys\Section4a\S4aPage18.cshtml" />
+    <Content Include="Views\Surveys\Summary.cshtml" />
+    <Content Include="Views\Surveys\Section4b\S4bPage1.cshtml" />
+    <Content Include="Views\Surveys\Section4b\S4bPage2.cshtml" />
+    <Content Include="Views\Surveys\Section4b\S4bPage3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Surveys\Section4b\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
