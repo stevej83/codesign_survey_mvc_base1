@@ -289,6 +289,12 @@
     <Content Include="Views\Surveys\Section4b\S4bPage1.cshtml" />
     <Content Include="Views\Surveys\Section4b\S4bPage2.cshtml" />
     <Content Include="Views\Surveys\Section4b\S4bPage3.cshtml" />
+    <Content Include="Views\Surveys\Section4b\S4bPage4.cshtml" />
+    <Content Include="Views\Surveys\Section4b\S4bPage5.cshtml" />
+    <Content Include="Views\Surveys\Section4b\S4bPage6.cshtml" />
+    <Content Include="Views\Surveys\Section4b\S4bPage7.cshtml" />
+    <Content Include="Views\Surveys\Section4b\S4bPage8.cshtml" />
+    <Content Include="Views\Surveys\Section4b\S4bPage9.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
