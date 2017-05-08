@@ -280,11 +280,11 @@
     <Content Include="Views\Surveys\Section4a\S4aPage11.cshtml" />
     <Content Include="Views\Surveys\Section4a\S4aPage12.cshtml" />
     <Content Include="Views\Surveys\Section4a\S4aPage13.cshtml" />
-    <Content Include="Views\Surveys\Section4a\S4aPage14.cshtml" />
     <Content Include="Views\Surveys\Section4a\S4aPage15.cshtml" />
     <Content Include="Views\Surveys\Section4a\S4aPage16.cshtml" />
     <Content Include="Views\Surveys\Section4a\S4aPage17.cshtml" />
     <Content Include="Views\Surveys\Section4a\S4aPage18.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage19.cshtml" />
     <Content Include="Views\Surveys\Summary.cshtml" />
     <Content Include="Views\Surveys\Section4b\S4bPage1.cshtml" />
     <Content Include="Views\Surveys\Section4b\S4bPage2.cshtml" />
@@ -306,6 +306,7 @@
     <Content Include="Views\Surveys\Section4b\S4bPage18.cshtml" />
     <Content Include="Views\Surveys\Section4b\S4bPage19.cshtml" />
     <Content Include="Views\Surveys\Section4b\S4bPage20.cshtml" />
+    <Content Include="Views\Surveys\Section4a\S4aPage14.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
