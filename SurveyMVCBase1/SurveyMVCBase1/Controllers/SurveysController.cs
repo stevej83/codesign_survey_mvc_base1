@@ -1349,10 +1349,10 @@ namespace SurveyMVCBase1.Controllers
             }
         }
 
-        // Post: S3PageSum - to S4a 
-        [HttpPost, ActionName("S3PageSum1")]
+        // Post: S3PageSum - to S4a or S4b 
+        [HttpPost, ActionName("S3PageSum")]
         [ValidateAntiForgeryToken]
-        public ActionResult S3PageSumPost4a()
+        public ActionResult S3PageSumPost(string Section4)
         {
             string id = "";
             if (Session["viewKey"] != null)
@@ -1365,26 +1365,19 @@ namespace SurveyMVCBase1.Controllers
                 return View("Error");
             }
 
-            return RedirectToAction("S4aPage1");
-        }
-
-        // Post: S3PageSum - to S4b
-        [HttpPost, ActionName("S3PageSum2")]
-        [ValidateAntiForgeryToken]
-        public ActionResult S3PageSumPost4b()
-        {
-            string id = "";
-            if (Session["viewKey"] != null)
+            if (Section4 == "Section4a")
             {
-                id = Session["viewKey"].ToString();
+                return RedirectToAction("S4aPage1");
+            }
+            else if (Section4 == "Section4b")
+            {
+                return RedirectToAction("S4bPage1");
             }
             else
             {
-                Session["error"] = "Session timeout";
+                Session["error"] = "Section4 interaction error, please contact admin";
                 return View("Error");
             }
-
-            return RedirectToAction("S4bPage1");
         }
 
         // Get: S4aPage1
@@ -1680,7 +1673,7 @@ namespace SurveyMVCBase1.Controllers
                         try
                         {
                             db.SaveChanges();
-                            return RedirectToAction("S4aPage4");
+                            return RedirectToAction("S4aPage5");
                         }
                         catch (RetryLimitExceededException)
                         {
@@ -2865,7 +2858,7 @@ namespace SurveyMVCBase1.Controllers
                         try
                         {
                             db.SaveChanges();
-                            return RedirectToAction("Summary");
+                            return View("Summary");
                         }
                         catch (RetryLimitExceededException)
                         {
@@ -4445,7 +4438,7 @@ namespace SurveyMVCBase1.Controllers
                         try
                         {
                             db.SaveChanges();
-                            return RedirectToAction("Summary");
+                            return View("Summary");
                         }
                         catch (RetryLimitExceededException)
                         {

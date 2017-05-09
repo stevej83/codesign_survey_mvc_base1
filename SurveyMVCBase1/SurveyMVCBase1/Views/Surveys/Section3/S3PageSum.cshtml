@@ -14,18 +14,12 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
 
-            @using (Html.BeginForm("S3PageSum1"))
+            @using (Html.BeginForm("S3PageSum"))
             {
                 @Html.AntiForgeryToken()
                 @Html.HiddenFor(model => model.SurveyID)
-                <input type="submit" value="继续 Section 4a" class="btn btn-default" name="action:go4a" />
-            }
-
-            @using (Html.BeginForm("S3PageSum2"))
-            {
-                @Html.AntiForgeryToken()
-                @Html.HiddenFor(model => model.SurveyID)
-                <input type="submit" value="继续 Section 4b" class="btn btn-default" name="action:go4b" />
+                <input type="submit" value="Section4a" class="btn btn-default" name="section4" />
+                <input type="submit" value="Section4b" class="btn btn-default" name="section4" />
             }
 
         </div>
