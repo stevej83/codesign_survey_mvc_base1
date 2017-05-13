@@ -1,10 +1,9 @@
 ﻿@model SurveyMVCBase1.Models.Survey
 
 @{
+    Layout = "~/Views/Shared/_Layout_S1.cshtml";
     ViewBag.Title = "S1Page4";
 }
-
-<h2>Survey section1 - page4</h2>
 
 @using (Html.BeginForm())
 {
@@ -38,7 +37,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="继续" class="btn btn-default" />
+                <input type="submit" value="继续" class="btn btn-default button-S1" />
             </div>
         </div>
     </div>

@@ -1541,11 +1541,11 @@ namespace SurveyMVCBase1.Controllers
                 return View("Error");
             }
 
-            if (Section4 == "Section4a")
+            if (Section4 == "英国创业项目测试 - 独立测试")
             {
                 return RedirectToAction("S4aPage1");
             }
-            else if (Section4 == "Section4b")
+            else if (Section4 == "英国创业项目测试 - 加入创业")
             {
                 return RedirectToAction("S4bPage1");
             }

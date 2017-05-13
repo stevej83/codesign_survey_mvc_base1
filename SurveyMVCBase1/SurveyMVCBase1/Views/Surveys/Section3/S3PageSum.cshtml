@@ -1,6 +1,7 @@
 ﻿@model SurveyMVCBase1.Models.Survey
 
 @{
+    Layout = "~/Views/Shared/_Layout_S3.cshtml";
     ViewBag.Title = "S3PageSum";
 }
 
@@ -18,8 +19,9 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.HiddenFor(model => model.SurveyID)
-                <input type="submit" value="Section4a" class="btn btn-default" name="section4" />
-                <input type="submit" value="Section4b" class="btn btn-default" name="section4" />
+                <input type="submit" value="英国创业项目测试 - 独立测试" class="btn btn-default button-S4a-section" name="section4" />
+                
+                <input type="submit" value="英国创业项目测试 - 加入创业" class="btn btn-default button-S4b-section" name="section4" />
             }
 
         </div>

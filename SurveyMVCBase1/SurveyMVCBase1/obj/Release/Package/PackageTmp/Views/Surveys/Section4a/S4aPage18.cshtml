@@ -1,13 +1,11 @@
 ﻿@model SurveyMVCBase1.Models.Survey
 
 @{
+    Layout = "~/Views/Shared/_Layout_S4a.cshtml";
     ViewBag.Title = "S4aPage18 - 英国创业项目测试 - 独立创业";
 }
 
 <!-- 个人背景 -->
-
-<h2>Survey section4a - page18 - 英国创业项目测试 - 独立创业</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -39,7 +37,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="继续" class="btn btn-default" />
+                <input type="submit" value="继续" class="btn btn-default button-S4a" />
             </div>
         </div>
     </div>

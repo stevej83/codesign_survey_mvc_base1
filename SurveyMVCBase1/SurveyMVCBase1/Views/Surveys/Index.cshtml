@@ -1,18 +1,17 @@
 ﻿@model IEnumerable<SurveyMVCBase1.Models.Survey>
 
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Index";
 }
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="jumbotron2">
         <h2>企业家移民咨询测试</h2>
-        <img src="@Url.Content("~/Content/Site_Images/imgLanding.png")" height="500" width="360" alt="landing image" />
-        <p>
-            企业家移民咨询测试 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac dolor sed justo vestibulum tempus vel quis massa. Quisque at enim in felis ultricies tincidunt nec at lectus.
-        </p>
-    </div>
-    <div class="col-md-offset-2 col-md-10">
+        <img src="@Url.Content("~/Content/Site_Images/imgLanding.png")" style="max-width: 100%; height: auto;" alt="landing image" />
+        <div style="margin-top: 15px;">
+            <p>企业家移民咨询测试 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac dolor sed justo vestibulum tempus vel quis massa. Quisque at enim in felis ultricies tincidunt nec at lectus.</p>
+        </div>
         @Html.ActionLink("开始", "Workflow", null, new { @class = "btn btn-default" })
     </div>
 </div>

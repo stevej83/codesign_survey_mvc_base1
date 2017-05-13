@@ -9,8 +9,8 @@
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
 */
 .dl-horizontal dt {
     white-space: normal;
@@ -21,4 +21,124 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.jumbotron2 {
+    padding: 0 30px 30px 30px;
+    font-weight: 200;
+    line-height: 2.1428571435;
+    color: inherit;
+    background-color: #ffffff;
+    display: table-cell;
+    text-align: center;
+}
+
+    .jumbotron2 h2 {
+        font-size: 26px;
+        line-height: 2;
+        color: inherit;
+    }
+
+    .jumbotron2 p {
+        text-align: left;
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+.container .jumbotron2 {
+    border-radius: 6px;
+}
+
+@media screen and (min-width: 768px) {
+    .jumbotron2 {
+        padding-top: 0;
+        padding-bottom: 48px;
+    }
+
+    .container .jumbotron2 {
+        padding-right: 60px;
+        padding-left: 60px;
+    }
+
+    .jumbotron2 h1 {
+        font-size: 63px;
+    }
+}
+
+.navbar-color-S1 {
+    background-color: #1B9AF7;
+    border-color: #1B9AF7;
+}
+
+.button-S1 {
+    background-color: #1B9AF7;
+    color: #FFFFFF;
+    font-weight: 800;
+    width: 120px;
+}
+
+.navbar-color-S2 {
+    background-color: #EE6A50;
+    border-color: #EE6A50;
+}
+
+.button-S2 {
+    background-color: #EE6A50;
+    color: #FFFFFF;
+    font-weight: 800;
+    width: 120px;
+}
+
+.navbar-color-S3 {
+    background-color: #008000;
+    border-color: #008000;
+}
+
+.button-S3 {
+    background-color: #008000;
+    color: #FFFFFF;
+    font-weight: 800;
+    width: 120px;
+}
+
+.navbar-color-S4a {
+    background-color: #088DA5;
+    border-color: #088DA5;
+}
+
+.button-S4a {
+    background-color: #088DA5;
+    color: #FFFFFF;
+    font-weight: 800;
+    width: 120px;
+}
+
+.button-S4a-section {
+    background-color: #088DA5;
+    color: #FFFFFF;
+    font-weight: 800;
+    width: 220px;
+    display: block;
+    margin-bottom: 6px;
+
+}
+
+.navbar-color-S4b {
+    background-color: #800080;
+    border-color: #800080;
+}
+
+.button-S4b {
+    background-color: #800080;
+    color: #FFFFFF;
+    font-weight: 800;
+    width: 120px;
+}
+
+.button-S4b-section {
+    background-color: #800080;
+    color: #FFFFFF;
+    font-weight: 800;
+    width: 220px;
+    display: block;
 }

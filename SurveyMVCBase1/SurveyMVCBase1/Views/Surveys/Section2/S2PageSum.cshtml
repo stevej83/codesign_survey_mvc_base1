@@ -1,6 +1,7 @@
 ﻿@model SurveyMVCBase1.Models.Survey
 
 @{
+    Layout = "~/Views/Shared/_Layout_S2.cshtml";
     ViewBag.Title = "S2PageSum";
 }
 
@@ -16,11 +17,11 @@
         @Html.HiddenFor(model => model.SurveyID)
 
         <p>您第二部分的得分是 @ViewBag.Section2Score 分</p>
-        <p>@ViewBag.Section2Message</p>
+        <p>建议： @ViewBag.Section2Message</p>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="继续" class="btn btn-default" />
+                <input type="submit" value="继续" class="btn btn-default button-S2" />
             </div>
         </div>
     </div>
