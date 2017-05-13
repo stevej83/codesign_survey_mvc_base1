@@ -14,6 +14,8 @@ namespace SurveyMVCBase1.Models
         [Key]
         public string SurveyID { get; set; }
 
+        public string StartTime { get; set; }
+
         [Display(Name = "1. 姓名:")]
         public string S1Q1Answer { get; set; }
 

@@ -32,7 +32,7 @@ namespace SurveyMVCBase1.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Workflow([Bind(
-            Include = "SurveyID,S1Q1Answer,S1Q2Answer,S1Q3Answer,S1Q3Score,S1Q4Answer,S1Q5Answer,S1Q6Answer,S1Q6Score,S1Q7Answer,S1Q8Answer," +
+            Include = "SurveyID,StartTime,S1Q1Answer,S1Q2Answer,S1Q3Answer,S1Q3Score,S1Q4Answer,S1Q5Answer,S1Q6Answer,S1Q6Score,S1Q7Answer,S1Q8Answer," +
             "S1Q9Answer,S1Q10Answer,S1Q10Score,S1Q11Answer,S1Q11Score,S1Q12Answer,S1Q13Answer,S1Q13Score,S1Q14Answer,S1Q15Answer,S1Q16Answer," +
             "S2Q1Answer,S2Q1Score,S2Q2Answer,S2Q2Score,S2Q3Answer,S2Q3Score,S2Q4Answer,S2Q4Score,S2Q5Answer,S2Q5Score,S2Q6Answer,S2Q6Score," + 
             "S2Q7Answer,S2Q7Score,S2Q8Answer,S2Q8Score,S2Q9Answer,S2Q9Score,S2Q10Answer,S2Q10Score," +
@@ -57,6 +57,7 @@ namespace SurveyMVCBase1.Controllers
                 Survey surveyCreate = new Survey()
                 {
                     SurveyID = Guid.NewGuid().ToString(),
+                    StartTime = DateTime.Now.ToString("yyyyMMddHHmmss"),
                     S1Q1Answer = "",
                     S1Q2Answer = "",
                     S1Q3Answer = "",

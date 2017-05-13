@@ -307,9 +307,12 @@
     <Content Include="Views\Surveys\Section4b\S4bPage19.cshtml" />
     <Content Include="Views\Surveys\Section4b\S4bPage20.cshtml" />
     <Content Include="Views\Surveys\Section4a\S4aPage14.cshtml" />
+    <Content Include="Views\Shared\_Layout_bk.cshtml" />
+    <Content Include="Views\Shared\_Layout - Copy %282%29.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

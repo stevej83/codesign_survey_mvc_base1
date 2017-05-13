@@ -13,11 +13,10 @@ namespace SurveyMVCBase1.DAL
         {
             var surveys = new List<Survey>
             {
-                new Survey{SurveyID="HJS82923SD921",S1Q1Answer="周杰伦",S1Q2Answer="1985-01-17",S1Q3Answer="China",
-                    S1Q3Score=0,S1Q4Answer="清华大学",S1Q5Answer="生物化学工程专业",S1Q6Answer="China",S1Q6Score=0,
-                    S1Q7Answer="北京大学",S1Q8Answer="生物化学工程专业",S1Q9Answer="北京市中英文化交流中心",S1Q10Answer="1to3",
-                    S1Q10Score=0,S1Q11Answer="Y",S1Q11Score=0,S1Q12Answer="总经理",S1Q13Answer="halfto1",S1Q13Score=0,S1Q14Answer="+86 12312377897",
-                    S1Q15Answer="test@gmail.com",S1Q16Answer="wx123test",
+                new Survey{SurveyID="HJS82923SD921",StartTime=DateTime.Now.ToString("yyyyMMddHHmmss"),S1Q1Answer="测试员",S1Q2Answer="1985-01-17",S1Q3Answer="",
+                    S1Q3Score=0,S1Q4Answer="",S1Q5Answer="",S1Q6Answer="",S1Q6Score=0,
+                    S1Q7Answer="",S1Q8Answer="",S1Q9Answer="",S1Q10Answer="",S1Q10Score=0,S1Q11Answer="",S1Q11Score=0,S1Q12Answer="",S1Q13Answer="",S1Q13Score=0,S1Q14Answer="",
+                    S1Q15Answer="",S1Q16Answer="",
                     S2Q1Answer="",S2Q1Score=0,S2Q2Answer="",S2Q2Score=0,S2Q3Answer="",S2Q3Score=0,S2Q4Answer="",S2Q4Score=0,S2Q5Answer="",S2Q5Score=0,S2Q6Answer="",S2Q6Score=0,
                     S2Q7Answer ="",S2Q7Score=0,S2Q8Answer="",S2Q8Score=0,S2Q9Answer="",S2Q9Score=0,S2Q10Answer="",S2Q10Score=0,
                     S3Q1Answer="",S3Q1Score=0,S3Q2Answer="",S3Q2Score=0,S3Q3Answer="",S3Q3Score=0,S3Q4Answer="",S3Q4Score=0,S3Q5Answer="",S3Q5Score=0,S3Q6Answer="",S3Q6Score=0,
