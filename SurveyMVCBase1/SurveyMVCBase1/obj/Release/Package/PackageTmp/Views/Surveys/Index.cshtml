@@ -7,15 +7,13 @@
 <div class="row">
     <div class="col-md-4">
         <h2>企业家移民咨询测试</h2>
-        <img src="~/Images/imgLanding.png" alt="Landing Image" />
+        <img src="@Url.Content("~/Content/Site_Images/imgLanding.png")" height="500" width="360" alt="landing image" />
         <p>
             企业家移民咨询测试 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac dolor sed justo vestibulum tempus vel quis massa. Quisque at enim in felis ultricies tincidunt nec at lectus.
         </p>
     </div>
+    <div class="col-md-offset-2 col-md-10">
+        @Html.ActionLink("开始", "Workflow", null, new { @class = "btn btn-default" })
+    </div>
 </div>
-
-
-    <p>
-        @Html.ActionLink("Workflow", "Workflow")
-    </p>
 
