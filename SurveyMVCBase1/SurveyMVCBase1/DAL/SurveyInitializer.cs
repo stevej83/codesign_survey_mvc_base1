@@ -7,9 +7,9 @@ using SurveyMVCBase1.Models;
 
 namespace SurveyMVCBase1.DAL
 {
-    public class SurveyInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<SurveyContext>
+    public class SurveyInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<DataContext>
     {
-        protected override void Seed(SurveyContext context)
+        protected override void Seed(DataContext context)
         {
             var surveys = new List<Survey>
             {

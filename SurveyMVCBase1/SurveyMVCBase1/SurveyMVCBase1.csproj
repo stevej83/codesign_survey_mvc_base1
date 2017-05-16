@@ -149,6 +149,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SurveysController.cs" />
+    <Compile Include="DAL\DataContext.cs" />
     <Compile Include="DAL\SurveyContext.cs" />
     <Compile Include="DAL\SurveyInitializer.cs" />
     <Compile Include="Global.asax.cs">

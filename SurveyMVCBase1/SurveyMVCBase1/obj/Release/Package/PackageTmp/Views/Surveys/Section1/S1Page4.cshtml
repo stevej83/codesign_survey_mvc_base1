@@ -24,7 +24,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.S1Q15Answer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.S1Q15Answer, new { @class = "form-control", placeholder = "请填写正确格式的电邮", @title = "请填写正确格式的电邮", @required = true, @type ="email", pattern = @"/^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/", @oninvalid = "this.setCustomValidity('请填写正确格式的电邮')", @oninput = "setCustomValidity('')" } )
+                @Html.TextBoxFor(model => model.S1Q15Answer, new { @class = "form-control", placeholder = "请填写正确格式的电邮", @title = "请填写正确格式的电邮", @required = true, @type ="email", @oninvalid = "this.setCustomValidity('请填写正确格式的电邮')", @oninput = "setCustomValidity('')" } )
             </div>
         </div>
 

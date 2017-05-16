@@ -12,7 +12,7 @@ namespace SurveyMVCBase1.Controllers
 {
     public class SurveysController : Controller
     {
-        private SurveyContext db = new SurveyContext();
+        private DataContext db = new DataContext();
 
         // GET: Surveys
         public ActionResult Index()
