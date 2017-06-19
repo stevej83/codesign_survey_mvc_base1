@@ -26,7 +26,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 
     <!-- for jquery datepicker, must put it after bootstrap-->
     <!-- jQuery UI CSS Reference -->
@@ -50,5 +49,7 @@
     </script>
     <!-- end of jquery datepicker -->
 
+    @Scripts.Render("~/bundles/jsdoc")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

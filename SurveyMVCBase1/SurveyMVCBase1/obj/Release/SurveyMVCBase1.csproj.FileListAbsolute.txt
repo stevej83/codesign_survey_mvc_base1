@@ -69,3 +69,5 @@ C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\bin\EntityFram
 C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\bin\EntityFramework.xml
 C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\bin\EntityFramework.SqlServer.xml
 C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\obj\Release\SurveyMVCBase1.csprojResolveAssemblyReference.cache
+C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\bin\itextsharp.dll
+C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\bin\itextsharp.xml

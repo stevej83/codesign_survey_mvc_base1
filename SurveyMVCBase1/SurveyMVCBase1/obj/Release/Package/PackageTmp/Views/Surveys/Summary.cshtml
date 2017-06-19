@@ -1,17 +1,19 @@
-﻿@model IEnumerable<SurveyMVCBase1.Models.Survey>
+﻿@model SurveyMVCBase1.Models.Survey
 
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Summary";
 }
 
 <h2>Summary</h2>
+<p>
+    <a id="cmd" href="#">Generate Report</a>
+</p>
 
-<!--
+<div id="target">
+    @Session["s1mark"].ToString()
+</div>
 
-1. Link to external 企业家心理测试
-2. 退出
-3. option 导出第四部分的 report
 
--->
 
 

@@ -1,0 +1,25 @@
+﻿@model SurveyMVCBase1.Models.Survey
+
+@{
+    Layout = "~/Views/Shared/_Layout_S4a.cshtml";
+    ViewBag.Title = "S4aPageSum";
+}
+
+<h2>Summary</h2>
+<p>请下载浏览您的测试报告 sample：</p>
+<p>
+    <a id="cmd" href="#">Generate Sample Report</a>
+</p>
+
+<div class="form-horizontal" id="target" style="display:none">
+    <hr />
+    <p>测试1： @ViewBag.Section1ScoreTest</p>
+    <p>测试2： @ViewBag.Section2Message</p>
+
+</div>
+
+<div class="form-horizontal">
+    <hr />
+    <p>微信扫码支付后我们会发给您完整的信息回馈，同时附送企业家移民宝典 ...</p>
+    <img href="@Url.Content("~/../Content/Site_Images/scanWechat.png")" alt="scan webchat" />
+</div>

@@ -1,8 +1,6 @@
 ﻿using SurveyMVCBase1.DAL;
 using SurveyMVCBase1.Models;
 using System;
-using System.Data;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -13,6 +11,10 @@ namespace SurveyMVCBase1.Controllers
     public class SurveysController : Controller
     {
         private DataContext db = new DataContext();
+
+        public int Section1TotalScore = 0;
+        public int Section2TotalScore = 0;
+        public int Section3TotalScore = 0;
 
         // GET: Surveys
         public ActionResult Index()
@@ -34,7 +36,7 @@ namespace SurveyMVCBase1.Controllers
         public ActionResult Workflow([Bind(
             Include = "SurveyID,StartTime,S1Q1Answer,S1Q2Answer,S1Q3Answer,S1Q3Score,S1Q4Answer,S1Q5Answer,S1Q6Answer,S1Q6Score,S1Q7Answer,S1Q8Answer," +
             "S1Q9Answer,S1Q10Answer,S1Q10Score,S1Q11Answer,S1Q11Score,S1Q12Answer,S1Q13Answer,S1Q13Score,S1Q14Answer,S1Q15Answer,S1Q16Answer," +
-            "S2Q1Answer,S2Q1Score,S2Q2Answer,S2Q2Score,S2Q3Answer,S2Q3Score,S2Q4Answer,S2Q4Score,S2Q5Answer,S2Q5Score,S2Q6Answer,S2Q6Score," + 
+            "S2Q1Answer,S2Q1Score,S2Q2Answer,S2Q2Score,S2Q3Answer,S2Q3Score,S2Q4Answer,S2Q4Score,S2Q5Answer,S2Q5Score,S2Q6Answer,S2Q6Score," +
             "S2Q7Answer,S2Q7Score,S2Q8Answer,S2Q8Score,S2Q9Answer,S2Q9Score,S2Q10Answer,S2Q10Score," +
             "S3Q1Answer,S3Q1Score,S3Q2Answer,S3Q2Score,S3Q3Answer,S3Q3Score,S3Q4Answer,S3Q4Score,S3Q5Answer,S3Q5Score,S3Q6Answer,S3Q6Score," +
             "S3Q7Answer,S3Q7Score,S3Q8Answer,S3Q8Score,S3Q9Answer,S3Q9Score,S3Q10Answer,S3Q10Score," +
@@ -242,6 +244,7 @@ namespace SurveyMVCBase1.Controllers
                 db.SaveChanges();
                 Session["viewKey"] = surveyCreate.SurveyID;
                 Session["error"] = "null";
+                Session["s1mark"] = 0;
 
                 return RedirectToAction("S1Page1");
             }
@@ -389,6 +392,7 @@ namespace SurveyMVCBase1.Controllers
                         }
                     }
 
+                    Session["s1mark"] = Section1TotalScore + S1Q3ScoreLocal;
                     return View("Section1/S1Page2");
                 }
                 else
@@ -503,6 +507,9 @@ namespace SurveyMVCBase1.Controllers
                             }
                         }
                     }
+
+                    Session["s1mark"] = ((int)Session["s1mark"]) + S1Q6ScoreLocal;
+
                     return View("Section1/S1Page3");
                 }
                 else
@@ -663,6 +670,9 @@ namespace SurveyMVCBase1.Controllers
                         return HttpNotFound();
                     }
                 }
+
+                Session["s1mark"] = ((int)Session["s1mark"]) + S1Q10ScoreLocal + S1Q11ScoreLocal + S1Q13ScoreLocal;
+
                 return View("Section1/S1Page4");
             }
             else
@@ -948,7 +958,7 @@ namespace SurveyMVCBase1.Controllers
                             S2Q5ScoreLocal = 10;
                         }
                     }
-                    
+
                     if (TryUpdateModel(survey, "", new string[] { "S2Q1Score", "S2Q2Score", "S2Q3Score", "S2Q4Score", "S2Q5Score" }))
                     {
                         try
@@ -1055,6 +1065,7 @@ namespace SurveyMVCBase1.Controllers
             int S2Q9ScoreLocal = 0;
             int S2Q10ScoreLocal = 0;
 
+            int S1ScoreTest = 0;
             int S2Score = 0;
             string S2ScoreMsg = "";
 
@@ -1114,6 +1125,7 @@ namespace SurveyMVCBase1.Controllers
                             db.SaveChanges();
 
                             S2Score = survey.S2Q1Score + survey.S2Q2Score + survey.S2Q3Score + survey.S2Q4Score + survey.S2Q5Score + survey.S2Q6Score + survey.S2Q7Score + survey.S2Q8Score + survey.S2Q9Score + survey.S2Q10Score;
+                            S1ScoreTest = survey.S1Q3Score + survey.S1Q6Score + survey.S1Q10Score + survey.S1Q11Score + survey.S1Q13Score;
 
                             if (S2Score == 100)
                             {
@@ -1129,6 +1141,7 @@ namespace SurveyMVCBase1.Controllers
                                 S2ScoreMsg = "您对英国企业家移民签证政策不够了解，建议您充分了解政策后再进入下一步评测。";
                             }
 
+                            ViewBag.Section1ScoreTest = S1ScoreTest;
                             ViewBag.Section2Score = S2Score;
                             ViewBag.Section2Message = S2ScoreMsg;
 
@@ -1525,7 +1538,7 @@ namespace SurveyMVCBase1.Controllers
             }
         }
 
-        // Post: S3PageSum - to S4a or S4b 
+        // Post: S3PageSum - to S4a or S4b
         [HttpPost, ActionName("S3PageSum")]
         [ValidateAntiForgeryToken]
         public ActionResult S3PageSumPost(string Section4)
@@ -3034,7 +3047,7 @@ namespace SurveyMVCBase1.Controllers
                         try
                         {
                             db.SaveChanges();
-                            return View("Summary");
+                            return RedirectToAction("S4aPageSum");
                         }
                         catch (RetryLimitExceededException)
                         {
@@ -3054,6 +3067,57 @@ namespace SurveyMVCBase1.Controllers
             {
                 Session["error"] = "Session timeout";
                 return View("Error");
+            }
+        }
+
+        // Get: S4aPageSum
+        public ActionResult S4aPageSum()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Survey survey = db.Surveys.Find(id);
+
+            int S1ScoreTest = 0;
+            string S1ScoreTestMsg = "";
+
+            if (survey != null)
+            {
+                S1ScoreTest = survey.S1Q3Score + survey.S1Q6Score + survey.S1Q10Score + survey.S1Q11Score + survey.S1Q13Score;
+                if (S1ScoreTest > 60)
+                {
+                    S1ScoreTestMsg = "第一部得分大于60分：您对英国企业家移民签证政策充分了解，可以进入下一步评测。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus pulvinar dictum. Praesent commodo augue vitae massa vestibulum pulvinar id nec mauris. Nam id tellus tincidunt, fringilla massa eu, finibus lectus. Quisque quis elementum ante. Etiam varius aliquam lacus. Pellentesque vitae luctus eros. Nunc maximus sapien sit amet ipsum scelerisque lobortis. Aenean ac vestibulum lacus. Integer bibendum nunc in aliquet commodo. Nunc mollis laoreet felis in faucibus. Integer faucibus ornare libero sed suscipit. Nullam in euismod nunc, eu tempus velit.";
+                }
+                else if (S1ScoreTest >= 30 && S1ScoreTest < 60)
+                {
+                    S1ScoreTestMsg = "第一部分得分在30-60分之间：您对英国企业家移民签证政策基本了解，可以进入下一步评测。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus pulvinar dictum. Praesent commodo augue vitae massa vestibulum pulvinar id nec mauris. Nam id tellus tincidunt, fringilla massa eu, finibus lectus. Quisque quis elementum ante. Etiam varius aliquam lacus. Pellentesque vitae luctus eros. Nunc maximus sapien sit amet ipsum scelerisque lobortis. Aenean ac vestibulum lacus. Integer bibendum nunc in aliquet commodo. Nunc mollis laoreet felis in faucibus. Integer faucibus ornare libero sed suscipit. Nullam in euismod nunc, eu tempus velit.";
+                }
+                else if (S1ScoreTest < 30)
+                {
+                    S1ScoreTestMsg = "第一部分得分在30分以下：您对英国企业家移民签证政策不够了解，建议您充分了解政策后再进入下一步评测。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus pulvinar dictum. Praesent commodo augue vitae massa vestibulum pulvinar id nec mauris. Nam id tellus tincidunt, fringilla massa eu, finibus lectus. Quisque quis elementum ante. Etiam varius aliquam lacus. Pellentesque vitae luctus eros. Nunc maximus sapien sit amet ipsum scelerisque lobortis. Aenean ac vestibulum lacus. Integer bibendum nunc in aliquet commodo. Nunc mollis laoreet felis in faucibus. Integer faucibus ornare libero sed suscipit. Nullam in euismod nunc, eu tempus velit.";
+                }
+
+                ViewBag.Section1ScoreTest = S1ScoreTest;
+                ViewBag.Section2Message = S1ScoreTestMsg;
+
+                return View("Section4a/S4aPageSum");
+            }
+            else
+            {
+                return HttpNotFound();
             }
         }
 
@@ -4614,7 +4678,7 @@ namespace SurveyMVCBase1.Controllers
                         try
                         {
                             db.SaveChanges();
-                            return View("Summary");
+                            return RedirectToAction("S4bPageSum");
                         }
                         catch (RetryLimitExceededException)
                         {
@@ -4634,6 +4698,57 @@ namespace SurveyMVCBase1.Controllers
             {
                 Session["error"] = "Session timeout";
                 return View("Error");
+            }
+        }
+
+        // Get: S4bPageSum
+        public ActionResult S4bPageSum()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Survey survey = db.Surveys.Find(id);
+
+            int S1ScoreTest = 0;
+            string S1ScoreTestMsg = "";
+
+            if (survey != null)
+            {
+                S1ScoreTest = survey.S1Q3Score + survey.S1Q6Score + survey.S1Q10Score + survey.S1Q11Score + survey.S1Q13Score;
+                if (S1ScoreTest > 60)
+                {
+                    S1ScoreTestMsg = "第一部得分大于60分：您对英国企业家移民签证政策充分了解，可以进入下一步评测。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus pulvinar dictum. Praesent commodo augue vitae massa vestibulum pulvinar id nec mauris. Nam id tellus tincidunt, fringilla massa eu, finibus lectus. Quisque quis elementum ante. Etiam varius aliquam lacus. Pellentesque vitae luctus eros. Nunc maximus sapien sit amet ipsum scelerisque lobortis. Aenean ac vestibulum lacus. Integer bibendum nunc in aliquet commodo. Nunc mollis laoreet felis in faucibus. Integer faucibus ornare libero sed suscipit. Nullam in euismod nunc, eu tempus velit.";
+                }
+                else if (S1ScoreTest >= 30 && S1ScoreTest < 60)
+                {
+                    S1ScoreTestMsg = "第一部分得分在30-60分之间：您对英国企业家移民签证政策基本了解，可以进入下一步评测。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus pulvinar dictum. Praesent commodo augue vitae massa vestibulum pulvinar id nec mauris. Nam id tellus tincidunt, fringilla massa eu, finibus lectus. Quisque quis elementum ante. Etiam varius aliquam lacus. Pellentesque vitae luctus eros. Nunc maximus sapien sit amet ipsum scelerisque lobortis. Aenean ac vestibulum lacus. Integer bibendum nunc in aliquet commodo. Nunc mollis laoreet felis in faucibus. Integer faucibus ornare libero sed suscipit. Nullam in euismod nunc, eu tempus velit.";
+                }
+                else if (S1ScoreTest < 30)
+                {
+                    S1ScoreTestMsg = "第一部分得分在30分以下：您对英国企业家移民签证政策不够了解，建议您充分了解政策后再进入下一步评测。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus pulvinar dictum. Praesent commodo augue vitae massa vestibulum pulvinar id nec mauris. Nam id tellus tincidunt, fringilla massa eu, finibus lectus. Quisque quis elementum ante. Etiam varius aliquam lacus. Pellentesque vitae luctus eros. Nunc maximus sapien sit amet ipsum scelerisque lobortis. Aenean ac vestibulum lacus. Integer bibendum nunc in aliquet commodo. Nunc mollis laoreet felis in faucibus. Integer faucibus ornare libero sed suscipit. Nullam in euismod nunc, eu tempus velit.";
+                }
+
+                ViewBag.Section1ScoreTest = S1ScoreTest;
+                ViewBag.Section2Message = S1ScoreTestMsg;
+
+                return View("Section4b/S4bPageSum");
+            }
+            else
+            {
+                return HttpNotFound();
             }
         }
     }
