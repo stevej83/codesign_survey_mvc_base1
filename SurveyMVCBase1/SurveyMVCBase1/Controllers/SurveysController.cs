@@ -770,7 +770,8 @@ namespace SurveyMVCBase1.Controllers
                     }
                     else if (S1Score < 30)
                     {
-                        S1ScoreMsg = "不太符合英国移民局关于企业家签证要求，但是您仍然可以继续下一步评测，如果总分合格，仍然有机会尝试。";
+                        S1ScoreMsg = "您的个人背景在现阶段达不到英国对企业家的要求， 请选择其它移民类别。";
+                        return RedirectToAction("S1PageEnd");
                     }
 
                     ViewBag.Section1Score = S1Score;
@@ -808,6 +809,28 @@ namespace SurveyMVCBase1.Controllers
             }
 
             return RedirectToAction("S2Page1");
+        }
+
+        // Get: S1PageEnd
+        public ActionResult S1PageEnd()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return View("Section1/S1PageEnd");
         }
 
         // Get: S2Page1
