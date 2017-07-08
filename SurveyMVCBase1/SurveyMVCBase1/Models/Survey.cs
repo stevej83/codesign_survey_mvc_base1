@@ -133,7 +133,7 @@ namespace SurveyMVCBase1.Models
         // 得分：S2Q10 0/10
         public int S2Q9Score { get; set; }
 
-        [Display(Name = "9. 资金证明的主要要求是什么？")]
+        [Display(Name = "10. 资金证明的主要要求是什么？")]
         public string S2Q10Answer { get; set; }
 
         // 得分：S2Q10 0/10

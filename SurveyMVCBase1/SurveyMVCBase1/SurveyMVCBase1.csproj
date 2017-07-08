@@ -247,7 +247,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\tools.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -327,6 +326,7 @@
     <Content Include="Views\Surveys\Section4a\S4aPageSum.cshtml" />
     <Content Include="Views\Surveys\Section4b\S4bPageSum.cshtml" />
     <Content Include="Views\Surveys\Section1\S1PageEnd.cshtml" />
+    <Content Include="Views\Surveys\Section2\S2PageEnd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

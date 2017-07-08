@@ -12,10 +12,6 @@ namespace SurveyMVCBase1.Controllers
     {
         private DataContext db = new DataContext();
 
-        public int Section1TotalScore = 0;
-        public int Section2TotalScore = 0;
-        public int Section3TotalScore = 0;
-
         // GET: Surveys
         public ActionResult Index()
         {
@@ -392,7 +388,7 @@ namespace SurveyMVCBase1.Controllers
                         }
                     }
 
-                    Session["s1mark"] = Section1TotalScore + S1Q3ScoreLocal;
+                    Session["s1mark"] = S1Q3ScoreLocal;
                     return View("Section1/S1Page2");
                 }
                 else
@@ -672,7 +668,6 @@ namespace SurveyMVCBase1.Controllers
                 }
 
                 Session["s1mark"] = ((int)Session["s1mark"]) + S1Q10ScoreLocal + S1Q11ScoreLocal + S1Q13ScoreLocal;
-
                 return View("Section1/S1Page4");
             }
             else
@@ -762,15 +757,15 @@ namespace SurveyMVCBase1.Controllers
 
                     if (S1Score > 50)
                     {
-                        S1ScoreMsg = "基本符合英国移民局关于企业家移民要求，可以进入下一步评测。";
+                        S1ScoreMsg = "您的个人背景基本符合英国移民局关于企业家移民要求，可以进入下一步评测。";
                     }
                     else if (S1Score >= 30 && S1Score <= 50)
                     {
-                        S1ScoreMsg = "有可能符合英国移民局关于企业家移民要求，可以进入下一步评测。";
+                        S1ScoreMsg = "您的个人背景有可能符合英国移民局关于企业家移民要求，可以进入下一步评测。";
                     }
                     else if (S1Score < 30)
                     {
-                        S1ScoreMsg = "您的个人背景在现阶段达不到英国对企业家的要求， 请选择其它移民类别。";
+                        S1ScoreMsg = "您的个人背景在现阶段达不到英国对企业家移民的要求， 但是我们可以帮助您选择适合的移民方式并给出建议，请联系我们。";
                         return RedirectToAction("S1PageEnd");
                     }
 
@@ -960,7 +955,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q3Answer))
                     {
-                        if (survey.S2Q3Answer == "ielts5")
+                        if (survey.S2Q3Answer == "ielts4")
                         {
                             S2Q3ScoreLocal = 10;
                         }
@@ -968,7 +963,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q4Answer))
                     {
-                        if (survey.S2Q4Answer == "200K")
+                        if (survey.S2Q4Answer == "200k")
                         {
                             S2Q4ScoreLocal = 10;
                         }
@@ -976,7 +971,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q5Answer))
                     {
-                        if (survey.S2Q5Answer == "canwork")
+                        if (survey.S2Q5Answer == "cantwork")
                         {
                             S2Q5ScoreLocal = 10;
                         }
@@ -1088,7 +1083,7 @@ namespace SurveyMVCBase1.Controllers
             int S2Q9ScoreLocal = 0;
             int S2Q10ScoreLocal = 0;
 
-            int S1ScoreTest = 0;
+            int S1Score = 0;
             int S2Score = 0;
             string S2ScoreMsg = "";
 
@@ -1114,7 +1109,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q8Answer))
                     {
-                        if (survey.S2Q3Answer == "can")
+                        if (survey.S2Q8Answer == "can")
                         {
                             S2Q8ScoreLocal = 10;
                         }
@@ -1122,7 +1117,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q9Answer))
                     {
-                        if (survey.S2Q9Answer == "2emp")
+                        if (survey.S2Q9Answer == "2employee")
                         {
                             S2Q9ScoreLocal = 10;
                         }
@@ -1147,9 +1142,9 @@ namespace SurveyMVCBase1.Controllers
                             survey.S2Q10Score = S2Q10ScoreLocal;
                             db.SaveChanges();
 
+                            S1Score = survey.S1Q3Score + survey.S1Q6Score + survey.S1Q10Score + survey.S1Q11Score + survey.S1Q13Score;
                             S2Score = survey.S2Q1Score + survey.S2Q2Score + survey.S2Q3Score + survey.S2Q4Score + survey.S2Q5Score + survey.S2Q6Score + survey.S2Q7Score + survey.S2Q8Score + survey.S2Q9Score + survey.S2Q10Score;
-                            S1ScoreTest = survey.S1Q3Score + survey.S1Q6Score + survey.S1Q10Score + survey.S1Q11Score + survey.S1Q13Score;
-
+                            
                             if (S2Score == 100)
                             {
                                 S2ScoreMsg = "您对英国企业家移民签证政策充分了解，可以进入下一步评测。";
@@ -1160,11 +1155,11 @@ namespace SurveyMVCBase1.Controllers
                             }
                             else if (S2Score < 60)
                             {
-                                // 退出测试按键？
-                                S2ScoreMsg = "您对英国企业家移民签证政策不够了解，建议您充分了解政策后再进入下一步评测。";
+                                S2ScoreMsg = "您对企业家签证了解不够，请深入阅读《商业创业指南》后，再来参加我们的企业家评测。";
+                                return RedirectToAction("S2PageEnd");
                             }
 
-                            ViewBag.Section1ScoreTest = S1ScoreTest;
+                            ViewBag.Section1ScoreTest = S1Score;
                             ViewBag.Section2Score = S2Score;
                             ViewBag.Section2Message = S2ScoreMsg;
 
@@ -1206,6 +1201,28 @@ namespace SurveyMVCBase1.Controllers
             }
 
             return RedirectToAction("S3Page1");
+        }
+
+        // Get: S2PageEnd
+        public ActionResult S2PageEnd()
+        {
+            string id = "";
+            if (Session["viewKey"] != null)
+            {
+                id = Session["viewKey"].ToString();
+            }
+            else
+            {
+                Session["error"] = "Session timeout";
+                return View("Error");
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return View("Section2/S2PageEnd");
         }
 
         // Get: S3Page1
@@ -1463,6 +1480,8 @@ namespace SurveyMVCBase1.Controllers
             int S3Q9ScoreLocal = 0;
             int S3Q10ScoreLocal = 0;
 
+            int S1Score = 0;
+            int S2Score = 0;
             int S3Score = 0;
             string S3ScoreMsg = "";
 
@@ -1488,7 +1507,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S3Q8Answer))
                     {
-                        if (survey.S3Q3Answer == "2000")
+                        if (survey.S3Q8Answer == "2000")
                         {
                             S3Q8ScoreLocal = 10;
                         }
@@ -1521,22 +1540,72 @@ namespace SurveyMVCBase1.Controllers
                             survey.S3Q10Score = S3Q10ScoreLocal;
                             db.SaveChanges();
 
+                            S1Score = survey.S1Q3Score + survey.S1Q6Score + survey.S1Q10Score + survey.S1Q11Score + survey.S1Q13Score;
+                            S2Score = survey.S2Q1Score + survey.S2Q2Score + survey.S2Q3Score + survey.S2Q4Score + survey.S2Q5Score + survey.S2Q6Score + survey.S2Q7Score + survey.S2Q8Score + survey.S2Q9Score + survey.S2Q10Score;
                             S3Score = survey.S3Q1Score + survey.S3Q2Score + survey.S3Q3Score + survey.S3Q4Score + survey.S3Q5Score + survey.S3Q6Score + survey.S3Q7Score + survey.S3Q8Score + survey.S3Q9Score + survey.S3Q10Score;
+                            // case - 01 : 英国商业知识得分 100, 签证知识得分 100, 基本信息得分 60及以上
+                            if (S3Score == 100 && S2Score == 100 && S1Score >= 60)
+                            {
+                                S3ScoreMsg = "您的个人背景，企业家签证知识和商业知识都非常完美，您非常适合申请英国的企业家签证。";
+                            }
+                            // case - 02 : 英国商业知识得分 100, 签证知识得分 60-90, 基本信息得分 60及以上
+                            else if (S3Score == 100 && S2Score >= 60 && S2Score <= 90 && S1Score >= 60)
+                            {
+                                S3ScoreMsg = "您的个人背景和商业知识都非常好，对英国的企业家签证也有一定的了解，请阅读《商业创业指南》，深入了解企业家签证后可申请英国的企业家签证。";
+                            }
+                            // case - 03 : 英国商业知识得分 100, 签证知识得分 100, 基本信息得分 30-50
+                            else if (S3Score == 100 && S2Score == 100 && S1Score >= 30 && S1Score <= 50)
+                            {
+                                S3ScoreMsg = "您对商业知识和企业家签证非常了解，在个人背景方面要有针对性的加强，可以咨询专业律师，并做好充分的准备工作后可尝试申请英国的企业家签证。";
+                            }
+                            // case - 04 : 英国商业知识得分 100, 签证知识得分 60-90, 基本信息得分 30-50
+                            else if (S3Score == 100 && S2Score >= 60 && S2Score <= 90 && S1Score >= 30 && S1Score <= 50)
+                            {
+                                S3ScoreMsg = "您对商业知识非常了解，个人背景有一些基础，对企业家签证也有一定的了解，可阅读《商业创业指南》加深了解英国企业家签证知识后，可尝试申请企业家签证。";
+                            }
+                            // case - 05 : 英国商业知识得分 60-90, 签证知识得分 100, 基本信息得分 60及以上
+                            else if (S3Score >= 60 && S3Score <= 90 && S2Score == 100 && S1Score >= 60)
+                            {
+                                S3ScoreMsg = "您的个人背景和签证知识都非常好，大体的商业知识也已了解，可通过阅读《商业创业指南》加深对英国商业的理解，在做好充分的准备工作后可申请英国的企业家签证。";
+                            }
+                            // case - 06 : 英国商业知识得分 60-90, 签证知识得分 60-90, 基本信息得分 60及以上
+                            else if (S3Score >= 60 && S3Score <= 90 && S2Score >= 60 && S2Score <= 90 && S1Score >= 60)
+                            {
+                                S3ScoreMsg = "您的个人背景很好，对商业知识和企业家签证也有一定的了解，可通过阅读《商业创业指南》加深对英国商业和企业家签证的理解，在做好充分的准备工作后可尝试申请英国的企业家签证。";
+                            }
+                            // case - 07 : 英国商业知识得分 60-90, 签证知识得分 100, 基本信息得分 30-50
+                            else if (S3Score >= 60 && S3Score <= 90 && S2Score == 100 && S1Score >= 30 && S1Score <= 50)
+                            {
+                                S3ScoreMsg = "您对企业家签证非常了解，对英国商业知识也有一定的了解，个人背景也有一定的基础，请阅读《商业创业指南》在深入了解、提高后可尝试申请企业家签证。";
+                            }
+                            // case - 08 : 英国商业知识得分 60-90, 签证知识得分 60-90, 基本信息得分 30-50
+                            else if (S3Score >= 60 && S3Score <= 90 && S2Score >= 60 && S2Score <= 90 && S1Score >= 30 && S1Score <= 50)
+                            {
+                                S3ScoreMsg = "您对英国商业知识、企业家签证都有一定的了解，个人背景也有一定的基础，请阅读《商业创业指南》在深入了解、提高后可尝试申请企业家签证。";
+                            }
+                            // case - 09 : 英国商业知识得分 0-50, 签证知识得分 100, 基本信息得分 60及以上
+                            else if (S3Score <= 50 && S2Score == 100 && S1Score >= 60)
+                            {
+                                S3ScoreMsg = "您的个人背景和签证知识都非常好，但缺乏英国的商业知识，请阅读《商业创业指南》，深入了解英国商业知识后可尝试申请英国的企业家签证。";
+                            }
+                            // case - 10 : 英国商业知识得分 0-50, 签证知识得分 60-90, 基本信息得分 60及以上
+                            else if (S3Score <= 50 && S2Score >= 60 && S2Score <= 90 && S1Score >= 60)
+                            {
+                                S3ScoreMsg = "您的个人背景很好，对企业家签证也有一定的了解，需加强商业知识，可通过阅读《商业创业指南》加深对英国商业和企业家签证的理解，在做好充分的准备工作后可尝试申请英国的企业家签证。";
+                            }
+                            // case - 11 : 英国商业知识得分 0-50, 签证知识得分 100, 基本信息得分 30-50
+                            else if (S3Score <= 50 && S2Score == 100 && S1Score >= 30 && S1Score <= 50)
+                            {
+                                S3ScoreMsg = "您对企业家签证非常了解，个人背景也有一定的基础，但缺乏英国商业知识，可在阅读《商业创业指南》加深了解后，可尝试申请企业家签证。";
+                            }
+                            // case - 12 : 英国商业知识得分 0-50, 签证知识得分 60-90, 基本信息得分 60及以上
+                            else if (S3Score <= 50 && S2Score >= 60 && S2Score <= 90 && S1Score >= 30 && S1Score <= 50)
+                            {
+                                S3ScoreMsg = "您对企业家签证知识有一定的了解，个人背景也有一定的基础，但英国商业知识有待加强，可通过阅读《商业创业指南》加深了解后，再来参加我们的企业家评测。";
+                            }
 
-                            if (S3Score == 100)
-                            {
-                                S3ScoreMsg = "您对英国基本商业知识比较了解，可以进入下一步评测。";
-                            }
-                            else if (S3Score >= 60 && S3Score < 100)
-                            {
-                                S3ScoreMsg = "您对英国基本商业知识有一定了解，可以进入下一步评测。";
-                            }
-                            else if (S3Score < 60)
-                            {
-                                // 退出测试按键？
-                                S3ScoreMsg = "您对英国基本商业知识不够了解，建议您充分了解政策后再进入下一步评测。";
-                            }
-
+                            ViewBag.Section1Score = S1Score;
+                            ViewBag.Section2Score = S2Score;
                             ViewBag.Section3Score = S3Score;
                             ViewBag.Section3Message = S3ScoreMsg;
 

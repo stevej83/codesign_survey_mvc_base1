@@ -68,5 +68,6 @@ C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\bin\Microsoft.
 C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\bin\Microsoft.AI.WindowsServer.xml
 C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\bin\Microsoft.AI.Web.xml
+C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\obj\Debug\SurveyMVCBase1.csprojResolveAssemblyReference.cache
 C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\obj\Debug\SurveyMVCBase1.dll
 C:\github\codesign_survey_mvc_base1\SurveyMVCBase1\SurveyMVCBase1\obj\Debug\SurveyMVCBase1.pdb

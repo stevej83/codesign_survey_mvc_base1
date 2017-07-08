@@ -29,8 +29,6 @@ namespace SurveyMVCBase1
             bundles.Add(new ScriptBundle("~/bundles/jsdoc").Include(
                       "~/Scripts/jspdfsaver.js",
                       "~/Scripts/jsdocmain.js"));
-            bundles.Add(new ScriptBundle("~/bundles/tools").Include(
-                      "~/Scripts/tools.js"));
         }
     }
 }

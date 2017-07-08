@@ -112,12 +112,12 @@
                     S2Q5AnswerListItems.Add(new SelectListItem
                     {
                         Text = "不能为他人工作",
-                        Value = "canwork"
+                        Value = "cantwork"
                     });
                     S2Q5AnswerListItems.Add(new SelectListItem
                     {
                         Text = "可以为他人工作",
-                        Value = "cantwork"
+                        Value = "canwork"
                     });
                 }
                 @Html.DropDownListFor(model => model.S2Q5Answer, S2Q5AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
