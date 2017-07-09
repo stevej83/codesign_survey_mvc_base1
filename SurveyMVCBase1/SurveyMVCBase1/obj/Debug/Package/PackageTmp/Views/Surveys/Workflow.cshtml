@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Workflow";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="jumbotron2">
+            <img src="@Url.Content("~/Content/Site_Images/imgFlow.jpg")" style="max-width: 100%; height: auto;" alt="workflow image" />
+            <div style="margin-top: 15px;">
+                <p>测试流程介绍 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac dolor sed justo vestibulum tempus vel quis massa. Quisque at enim in felis ultricies tincidunt nec at lectus.</p>
+            </div>
+            <div>
+                <input type="submit" value="开始测试" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

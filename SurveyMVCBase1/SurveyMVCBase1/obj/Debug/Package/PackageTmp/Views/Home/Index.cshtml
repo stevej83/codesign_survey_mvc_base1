@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Survey MVC</h1>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>企业家移民咨询测试</h2>
+        <img href="@Url.Content("~/Images/imgLanding.png")" alt="Landing Image" />
+        <p>
+            企业家移民咨询测试 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac dolor sed justo vestibulum tempus vel quis massa. Quisque at enim in felis ultricies tincidunt nec at lectus.
+        </p>
+    </div>
+    <!--div class="col-md-4">
+        <h2>Build it from scratch</h2>
+        <p>You can build the application by following the steps in the tutorial series on the ASP.NET site.</p>
+        <p><a class="btn btn-default" href="http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/">See the tutorial &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Download it</h2>
+        <p>You can download the completed project from the Microsoft Code Gallery.</p>
+        <p><a class="btn btn-default" href="http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8">Download &raquo;</a></p>
+    </div-->
+    <div class="col-lg-1">
+        <h2>Welcome to Survey MVC</h2>
+        <p>
+            Survey MVC is a sample application that
+            demonstrates how to use Entity Framework 6 in an
+            ASP.NET MVC 5 web application.
+        </p>
+        @Html.ActionLink("Start New Survey", "S1Page1")
+    </div>
+</div>

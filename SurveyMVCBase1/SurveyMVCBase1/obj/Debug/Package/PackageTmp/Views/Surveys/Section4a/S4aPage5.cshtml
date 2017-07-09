@@ -1,0 +1,61 @@
+﻿@model SurveyMVCBase1.Models.Survey
+
+@{
+    Layout = "~/Views/Shared/_Layout_S4a.cshtml";
+    ViewBag.Title = "S4aPage5 - 英国创业项目测试 - 独立创业";
+}
+
+<!-- 签证目的 -->
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.HiddenFor(model => model.SurveyID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S4aQ11Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> S4aQ11AnswerListItems = new List<SelectListItem>();
+                    S4aQ11AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "是",
+                        Value = "yes"
+                    });
+                    S4aQ11AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "否",
+                        Value = "no"
+                    });
+                }
+                @Html.DropDownListFor(model => model.S4aQ11Answer, S4aQ11AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S4aQ12Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.S4aQ12Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S4aQ13Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.S4aQ13Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="继续" class="btn btn-default button-S4a" />
+            </div>
+        </div>
+    </div>
+                    }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,50 @@
+﻿@model SurveyMVCBase1.Models.Survey
+
+@{
+    Layout = "~/Views/Shared/_Layout_S1.cshtml";
+    ViewBag.Title = "S1Page4";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.SurveyID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S1Q14Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.S1Q14Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写电话 格式： +86-13901882888", @title = "请填写电话", @required = true, @oninvalid = "this.setCustomValidity('请填写电话')", @oninput = "setCustomValidity('')" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S1Q15Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.S1Q15Answer, new { @class = "form-control", placeholder = "请填写正确格式的电邮", @title = "请填写正确格式的电邮", @required = true, @type ="email", @oninvalid = "this.setCustomValidity('请填写正确格式的电邮')", @oninput = "setCustomValidity('')" } )
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S1Q16Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.S1Q16Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写微信号", @title = "请填写微信号" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="继续" class="btn btn-default button-S1" />
+            </div>
+        </div>
+    </div>
+                    }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

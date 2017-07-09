@@ -1,0 +1,19 @@
+﻿@model SurveyMVCBase1.Models.Survey
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Summary";
+}
+
+<h2>Summary</h2>
+<p>
+    <a id="cmd" href="#">Generate Report</a>
+</p>
+
+<div id="target">
+    @Session["s1mark"].ToString()
+</div>
+
+
+
+

@@ -1,0 +1,80 @@
+﻿@model SurveyMVCBase1.Models.Survey
+
+@{
+    Layout = "~/Views/Shared/_Layout_S4b.cshtml";
+    ViewBag.Title = "S4bPage20 - 英国创业项目测试 - 加入创业";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.HiddenFor(model => model.SurveyID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S4bQ58Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.S4bQ58Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S4bQ59Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.S4bQ59Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S4bQ60Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> S4bQ60AnswerListItems = new List<SelectListItem>();
+                    S4bQ60AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "有",
+                        Value = "有家属同行"
+                    });
+                    S4bQ60AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "无",
+                        Value = "无家属同行"
+                    });
+                }
+                @Html.DropDownListFor(model => model.S4bQ60Answer, S4bQ60AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.S4bQ61Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> S4bQ61AnswerListItems = new List<SelectListItem>();
+                    S4bQ61AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "有",
+                        Value = "家属打算工作"
+                    });
+                    S4bQ61AnswerListItems.Add(new SelectListItem
+                    {
+                        Text = "无",
+                        Value = "家属不打算工作"
+                    });
+                }
+                @Html.DropDownListFor(model => model.S4bQ61Answer, S4bQ61AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="继续" class="btn btn-default button-S4b" />
+            </div>
+        </div>
+    </div>
+                    }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
