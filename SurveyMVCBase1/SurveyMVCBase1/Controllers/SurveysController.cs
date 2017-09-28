@@ -357,14 +357,95 @@ namespace SurveyMVCBase1.Controllers
             }
 
             Survey survey = db.Surveys.Find(id);
+            int S1Q3ScoreLocal = 0;
+            int S1Q6ScoreLocal = 0;
+            int S1Q10ScoreLocal = 0;
+            int S1Q11ScoreLocal = 0;
+            int S1Q13ScoreLocal = 0;
+
             int S1Score = 0;
+
             string S1ScoreMsg = "";
 
             if (ModelState.IsValid)
             {
                 if (survey != null)
                 {
-                    S1Score = survey.S1Q3Score + survey.S1Q6Score + survey.S1Q10Score + survey.S1Q11Score + survey.S1Q13Score;
+                    if (!string.IsNullOrEmpty(survey.S1Q3Answer))
+                    {
+                        if (survey.S1Q3Answer == "business")
+                        {
+                            S1Q3ScoreLocal = 10;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S1Q6Answer))
+                    {
+                        if (survey.S1Q6Answer == "UK")
+                        {
+                            S1Q6ScoreLocal = 10;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S1Q10Answer))
+                    {
+                        if (survey.S1Q10Answer == "exp3")
+                        {
+                            S1Q10ScoreLocal = 10;
+                        }
+                        else if (survey.S1Q10Answer == "exp2")
+                        {
+                            S1Q10ScoreLocal = 5;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S1Q11Answer))
+                    {
+                        if (survey.S1Q11Answer == "yes")
+                        {
+                            S1Q11ScoreLocal = 10;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S1Q13Answer))
+                    {
+                        if (survey.S1Q13Answer == "time4")
+                        {
+                            S1Q13ScoreLocal = 30;
+                        }
+                        else if (survey.S1Q13Answer == "time3")
+                        {
+                            S1Q13ScoreLocal = 20;
+                        }
+                        else if (survey.S1Q13Answer == "time2")
+                        {
+                            S1Q13ScoreLocal = 10;
+                        }
+                    }
+
+                    if (TryUpdateModel(survey, "", new string[] { "S1Q3Score", "S1Q6Score", "S1Q10Score", "S1Q11Score", "S1Q13Score" }))
+                    {
+                        try
+                        {
+                            survey.S1Q3Score = S1Q3ScoreLocal;
+                            survey.S1Q6Score = S1Q6ScoreLocal;
+                            survey.S1Q10Score = S1Q10ScoreLocal;
+                            survey.S1Q11Score = S1Q11ScoreLocal;
+                            survey.S1Q13Score = S1Q13ScoreLocal;
+                            db.SaveChanges();
+                            return View("Section1/S1PageSum");
+                        }
+                        catch (RetryLimitExceededException)
+                        {
+                            ModelState.AddModelError("", "Unable to save changes for S1 scores. Try again, and if the problem persists, see your system administrator.");
+                        }
+                    }
+                    else
+                    {
+                        return HttpNotFound();
+                    }
+
+                    S1Score = S1Q3ScoreLocal + S1Q6ScoreLocal + S1Q10ScoreLocal + S1Q11ScoreLocal + S1Q13ScoreLocal;
 
                     if (S1Score > 50)
                     {
