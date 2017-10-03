@@ -433,7 +433,7 @@ namespace SurveyMVCBase1.Controllers
                             survey.S1Q11Score = S1Q11ScoreLocal;
                             survey.S1Q13Score = S1Q13ScoreLocal;
                             db.SaveChanges();
-                            return View("Section1/S1PageSum");
+                            //return View("Section1/S1PageSum");
                         }
                         catch (RetryLimitExceededException)
                         {
