@@ -5,14 +5,12 @@
     ViewBag.Title = "Index";
 }
 
-<div class="row">
-    <div class="jumbotron2">
-        <h2>企业家移民咨询测试</h2>
-        <img src="@Url.Content("~/Content/Site_Images/imgLanding.png")" style="max-width: 100%; height: auto;" alt="landing image" />
-        <div style="margin-top: 15px;">
-            <p>企业家移民咨询测试 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac dolor sed justo vestibulum tempus vel quis massa. Quisque at enim in felis ultricies tincidunt nec at lectus.</p>
-        </div>
-        @Html.ActionLink("开始", "Workflow", null, new { @class = "btn btn-default" })
+<div class="home">
+    <div class="background"></div>
+    <div class="description">
+        <h1>企业家移民咨询测试</h1>
+        <p>tear 企业家移民咨询测试 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac dolor sed justo vestibulum tempus vel quis massa. Quisque at enim in felis ultricies tincidunt nec at lectus.</p>
+        @Html.ActionLink("开始", "Workflow", null, new { @class = "button" })
     </div>
 </div>
 

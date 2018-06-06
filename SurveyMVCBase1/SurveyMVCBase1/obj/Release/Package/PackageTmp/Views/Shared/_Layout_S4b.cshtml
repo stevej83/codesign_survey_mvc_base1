@@ -1,28 +1,27 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en" class="no-js">
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Survey MVC</title>
-    
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 
 </head>
 <body>
-    <div class="navbar navbar-color-S4b navbar-fixed-top">
-        <div class="container" style="text-align:center; padding-top: 10px;">
-            <span style="font-size: 20px; font-weight: 800; color: #FFFFFF;">英国商业知识测试 - 加入创业</span>
+    <div class="container">
+        <header class="clearfix">
+            <span>企业家移民咨询测试 </span>
+            <h1>加入创业</h1>
+        </header>
+        <div class="main">
+            @RenderBody()
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p style="font-size: 9px;">&copy; @DateTime.Now.Year - PETERSON LAW ASSOCIATES LTD - powered by CodeSign</p>
-        </footer>
-    </div>
+    <footer>Copyright © 2018 UKVisa. All rights reserved</footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -5,22 +5,29 @@
     ViewBag.Title = "S4bPageSum";
 }
 
-<h2>Summary</h2>
-<p>请下载浏览您的测试报告 sample：</p>
+<div id="target">
+<h2>测试已完成，感谢您的参与</h2>
+<p>&nbsp;</p>
+<p>测试 1 - 3 得分：</p>
+<p>您的基本信息测试得分是 @ViewBag.Section1Score 分 (满分70分)</p>
+<p>您的签证知识测试得分是 @ViewBag.Section2Score 分 (满分100分)</p>
+<p>您的英国商业知识测试得分是 @ViewBag.Section3Score 分 (满分100分)</p>
+<p>&nbsp;</p>
+<p>测试总结和建议：</p>
+<p>@ViewBag.Section3Message</p>
+</div>
+<p>&nbsp;</p>
+<p>请下载浏览您的测试报告：</p>
 <p>
-    <a id="cmd" href="#">Generate Sample Report</a>
+    <a id="cmd" href="#">生成并保存测试报告</a>
 </p>
-
-<div class="form-horizontal" id="target" style="display:none">
-    <hr />
-    <p>测试1： @ViewBag.Section1ScoreTest</p>
-    <p>测试2： @ViewBag.Section2Message</p>
-</div>
-
-<div class="form-horizontal">
-    <hr />
-    <p>微信扫码支付后我们会发给您完整的信息回馈，同时附送企业家移民宝典 ...</p>
-    <img src="@Url.Content("~/Content/Site_Images/scanWechat.png")" alt="scan webchat" />
-</div>
+<p>&nbsp;</p>
+<p>我们建议您进行自我企业家心理测试，了解自己的是否具备合格企业家的潜质对您的企业家签证申请至关重要！</p>
+<p>
+    <a href="http://www.bbc.com/zhongwen/trad/business/2015/08/150814_biz_quiz" target="_blank">企业家心里测试</a>
+</p>
+<p>&nbsp;</p>
+<p>微信扫码支付后我们会发给您完整的信息回馈，同时附送《商业创业宝典》。</p>
+<img src="@Url.Content("~/Content/Site_Images/scanWechat.jpg")" width="226" hight="292" alt="scan webchat" />
 
 

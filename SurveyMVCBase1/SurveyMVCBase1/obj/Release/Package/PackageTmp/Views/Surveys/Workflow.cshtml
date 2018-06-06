@@ -6,16 +6,113 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    <div class=" flowchart">
+        <header class="clearfix">
+            <span>企业家移民咨询测试</span>
+        </header>
+        <div class="container">
+            <div class="row">
+                <a class="step1 step">
+                    <div class="row box shape-1 animated bounceInLeft">
+                        <div class="col1 shape">
+                            <div class="number">
+                                <h1>01</h1>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <p>基本信息</p>
+                        </div>
+                        <div class="col3">
+                            <i class="material-icons md-56">&#xE873;</i>
+                        </div>
+                    </div>
+                    <div class="tooltip">
+                        英国留学，是时下比较受欢迎的国家之一，本次讲座将从英国留学申请时间节点分析，申请时需要准备哪些材料?如何选择学校?如何选择专业?这些留学的学生和家长最为关心的角度入手，全方位的帮助学生和家长了解英国留学。
 
-    <div class="row">
-        <div class="jumbotron2">
-            <img src="@Url.Content("~/Content/Site_Images/imgFlow.jpg")" style="max-width: 100%; height: auto;" alt="workflow image" />
-            <div style="margin-top: 15px;">
-                <p>测试流程介绍 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac dolor sed justo vestibulum tempus vel quis massa. Quisque at enim in felis ultricies tincidunt nec at lectus.</p>
+                    </div>
+                </a>
+                <a class="step2 step">
+                    <div class="row box shape-2 animated bounceInRight">
+                        <div class="col1 shape">
+                            <div class="number">
+                                <h1>02</h1>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <p>签证知识测试</p>
+                        </div>
+                        <div class="col3">
+                            <i class="material-icons md-56">&#xE6DF;</i>
+                        </div>
+                    </div>
+                    <div class="tooltip">
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
+                    </div>
+                </a>
+                <a class="step3 step">
+                    <div class="row box shape-3 animated bounceInLeft">
+                        <div class="col1 shape">
+                            <div class="number">
+                                <h1>03</h1>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <p>英国商业知识测试</p>
+                        </div>
+                        <div class="col3">
+                            <i class="material-icons md-56">&#xE6C5;</i>
+                        </div>
+                    </div>
+                    <div class="tooltip">
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
+                    </div>
+                </a>
+                <div class="step">
+                    <div class="row box shape-3 animated bounceInLeft">
+                        <div class="colFull">
+                            <p>英国创业项目测试:</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="step4 step">
+                    <div class="row box shape-4 animated bounceInRight">
+                        <div class="col1 shape">
+                            <div class="number">
+                                <h1>04</h1>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <p>独立创业 OR 加入创业</p>
+                        </div>
+                        <div class="col3">
+                            <i class="material-icons md-56">&#xE6E1;</i>
+                        </div>
+                    </div>
+                    <div class="tooltip">
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
+                    </div>
+                </a>
+                <a class="step5 step">
+                    <div class="row box shape-5 animated bounceInRight">
+                        <div class="col1 shape">
+                            <div class="number">
+                                <h1>05</h1>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <p>企业家性格测试</p>
+                        </div>
+                        <div class="col3">
+                            <i class="material-icons md-56">&#xE8AF;</i>
+                        </div>
+                    </div>
+                    <div class="tooltip">
+                        英国留学，是时下比较受欢迎的国家之一，本次讲座将从英国留学申请时间节点分析，申请时需要准备哪些材料?如何选择学校?如何选择专业?这些留学的学生和家长最为关心的角度入手，全方位的帮助学生和家长了解英国留学。
+                    </div>
+                </a>
+
             </div>
-            <div>
-                <input type="submit" value="开始测试" class="btn btn-default" />
-            </div>
+            <input type="submit" class="button animated fadeIn" value="开始测试 "/>
         </div>
     </div>
 }

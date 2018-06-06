@@ -430,13 +430,6 @@ namespace SurveyMVCBase1.Controllers
             int S1Q11ScoreLocal = 0;
             int S1Q13ScoreLocal = 0;
 
-<<<<<<< HEAD
-=======
-            int S1Score = 0;
-
-            string S1ScoreMsg = "";
-
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
             if (ModelState.IsValid)
             {
                 if (survey != null)
@@ -457,7 +450,6 @@ namespace SurveyMVCBase1.Controllers
                         }
                     }
 
-<<<<<<< HEAD
                     if (!string.IsNullOrEmpty(survey.S1Q6Answer))
                     {
                         if (survey.S1Q6Answer == "UK")
@@ -474,25 +466,16 @@ namespace SurveyMVCBase1.Controllers
                     {
                         if (survey.S1Q10Answer == "exp3")
                         {
-=======
-                    if (!string.IsNullOrEmpty(survey.S1Q10Answer))
-                    {
-                        if (survey.S1Q10Answer == "exp3")
-                        {
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
                             S1Q10ScoreLocal = 10;
                         }
                         else if (survey.S1Q10Answer == "exp2")
                         {
                             S1Q10ScoreLocal = 5;
                         }
-<<<<<<< HEAD
                         else
                         {
                             S1Q10ScoreLocal = 0;
                         }
-=======
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
                     }
 
                     if (!string.IsNullOrEmpty(survey.S1Q11Answer))
@@ -501,13 +484,10 @@ namespace SurveyMVCBase1.Controllers
                         {
                             S1Q11ScoreLocal = 10;
                         }
-<<<<<<< HEAD
                         else
                         {
                             S1Q11ScoreLocal = 0;
                         }
-=======
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
                     }
 
                     if (!string.IsNullOrEmpty(survey.S1Q13Answer))
@@ -524,7 +504,6 @@ namespace SurveyMVCBase1.Controllers
                         {
                             S1Q13ScoreLocal = 10;
                         }
-<<<<<<< HEAD
                         else
                         {
                             S1Q13ScoreLocal = 0;
@@ -532,11 +511,6 @@ namespace SurveyMVCBase1.Controllers
                     }
 
                     if (TryUpdateModel(survey, "", new string[] { "S1Q3Score","S1Q6Score", "S1Q10Score", "S1Q11Score", "S1Q13Score" }))
-=======
-                    }
-
-                    if (TryUpdateModel(survey, "", new string[] { "S1Q3Score", "S1Q6Score", "S1Q10Score", "S1Q11Score", "S1Q13Score" }))
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
                     {
                         try
                         {
@@ -546,30 +520,17 @@ namespace SurveyMVCBase1.Controllers
                             survey.S1Q11Score = S1Q11ScoreLocal;
                             survey.S1Q13Score = S1Q13ScoreLocal;
                             db.SaveChanges();
-<<<<<<< HEAD
                         }
                         catch (RetryLimitExceededException)
                         {
                             ModelState.AddModelError("", "Unable to save changes for Stage 1 Score. Try again, and if the problem persists, see your system administrator.");
-=======
-                            //return View("Section1/S1PageSum");
-                        }
-                        catch (RetryLimitExceededException)
-                        {
-                            ModelState.AddModelError("", "Unable to save changes for S1 scores. Try again, and if the problem persists, see your system administrator.");
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
                         }
                     }
                     else
                     {
                         return HttpNotFound();
                     }
-
-<<<<<<< HEAD
                     S1Score = survey.S1Q3Score + survey.S1Q6Score + survey.S1Q10Score + survey.S1Q11Score + survey.S1Q13Score;
-=======
-                    S1Score = S1Q3ScoreLocal + S1Q6ScoreLocal + S1Q10ScoreLocal + S1Q11ScoreLocal + S1Q13ScoreLocal;
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
 
                     if (S1Score > 50)
                     {
@@ -584,17 +545,10 @@ namespace SurveyMVCBase1.Controllers
                         S1ScoreMsg = "您的个人背景在现阶段达不到英国对企业家移民的要求， 但是我们可以帮助您选择适合的移民方式并给出建议，请联系我们。";
                         return RedirectToAction("S1PageEnd");
                     }
-<<<<<<< HEAD
 
                     ViewBag.Section1Score = S1Score;
                     ViewBag.Section1Message = S1ScoreMsg;
 
-=======
-
-                    ViewBag.Section1Score = S1Score;
-                    ViewBag.Section1Message = S1ScoreMsg;
-
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
                     return View("Section1/S1PageSum");
                 }
                 else
@@ -674,12 +628,8 @@ namespace SurveyMVCBase1.Controllers
             if (survey != null)
             {
                 return View("Section2/S2Page1");
-<<<<<<< HEAD
             } 
 
-=======
-            }
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
             else
             {
                 return HttpNotFound();
@@ -716,11 +666,7 @@ namespace SurveyMVCBase1.Controllers
                         }
                         catch (RetryLimitExceededException)
                         {
-<<<<<<< HEAD
                             ModelState.AddModelError("", "Unable to save changes for Stage 2. Try again, and if the problem persists, see your system administrator.");
-=======
-                            ModelState.AddModelError("", "Unable to save changes for S2Page1. Try again, and if the problem persists, see your system administrator.");
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
                         }
                     }
                     Session["error"] = "Cant update model";
@@ -781,7 +727,6 @@ namespace SurveyMVCBase1.Controllers
                     if (!string.IsNullOrEmpty(survey.S2Q1Answer))
                     {
                         if (survey.S2Q1Answer == "business")
-<<<<<<< HEAD
                         {
                             S2Q1ScoreLocal = 10;
                         }
@@ -847,73 +792,6 @@ namespace SurveyMVCBase1.Controllers
                     {
                         if (survey.S2Q9Answer == "2employee")
                         {
-=======
-                        {
-                            S2Q1ScoreLocal = 10;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S2Q2Answer))
-                    {
-                        if (survey.S2Q2Answer == "yes")
-                        {
-                            S2Q2ScoreLocal = 10;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S2Q3Answer))
-                    {
-                        if (survey.S2Q3Answer == "ielts4")
-                        {
-                            S2Q3ScoreLocal = 10;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S2Q4Answer))
-                    {
-                        if (survey.S2Q4Answer == "200k")
-                        {
-                            S2Q4ScoreLocal = 10;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S2Q5Answer))
-                    {
-                        if (survey.S2Q5Answer == "cantwork")
-                        {
-                            S2Q5ScoreLocal = 10;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S2Q6Answer))
-                    {
-                        if (survey.S2Q6Answer == "can")
-                        {
-                            S2Q6ScoreLocal = 10;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S2Q7Answer))
-                    {
-                        if (survey.S2Q7Answer == "100")
-                        {
-                            S2Q7ScoreLocal = 10;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S2Q8Answer))
-                    {
-                        if (survey.S2Q8Answer == "can")
-                        {
-                            S2Q8ScoreLocal = 10;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S2Q9Answer))
-                    {
-                        if (survey.S2Q9Answer == "2employee")
-                        {
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
                             S2Q9ScoreLocal = 10;
                         }
                     }
@@ -1165,7 +1043,6 @@ namespace SurveyMVCBase1.Controllers
                         if (survey.S3Q3Answer == "7.50")
                         {
                             S3Q3ScoreLocal = 10;
-<<<<<<< HEAD
                         }
                     }
 
@@ -1208,52 +1085,7 @@ namespace SurveyMVCBase1.Controllers
                             S3Q8ScoreLocal = 10;
                         }
                     }
-
-=======
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S3Q4Answer))
-                    {
-                        if (survey.S3Q4Answer == "25k")
-                        {
-                            S3Q4ScoreLocal = 10;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S3Q5Answer))
-                    {
-                        if (survey.S3Q5Answer == "2k")
-                        {
-                            S3Q5ScoreLocal = 10;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S3Q6Answer))
-                    {
-                        if (survey.S3Q6Answer == "20pct")
-                        {
-                            S3Q6ScoreLocal = 10;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S3Q7Answer))
-                    {
-                        if (survey.S3Q7Answer == "yes")
-                        {
-                            S3Q7ScoreLocal = 10;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(survey.S3Q8Answer))
-                    {
-                        if (survey.S3Q8Answer == "2000")
-                        {
-                            S3Q8ScoreLocal = 10;
-                        }
-                    }
-
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
+                        
                     if (!string.IsNullOrEmpty(survey.S3Q9Answer))
                     {
                         if (survey.S3Q9Answer == "500")
@@ -1391,20 +1223,11 @@ namespace SurveyMVCBase1.Controllers
                 Session["error"] = "Session timeout";
                 return View("Error");
             }
-
-<<<<<<< HEAD
             if (Section4 == "独立创业")
             {
                 return RedirectToAction("S4aPage1");
             }
             else if (Section4 == "加入创业")
-=======
-            if (Section4 == "英国创业项目测试 - 独立创业")
-            {
-                return RedirectToAction("S4aPage1");
-            }
-            else if (Section4 == "英国创业项目测试 - 加入创业")
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
             {
                 return RedirectToAction("S4bPage1");
             }
@@ -1730,11 +1553,7 @@ namespace SurveyMVCBase1.Controllers
             {
                 if (survey != null)
                 {
-<<<<<<< HEAD
                     if (TryUpdateModel(survey, "", new string[] { "S4bQ1Answer", "S4bQ2Answer", "S4bQ3Answer", "S4bQ4Answer", "S4bQ5Answer", "S4bQ6Answer", "S4bQ7Answer", "S4bQ8Answer", "S4bQ9Answer", "S4bQ10Answer", "S4bQ11Answer", "S4bQ12Answer", "S4bQ13Answer", "S4bQ14Answer", "S4bQ15Answer", "S4bQ16Answer", "S4bQ17Answer", "S4bQ18Answer", "S4bQ19Answer", "S4bQ20Answer", "S4bQ21Answer", "S4bQ22Answer", "S4bQ23Answer", "S4bQ24Answer", "S4bQ25Answer", "S4bQ26Answer", "S4bQ27Answer", "S4bQ28Answer", "S4bQ29Answer" }))
-=======
-                    if (TryUpdateModel(survey, "", new string[] { "S4bQ1Answer", "S4bQ2Answer", "S4bQ3Answer", "S4bQ4Answer", "S4bQ5Answer", "S4bQ6Answer", "S4bQ7Answer", "S4bQ8Answer", "S4bQ9Answer", "S4bQ10Answer", "S4bQ11Answer", "S4bQ12Answer", "S4bQ13Answer", "S4bQ14Answer", "S4bQ15Answer", "S4bQ16Answer", "S4bQ17Answer", "S4bQ18Answer", "S4bQ19Answer", "S4bQ20Answer", "S4bQ21Answer", "S4bQ22Answer", "S4bQ23Answer", "S4bQ24Answer", "S4bQ25Answer", "S4bQ26Answer", "S4bQ27Answer", "S4bQ28Answer" }))
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
                     {
                         try
                         {
@@ -1813,11 +1632,7 @@ namespace SurveyMVCBase1.Controllers
             {
                 if (survey != null)
                 {
-<<<<<<< HEAD
                     if (TryUpdateModel(survey, "", new string[] { "S4bQ30Answer", "S4bQ31Answer", "S4bQ32Answer", "S4bQ33Answer", "S4bQ34Answer", "S4bQ35Answer", "S4bQ36Answer", "S4bQ37Answer", "S4bQ38Answer", "S4bQ39Answer", "S4bQ40Answer", "S4bQ41Answer", "S4bQ42Answer", "S4bQ43Answer", "S4bQ44Answer", "S4bQ45Answer", "S4bQ46Answer", "S4bQ47Answer", "S4bQ48Answer", "S4bQ49Answer", "S4bQ50Answer", "S4bQ51Answer", "S4bQ52Answer", "S4bQ53Answer", "S4bQ54Answer", "S4bQ55Answer", "S4bQ56Answer", "S4bQ57Answer", "S4bQ58Answer", "S4bQ59Answer", "S4bQ60Answer", "S4bQ61Answer" }))
-=======
-                    if (TryUpdateModel(survey, "", new string[] { "S4bQ29Answer", "S4bQ30Answer", "S4bQ31Answer", "S4bQ32Answer", "S4bQ33Answer", "S4bQ34Answer", "S4bQ35Answer", "S4bQ36Answer", "S4bQ37Answer", "S4bQ38Answer", "S4bQ39Answer", "S4bQ40Answer", "S4bQ41Answer", "S4bQ42Answer", "S4bQ43Answer", "S4bQ44Answer", "S4bQ45Answer", "S4bQ46Answer", "S4bQ47Answer", "S4bQ48Answer", "S4bQ49Answer", "S4bQ50Answer", "S4bQ51Answer", "S4bQ52Answer", "S4bQ53Answer", "S4bQ54Answer", "S4bQ55Answer", "S4bQ52Answer", "S4bQ53Answer", "S4bQ54Answer", "S4bQ55Answer", "S4bQ56Answer", "S4bQ57Answer", "S4bQ58Answer", "S4bQ59Answer", "S4bQ60Answer", "S4bQ61Answer" }))
->>>>>>> 5f128ca9a7d9be7956d86b9d517d494adf36e723
                     {
                         try
                         {
