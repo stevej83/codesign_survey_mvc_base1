@@ -1,0 +1,399 @@
+.cbp-mc-form {
+  position: relative;
+  animation: fadeInLoad 1.5s;
+}
+
+@keyframes fadeInLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cbp-mc-form:before, .cbp-mc-form:after {
+  content: " ";
+  display: table;
+}
+
+.cbp-mc-form:after {
+  clear: both;
+}
+
+.cbp-mc-column {
+  width: 50%;
+  padding: 10px 30px;
+  float: left;
+}
+
+.cbp-mc-form label {
+  display: block;
+  padding: 40px 5px 5px 2px;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cbp-mc-form input:not(.button), .cbp-mc-form textarea, .cbp-mc-form select {
+  line-height: 1.5;
+  font-size: 1.4em;
+  padding: 5px 10px;
+  color: black;
+  display: block;
+  width: 100%;
+  background: transparent;
+}
+
+.cbp-mc-form input:not(.button), .cbp-mc-form textarea {
+  border: 0;
+  border-bottom: 1px solid darkslategrey;
+}
+
+.cbp-mc-form textarea {
+  min-height: 200px;
+}
+
+.cbp-mc-form input:focus, .cbp-mc-form textarea:focus, .cbp-mc-form label:active+input, .cbp-mc-form label:active+textarea {
+  outline: none;
+  border: 3px solid darkslategrey;
+}
+
+.cbp-mc-form select:focus {
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #ccc;
+  font-style: italic;
+}
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ccc;
+  font-style: italic;
+}
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ccc;
+  font-style: italic;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #ccc;
+  font-style: italic;
+}
+
+.cbp-mc-submit-wrap {
+  text-align: center;
+  padding-top: 10px;
+  clear: both;
+}
+
+.button {
+  background: transparent;
+  cursor: pointer;
+  color: #012169;
+  padding: 15px 30px;
+  font-size: 1.5em;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  transition: all 0.5s ease-in-out;
+  border: 1px solid #012169;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  -webkit-animation-delay: 2s;
+  animation-delay: 1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;
+}
+
+.button:hover {
+  background: #012169;
+  color: white;
+}
+
+@media screen and (max-width: 70em) {
+  .cbp-mc-column {
+    width: 50%;
+  }
+  .cbp-mc-column:nth-child(3) {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 48em) {
+  .cbp-mc-column {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+.flowchart .box {
+  -webkit-box-shadow: 0px 12px 6px -6px rgba(41, 41, 41, 0.25);
+  -moz-box-shadow: 0px 12px 6px -6px rgba(41, 41, 41, 0.25);
+  box-shadow: 0px 12px 6px -6px rgba(41, 41, 41, 0.25);
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.step2 .animated {
+  position: relative;
+  top: -6px;
+}
+
+.step3 .animated {
+  z-index: -3;
+  position: relative;
+  top: -12px;
+}
+
+.step4 .animated {
+  z-index: 1;
+  position: relative;
+  top: -18px;
+}
+
+.step5 .animated {
+  z-index: -5;
+  position: relative;
+  top: -18px;
+}
+
+.shape {
+  width: 150px;
+  height: 120px;
+  -webkit-transform: skew(20deg);
+  -moz-transform: skew(20deg);
+  -o-transform: skew(20deg);
+  -webkit-box-shadow: 0px 12px 30px -6px rgba(41, 41, 41, 0.25);
+  -moz-box-shadow: 0px 12px 30px -6px rgba(41, 41, 41, 0.25);
+  box-shadow: 0px 12px 30px -6px rgba(41, 41, 41, 0.25);
+  top: 10px;
+  left: 8px;
+  text-align: center;
+}
+
+.shape-1 .shape {
+  background: #1b9af7;
+}
+
+.shape-1 .material-icons {
+  color: #1b9af7;
+}
+
+.shape-2 .shape {
+  background: #ee6a51;
+}
+
+.shape-2 .material-icons {
+  color: #ee6a51;
+}
+
+.shape-3 .shape {
+  background: #068007;
+}
+
+.shape-3 .material-icons {
+  color: #068007;
+}
+
+.shape-4 .shape {
+  top: 15px;
+  background: #098da4;
+}
+
+.shape-5 .shape {
+  background: #81007f;
+}
+
+.shape-4 .material-icons {
+  color: #098da4;
+}
+
+.shape-5 .material-icons {
+  color: #81007f;
+  top: -7px;
+}
+
+.flowchart.number {
+  -webkit-transform: skew(-20deg);
+  -moz-transform: skew(-20deg);
+  -o-transform: skew(-20deg);
+}
+
+.flowchart h1 {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding-top: 8px;
+  transform: scale(2, 3);
+  -webkit-transform: scale(2, 3);
+  -moz-transform: scale(2, 3);
+  -ms-transform: scale(2, 3);
+  -o-transform: scale(2, 3);
+  font-family: "Roboto";
+}
+
+.flowchart .box p {
+  font-weight: 300;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.flowchart h2 {
+  margin: 40px 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;
+}
+
+.md-56 {
+  font-size: 56px;
+}
+
+.flowchart p {
+  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;
+  font-size: 30px;
+}
+
+.col1 {
+  width: 20%
+}
+
+.col2 {
+  width: 60%
+}
+
+.col3 {
+  width: 20%
+}
+
+.step {
+  display: block;
+  position: relative;
+}
+
+.step1 .tooltip {
+  background: #1b9af7;
+}
+
+.step1 .tooltip::after {
+  border-color: #1b9af7 transparent transparent transparent;
+}
+
+.step2 .tooltip {
+  background: #ee6a51;
+}
+
+.step2 .tooltip::after {
+  border-color: #ee6a51 transparent transparent transparent;
+}
+
+.step3 .tooltip {
+  background: #068007;
+}
+
+.step3 .tooltip::after {
+  border-color: #068007 transparent transparent transparent;
+}
+
+.step4 .tooltip {
+  background: #098da4;
+}
+
+.step4 .tooltip::after {
+  border-color: #098da4 transparent transparent transparent;
+}
+
+.step5 .tooltip {
+  background: #81007f;
+}
+
+.step5 .tooltip::after {
+  border-color: #81007f transparent transparent transparent;
+}
+
+/*tooltip */
+
+.tooltip {
+  visibility: hidden;
+  z-index: 1;
+  opacity: .40;
+  width: 50%;
+  padding: 20px;
+  color: white;
+  position: absolute;
+  top: -50px;
+  right: 0;
+  border-radius: 9px;
+  transform: translateY(9px);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 3px rgba(56, 54, 54, 0.86);
+}
+
+/* tooltip  after*/
+
+.tooltip::after {
+  content: " ";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12px 12.5px 0 12.5px;
+  border-color: #333 transparent transparent transparent;
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+}
+
+.step:hover .tooltip, .step:focus .tooltip {
+  visibility: visible;
+  transform: translateY(-10px);
+  opacity: 1;
+  transition: .3s linear;
+}
+
+@media screen and (max-width: 55em) {
+  .home .description {
+    margin: 0 15px;
+    width: calc(100% - 30px);
+  }
+  .tooltip {
+    width: 100% !important;
+  }
+  header h1, header nav {
+    float: none;
+  }
+  header>span, header h1 {
+    text-align: center;
+  }
+  header nav {
+    margin: 0 auto;
+  }
+  header>span {
+    text-indent: 30px;
+  }
+  footer {
+    text-align: center;
+  }
+  .col1 {
+    width: 30%;
+  }
+  .col2 {
+    width: 70%;
+  }
+  .col3 {
+    display: none;
+  }
+}

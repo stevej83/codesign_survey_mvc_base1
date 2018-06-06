@@ -54,6 +54,9 @@
     <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>..\..\..\..\Users\Steve\Desktop\微信支付开发\LitJson.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -111,6 +114,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="ThoughtWorks.QRCode">
+      <HintPath>..\..\..\..\Users\Steve\Desktop\微信支付开发\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -118,6 +124,9 @@
     <Reference Include="Antlr3.Runtime">
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WxPayAPI">
+      <HintPath>..\..\..\..\Users\Steve\Desktop\微信支付开发\WxPayAPI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -166,14 +175,32 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Report\ReportContent.cs" />
+    <Compile Include="WxPayAPI\business\DownloadBill.cs" />
+    <Compile Include="WxPayAPI\business\JsApiPay.cs" />
+    <Compile Include="WxPayAPI\business\MicroPay.cs" />
+    <Compile Include="WxPayAPI\business\NativeNotify.cs" />
+    <Compile Include="WxPayAPI\business\NativePay.cs" />
+    <Compile Include="WxPayAPI\business\OrderQuery.cs" />
+    <Compile Include="WxPayAPI\business\Refund.cs" />
+    <Compile Include="WxPayAPI\business\RefundQuery.cs" />
+    <Compile Include="WxPayAPI\business\ResultNotify.cs" />
+    <Compile Include="WxPayAPI\lib\Config.cs" />
+    <Compile Include="WxPayAPI\lib\Data.cs" />
+    <Compile Include="WxPayAPI\lib\Exception.cs" />
+    <Compile Include="WxPayAPI\lib\HttpService.cs" />
+    <Compile Include="WxPayAPI\lib\Log.cs" />
+    <Compile Include="WxPayAPI\lib\Notify.cs" />
+    <Compile Include="WxPayAPI\lib\WxPayApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\component.css" />
     <Content Include="Content\Site_Images\imgFlow.JPG" />
     <Content Include="Content\Site_Images\imgLanding.png" />
     <Content Include="Content\Site_Images\scanWechat.JPG" />
     <Content Include="Content\Site_Images\scanWechat.png" />
+    <Content Include="Content\Site_Images\wallpaper.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -230,6 +257,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\getWxQRCode.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -239,6 +267,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.qrcode.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -246,6 +275,7 @@
     <Content Include="Scripts\jsdocmain.js" />
     <Content Include="Scripts\jspdfsaver.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr.custom.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config">
@@ -328,10 +358,12 @@
     <Content Include="Views\Surveys\Section4b\S4bPageSum.cshtml" />
     <Content Include="Views\Surveys\Section1\S1PageEnd.cshtml" />
     <Content Include="Views\Surveys\Section2\S2PageEnd.cshtml" />
+    <Content Include="WxPayAPI\cert\apiclient_cert.p12" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="WxPayAPI\imgs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

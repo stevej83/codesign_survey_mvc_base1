@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Globalization;
+using System.Diagnostics;
+using Microsoft.ApplicationInsights.Extensibility;
 
 namespace SurveyMVCBase1
 {
@@ -34,6 +36,15 @@ namespace SurveyMVCBase1
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        /// <summary>
+        /// Disables the application insights locally.
+        /// </summary>
+        [Conditional("DEBUG")]
+        private static void DisableApplicationInsightsOnDebug()
+        {
+            TelemetryConfiguration.Active.DisableTelemetry = true;
         }
 
     }

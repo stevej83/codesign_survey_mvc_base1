@@ -1,144 +1,219 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+body, html {
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists
-   will truncate terms that are too long to fit in the left column
-*/
-.dl-horizontal dt {
-    white-space: normal;
+
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.clearfix:after {
+    clear: both;
 }
 
-.jumbotron2 {
-    padding: 0 30px 30px 30px;
-    font-weight: 200;
-    line-height: 2.1428571435;
-    color: inherit;
-    background-color: #ffffff;
-    display: table-cell;
+body {
+    font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;
+    color: black;
+    background: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #000;
+    }
+
+.home .background {
+    background: url("Site_Images/wallpaper.png") center no-repeat;
+    background-size: cover;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+header {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2.875em 1.875em 1.875em;
+    background: #012169;
+    text-align: center;
+    color: white;
+}
+
+    header h1 {
+        font-size: 2.125em;
+        line-height: 1.3;
+        margin: 0 0 0.6em 0;
+        font-weight: 400;
+    }
+
+    header > span {
+        display: block;
+        position: relative;
+        z-index: 9999;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5em;
+        padding: 0 0 0.6em 0.1em;
+    }
+
+        header > span span:after {
+            width: 30px;
+            height: 30px;
+            left: -12px;
+            font-size: 50%;
+            top: -8px;
+            font-size: 75%;
+            position: relative;
+        }
+
+        header > span span:hover:before {
+            content: attr(data-content);
+            text-transform: none;
+            text-indent: 0;
+            letter-spacing: 0;
+            font-weight: 300;
+            font-size: 110%;
+            padding: 0.8em 1em;
+            line-height: 1.2;
+            text-align: left;
+            left: auto;
+            margin-left: 4px;
+            position: absolute;
+            color: #47a3da;
+            background: #fff;
+        }
+
+    header nav {
+        float: right;
+        text-align: center;
+    }
+
+        header nav a {
+            display: inline-block;
+            position: relative;
+            text-align: left;
+            width: 2.5em;
+            height: 2.5em;
+            background: #47a3da;
+            border-radius: 50%;
+            margin: 0 0.1em;
+            border: 4px solid #fff;
+        }
+
+            header nav a > span {
+                display: none;
+            }
+
+            header nav a:hover:before {
+                content: attr(data-info);
+                color: #fff;
+                position: absolute;
+                width: 600%;
+                top: 120%;
+                text-align: right;
+                right: 0;
+                pointer-events: none;
+            }
+
+            header nav a:hover {
+                background: #fff;
+            }
+
+
+                header nav a:hover:after {
+                    color: #47a3da;
+                }
+
+.main {
+    width: 100%;
+    padding: 0 2em 3em;
+    max-width: 100em;
+}
+
+footer {
+    padding: 30px;
+    font-size: 10px;
+    background: #012169;
+    color: white;
+    text-align: right;
+}
+
+.home {
+    width: 100%;
+}
+
+    .home img {
+        margin-top: 50px;
+    }
+
+    .home .description {
+        text-align: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 30%;
+        width: 50%;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 4%;
+        border-radius: 5px;
+        font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;
+    }
+
+.description h1 {
+    letter-spacing: 5px;
+}
+
+.center {
     text-align: center;
 }
 
-    .jumbotron2 h2 {
-        font-size: 26px;
-        line-height: 2;
-        color: inherit;
-    }
-
-    .jumbotron2 p {
-        text-align: left;
-        font-size: 16px;
-        line-height: 1.4;
-    }
-
-.container .jumbotron2 {
-    border-radius: 6px;
+.flowchart .container {
+    margin-top: 3em;
+    margin-bottom: 3em;
 }
 
-@media screen and (min-width: 768px) {
-    .jumbotron2 {
-        padding-top: 0;
-        padding-bottom: 48px;
-    }
+.flowchart .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
 
-    .container .jumbotron2 {
-        padding-right: 60px;
-        padding-left: 60px;
-    }
+@media (min-width: 768px) {
 
-    .jumbotron2 h1 {
-        font-size: 63px;
+    .flowchart .container {
+        width: 750px;
     }
 }
 
-.navbar-color-S1 {
-    background-color: #1B9AF7;
-    border-color: #1B9AF7;
+@media (min-width: 992px) {
+    .flowchart .container {
+        width: 970px;
+    }
 }
 
-.button-S1 {
-    background-color: #1B9AF7;
-    color: #FFFFFF;
-    font-weight: 800;
-    width: 120px;
+@media (min-width: 1200px) {
+    .flowchart .container {
+        width: 1170px;
+    }
 }
 
-.navbar-color-S2 {
-    background-color: #EE6A50;
-    border-color: #EE6A50;
-}
-
-.button-S2 {
-    background-color: #EE6A50;
-    color: #FFFFFF;
-    font-weight: 800;
-    width: 120px;
-}
-
-.navbar-color-S3 {
-    background-color: #008000;
-    border-color: #008000;
-}
-
-.button-S3 {
-    background-color: #008000;
-    color: #FFFFFF;
-    font-weight: 800;
-    width: 120px;
-}
-
-.navbar-color-S4a {
-    background-color: #088DA5;
-    border-color: #088DA5;
-}
-
-.button-S4a {
-    background-color: #088DA5;
-    color: #FFFFFF;
-    font-weight: 800;
-    width: 120px;
-}
-
-.button-S4a-section {
-    background-color: #088DA5;
-    color: #FFFFFF;
-    font-weight: 800;
-    width: 220px;
-    display: block;
-    margin-bottom: 6px;
-
-}
-
-.navbar-color-S4b {
-    background-color: #800080;
-    border-color: #800080;
-}
-
-.button-S4b {
-    background-color: #800080;
-    color: #FFFFFF;
-    font-weight: 800;
-    width: 120px;
-}
-
-.button-S4b-section {
-    background-color: #800080;
-    color: #FFFFFF;
-    font-weight: 800;
-    width: 220px;
-    display: block;
+.colFull {
+    width: 100%;
 }

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SurveyMVCBase1.Models.Survey>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="jumbotron2">
+        <h2>企业家移民咨询测试</h2>
+        <img src="@Url.Content("~/Content/Site_Images/imgLanding.png")" style="max-width: 100%; height: auto;" alt="landing image" />
+        <div style="margin-top: 15px;">
+            <p>tear 企业家移民咨询测试 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac dolor sed justo vestibulum tempus vel quis massa. Quisque at enim in felis ultricies tincidunt nec at lectus.</p>
+
+            <!-- 微信支付 二维码测试 开始 -->
+            <!--br />
+            <p>QRCode1 start</p>
+            <div id="QRCode1">
+            
+            </div>
+            <p>QRCode1 end</p>
+            <br />
+            <!-- 微信支付 二维码测试 结束 -->
+        </div>
+        @Html.ActionLink("开始", "Workflow", null, new { @class = "btn btn-default" })
+    </div>
+</div>
+

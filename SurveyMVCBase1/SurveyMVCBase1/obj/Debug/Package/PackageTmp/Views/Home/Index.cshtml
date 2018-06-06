@@ -9,8 +9,47 @@
     <div class="col-md-4">
         <h2>企业家移民咨询测试</h2>
         <img href="@Url.Content("~/Images/imgLanding.png")" alt="Landing Image" />
+        
+        <!-- 微信支付 二维码测试 开始 -->
+        <br />
+
+        <div id="QRCode1">
+        </div>
+
+        <script type="text/javascript">
+        $(function () {
+            fGetQRCode1();
+        })
+        function fGetQRCode1() {
+            $.messager.progress({
+                title: "",
+                msg: "正在生成二维码:模式一,请稍后..."
+            });
+            $.ajax({
+                type: "post",
+                url: "/Home/GetQRCode1",
+                data: {
+                    time: new Date(),
+                    productId:7788
+                },
+                success: function (json) {
+                    $.messager.progress('close');//记得关闭
+                    if (json.result) {
+                        $('#QRCode1').qrcode(json.str); //生成二维码
+                    }
+                    else {
+                        $('#QRCode1').html("二维码生成失败");
+                    }
+                }
+            })
+        }
+        </script>
+
+        <br />
+        <!-- 微信支付 二维码测试 结束 -->
+        
         <p>
-            企业家移民咨询测试 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac dolor sed justo vestibulum tempus vel quis massa. Quisque at enim in felis ultricies tincidunt nec at lectus.
+            test 企业家移民咨询测试 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac dolor sed justo vestibulum tempus vel quis massa. Quisque at enim in felis ultricies tincidunt nec at lectus.
         </p>
     </div>
     <!--div class="col-md-4">

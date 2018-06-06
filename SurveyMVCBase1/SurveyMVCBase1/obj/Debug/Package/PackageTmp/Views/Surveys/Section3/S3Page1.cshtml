@@ -5,145 +5,216 @@
     ViewBag.Title = "S3Page1";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("S3Page1", "Surveys", FormMethod.Post, new { @class = "cbp-mc-form" }))
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.SurveyID)
+    <div class="cbp-mc-column">
+        <label>英国的 VAT 税率是多少？</label>
+        @{
+            List<SelectListItem> S3Q1AnswerListItems = new List<SelectListItem>();
+            S3Q1AnswerListItems.Add(new SelectListItem
+            {
+                Text = "20%",
+                Value = "20pct"
+            });
+            S3Q1AnswerListItems.Add(new SelectListItem
+            {
+                Text = "17%",
+                Value = "17pct"
+            });
+            S3Q1AnswerListItems.Add(new SelectListItem
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.HiddenFor(model => model.SurveyID)
+            {
+                Text = "14%",
+                Value = "14pct"
+            });
+        }
+        @Html.DropDownListFor(model => model.S3Q1Answer, S3Q1AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.S3Q1Answer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @{
-                    List<SelectListItem> S3Q1AnswerListItems = new List<SelectListItem>();
-                    S3Q1AnswerListItems.Add(new SelectListItem
-                    {
-                        Text = "20%",
-                        Value = "20pct"
-                    });
-                    S3Q1AnswerListItems.Add(new SelectListItem
-                    {
-                        Text = "17%",
-                        Value = "17pct"
-                    });
-                    S3Q1AnswerListItems.Add(new SelectListItem
+        <label>在英国开公司需要买保险吗？</label>
+        @{
+            List<SelectListItem> S3Q2AnswerListItems = new List<SelectListItem>();
+            S3Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "YES",
+                Value = "yes"
+            });
+            S3Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "NO",
+                Value = "no"
+            });
+        }
+        @Html.DropDownListFor(model => model.S3Q2Answer, S3Q2AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-                    {
-                        Text = "14%",
-                        Value = "14pct"
-                    });
-                }
-                @Html.DropDownListFor(model => model.S3Q1Answer, S3Q1AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
-            </div>
-        </div>
+        <label>对于一个28岁的员工来说，他的最低薪水是每小时多少钱？</label>
+        @{
+            List<SelectListItem> S3Q3AnswerListItems = new List<SelectListItem>();
+            S3Q3AnswerListItems.Add(new SelectListItem
+            {
+                Text = "7.50",
+                Value = "7.50"
+            });
+            S3Q3AnswerListItems.Add(new SelectListItem
+            {
+                Text = "8.00",
+                Value = "8.00"
+            });
+            S3Q3AnswerListItems.Add(new SelectListItem
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.S3Q2Answer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @{
-                    List<SelectListItem> S3Q2AnswerListItems = new List<SelectListItem>();
-                    S3Q2AnswerListItems.Add(new SelectListItem
-                    {
-                        Text = "YES",
-                        Value = "yes"
-                    });
-                    S3Q2AnswerListItems.Add(new SelectListItem
-                    {
-                        Text = "NO",
-                        Value = "no"
-                    });
-                }
-                @Html.DropDownListFor(model => model.S3Q2Answer, S3Q2AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
-            </div>
-        </div>
+            {
+                Text = "6.50",
+                Value = "6.50"
+            });
+        }
+        @Html.DropDownListFor(model => model.S3Q3Answer, S3Q3AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.S3Q3Answer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @{
-                    List<SelectListItem> S3Q3AnswerListItems = new List<SelectListItem>();
-                    S3Q3AnswerListItems.Add(new SelectListItem
-                    {
-                        Text = "7.50",
-                        Value = "7.50"
-                    });
-                    S3Q3AnswerListItems.Add(new SelectListItem
-                    {
-                        Text = "8.00",
-                        Value = "8.00"
-                    });
-                    S3Q3AnswerListItems.Add(new SelectListItem
+        <label>聘请一位有3年工作经验的项目开发经理需要支付多少薪水？</label>
+        @{
+            List<SelectListItem> S3Q4AnswerListItems = new List<SelectListItem>();
+            S3Q4AnswerListItems.Add(new SelectListItem
+            {
+                Text = "15K",
+                Value = "15k"
+            });
+            S3Q4AnswerListItems.Add(new SelectListItem
+            {
+                Text = "25K",
+                Value = "25k"
+            });
+            S3Q4AnswerListItems.Add(new SelectListItem
 
-                    {
-                        Text = "6.50",
-                        Value = "6.50"
-                    });
-                }
-                @Html.DropDownListFor(model => model.S3Q3Answer, S3Q3AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
-            </div>
-        </div>
+            {
+                Text = "50K",
+                Value = "50k"
+            });
+        }
+        @Html.DropDownListFor(model => model.S3Q4Answer, S3Q4AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.S3Q4Answer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @{
-                    List<SelectListItem> S3Q4AnswerListItems = new List<SelectListItem>();
-                    S3Q4AnswerListItems.Add(new SelectListItem
-                    {
-                        Text = "15K",
-                        Value = "15k"
-                    });
-                    S3Q4AnswerListItems.Add(new SelectListItem
-                    {
-                        Text = "25K",
-                        Value = "25k"
-                    });
-                    S3Q4AnswerListItems.Add(new SelectListItem
+        <label>在伦敦市中心 zone1 范围内可供4人用的办公室一个月的租金是多少钱？</label>
+        @{
+            List<SelectListItem> S3Q5AnswerListItems = new List<SelectListItem>();
+            S3Q5AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1K",
+                Value = "1k"
+            });
+            S3Q5AnswerListItems.Add(new SelectListItem
+            {
+                Text = "2K",
+                Value = "2k"
+            });
+            S3Q5AnswerListItems.Add(new SelectListItem
 
-                    {
-                        Text = "50K",
-                        Value = "50k"
-                    });
-                }
-                @Html.DropDownListFor(model => model.S3Q4Answer, S3Q4AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.S3Q5Answer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @{
-                    List<SelectListItem> S3Q5AnswerListItems = new List<SelectListItem>();
-                    S3Q5AnswerListItems.Add(new SelectListItem
-                    {
-                        Text = "1K",
-                        Value = "1k"
-                    });
-                    S3Q5AnswerListItems.Add(new SelectListItem
-                    {
-                        Text = "2K",
-                        Value = "2k"
-                    });
-                    S3Q5AnswerListItems.Add(new SelectListItem
-
-                    {
-                        Text = "5K",
-                        Value = "5k"
-                    });
-                }
-                @Html.DropDownListFor(model => model.S3Q5Answer, S3Q5AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="继续" class="btn btn-default button-S3" />
-            </div>
-        </div>
+            {
+                Text = "5K",
+                Value = "5k"
+            });
+        }
+        @Html.DropDownListFor(model => model.S3Q5Answer, S3Q5AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
     </div>
-                    }
+    <div class="cbp-mc-column">
+        <label>员工年收入两万四千英镑需要缴纳的所得税占工资的比例是多少？</label>
+        @{
+            List<SelectListItem> S3Q6AnswerListItems = new List<SelectListItem>();
+            S3Q6AnswerListItems.Add(new SelectListItem
+            {
+                Text = "20%",
+                Value = "20pct"
+            });
+            S3Q6AnswerListItems.Add(new SelectListItem
+            {
+                Text = "25%",
+                Value = "25pct"
+            });
+            S3Q6AnswerListItems.Add(new SelectListItem
+
+            {
+                Text = "28%",
+                Value = "28pct"
+            });
+        }
+        @Html.DropDownListFor(model => model.S3Q6Answer, S3Q6AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+
+        <label>您是否有独立的金融咨询代表或机构的协助？</label>
+        @{
+            List<SelectListItem> S3Q7AnswerListItems = new List<SelectListItem>();
+            S3Q7AnswerListItems.Add(new SelectListItem
+            {
+                Text = "YES",
+                Value = "yes"
+            });
+            S3Q7AnswerListItems.Add(new SelectListItem
+            {
+                Text = "NO",
+                Value = "no"
+            });
+        }
+        @Html.DropDownListFor(model => model.S3Q7Answer, S3Q7AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+
+        <label>聘请使用会计服务的普遍价位是多少？</label>
+        @{
+            List<SelectListItem> S3Q8AnswerListItems = new List<SelectListItem>();
+            S3Q8AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1000",
+                Value = "1000"
+            });
+            S3Q8AnswerListItems.Add(new SelectListItem
+            {
+                Text = "2000",
+                Value = "2000"
+            });
+            S3Q8AnswerListItems.Add(new SelectListItem
+
+            {
+                Text = "3000",
+                Value = "3000"
+            });
+        }
+        @Html.DropDownListFor(model => model.S3Q8Answer, S3Q8AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+
+        <label>每年作为中小企业雇主自由保险费用多少？</label>
+        @{
+            List<SelectListItem> S3Q9AnswerListItems = new List<SelectListItem>();
+            S3Q9AnswerListItems.Add(new SelectListItem
+            {
+                Text = "500",
+                Value = "500"
+            });
+            S3Q9AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1000",
+                Value = "1000"
+            });
+            S3Q9AnswerListItems.Add(new SelectListItem
+
+            {
+                Text = "2000",
+                Value = "2000"
+            });
+        }
+        @Html.DropDownListFor(model => model.S3Q9Answer, S3Q9AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+
+        <label>你理解董事和股东之间的区别吗？</label>
+        @{
+            List<SelectListItem> S3Q10AnswerListItems = new List<SelectListItem>();
+            S3Q10AnswerListItems.Add(new SelectListItem
+            {
+                Text = "YES",
+                Value = "yes"
+            });
+            S3Q10AnswerListItems.Add(new SelectListItem
+            {
+                Text = "NO",
+                Value = "no"
+            });
+        }
+        @Html.DropDownListFor(model => model.S3Q10Answer, S3Q10AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+    </div>
+    <div class="cbp-mc-submit-wrap"><input class="button" type="submit" value="继续" /></div>
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

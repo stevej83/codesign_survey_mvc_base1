@@ -1,13 +1,12 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
-</head>
-<body>
-    <hgroup>
-        <h1>Error.</h1>
-        <h2>@Session["error"]</h2>
-    </hgroup>
-</body>
-</html>
+﻿@{
+    ViewBag.Title = "Error - seesion out";
+}
+
+<h2>页面错误</h2>
+
+<p>错误信息：</p>
+<p>@Session["error"]</p>
+
+<p>
+    @Html.ActionLink("back to index", "Index")
+</p>
