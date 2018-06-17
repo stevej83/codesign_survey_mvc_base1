@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout_S2.cshtml";
-    ViewBag.Title = "S2Page1";
+    ViewBag.Title = "签证知识测试";
 }
 
 @using (Html.BeginForm("S2Page1", "Surveys", FormMethod.Post, new { @class = "cbp-mc-form" }))
@@ -49,18 +49,18 @@
         }
         @Html.DropDownListFor(model => model.S2Q2Answer, S2Q2AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>您的英文水平？</label>
+        <label>对您的英文要求？</label>
         @{
             List<SelectListItem> S2Q3AnswerListItems = new List<SelectListItem>();
             S2Q3AnswerListItems.Add(new SelectListItem
             {
-                Text = "雅思 4 分以上",
-                Value = "ielts4"
+                Text = "雅思 4 分以下",
+                Value = "lessthanielts4"
             });
             S2Q3AnswerListItems.Add(new SelectListItem
             {
-                Text = "雅思 5 分以上",
-                Value = "ielts5"
+                Text = "雅思 4 分以上（包括 4 分）",
+                Value = "ielts4orabove"
             });
         }
         @Html.DropDownListFor(model => model.S2Q3Answer, S2Q3AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
@@ -70,23 +70,23 @@
             List<SelectListItem> S2Q4AnswerListItems = new List<SelectListItem>();
             S2Q4AnswerListItems.Add(new SelectListItem
             {
-                Text = "200K",
+                Text = "20万",
                 Value = "200k"
             });
             S2Q4AnswerListItems.Add(new SelectListItem
             {
-                Text = "100K",
+                Text = "10万",
                 Value = "100k"
             });
             S2Q4AnswerListItems.Add(new SelectListItem
             {
-                Text = "50K",
+                Text = "5万",
                 Value = "50k"
             });
         }
         @Html.DropDownListFor(model => model.S2Q4Answer, S2Q4AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>企业家移民签证的限制是？</label>
+        <label>企业家移民签证的主申请人是否可以为他人工作？</label>
         @{
             List<SelectListItem> S2Q5AnswerListItems = new List<SelectListItem>();
             S2Q5AnswerListItems.Add(new SelectListItem
@@ -124,7 +124,7 @@
             List<SelectListItem> S2Q7AnswerListItems = new List<SelectListItem>();
             S2Q7AnswerListItems.Add(new SelectListItem
             {
-                Text = "100 左右",
+                Text = "200 左右",
                 Value = "100"
             });
             S2Q7AnswerListItems.Add(new SelectListItem
@@ -172,12 +172,12 @@
         }
         @Html.DropDownListFor(model => model.S2Q9Answer, S2Q9AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>资金证明的主要要求是什么？</label>
+        <label>资金证明信的主要要求是什么？</label>
         @{
             List<SelectListItem> S2Q10AnswerListItems = new List<SelectListItem>();
             S2Q10AnswerListItems.Add(new SelectListItem
             {
-                Text = "超过 200K 英镑",
+                Text = "超过20万英镑",
                 Value = "200k"
             });
             S2Q10AnswerListItems.Add(new SelectListItem
@@ -187,7 +187,7 @@
             });
             S2Q10AnswerListItems.Add(new SelectListItem
             {
-                Text = "持续 3 个月",
+                Text = "资金在银行户头超过3个月",
                 Value = "3months"
             });
         }

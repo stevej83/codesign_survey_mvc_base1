@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout_S4b.cshtml";
-    ViewBag.Title = "S4bPage1 - 英国创业项目测试 - 加入创业";
+    ViewBag.Title = "加入创业 1/2";
 }
 @using (Html.BeginForm("S4bPage1", "Surveys", FormMethod.Post, new { @class = "cbp-mc-form" }))
 {
@@ -10,7 +10,7 @@
     @Html.HiddenFor(model => model.SurveyID)
 
     <div class="cbp-mc-column">
-        <label>1. 进入英国的目的是什么？</label>
+        <label>1. 本测试涉及的英国签证类型是什么？</label>
         @Html.EditorFor(model => model.S4bQ1Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
         <label>2. 提交的什么签证？</label>
@@ -46,14 +46,14 @@
         <label>12. 加入企业现有股东几个？董事几个？持股比例分别是多少？</label>
         @Html.TextAreaFor(model => model.S4bQ12Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>13. 办公地点的邮政编码是什么？</label>
+        <label>13. 经营场所的邮政编码是什么？</label>
         @Html.EditorFor(model => model.S4bQ13Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
     </div>
     <div class="cbp-mc-column">
-        <label>14. 办公地点租金一年多少钱？</label>
+        <label>14. 经营场所租金一年多少钱？</label>
         @Html.EditorFor(model => model.S4bQ14Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>15. 是否去过计划加入的企业？</label>
+        <label>15. 招聘方法是什么？从哪里招聘？</label>
         @{
             List<SelectListItem> S4bQ15AnswerListItems = new List<SelectListItem>();
             S4bQ15AnswerListItems.Add(new SelectListItem
@@ -69,7 +69,7 @@
         }
         @Html.DropDownListFor(model => model.S4bQ15Answer, S4bQ15AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>16. 加入的企业目前负责人是谁？职位是什么？</label>
+        <label>16. 招聘成本是多少钱？</label>
         @Html.EditorFor(model => model.S4bQ16Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
         <label>17. 加入的企业负责人的基本背景是什么？</label>
@@ -81,8 +81,67 @@
         <label>19. 企业目前现有员工多少人？</label>
         @Html.EditorFor(model => model.S4bQ19Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>20. 企业成立时间？</label>
-        @Html.TextBoxFor(model => model.S4bQ20Answer, new { id = "datepicker", @class = "form-control", placeholder = "请填写生日", @title = "请填写生日", @required = true, @oninvalid = "this.setCustomValidity('请填写生日')", @onSelect = "setCustomValidity('')" })
+        <label>20. 企业成立年份？</label>
+        @{
+            List<SelectListItem> S4bQ20AnswerListItems = new List<SelectListItem>();
+            S4bQ20AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1970或更早",
+                Value = "1970orealier"
+                //Selected = true
+            });
+            S4bQ20AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1971 - 1975",
+                Value = "1971 - 1975"
+            });
+            S4bQ20AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1976 - 1980",
+                Value = "1976 - 1980"
+            });
+            S4bQ20AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1981 - 1985",
+                Value = "1981 - 1985"
+            });
+            S4bQ20AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1986 - 1990",
+                Value = "1986 - 1990"
+            });
+            S4bQ20AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1991 - 1995",
+                Value = "1991 - 1995"
+            });
+            S4bQ20AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1996 - 2000",
+                Value = "1996 - 2000"
+            });
+            S4bQ20AnswerListItems.Add(new SelectListItem
+            {
+                Text = "2001 - 2005",
+                Value = "2001 - 2005"
+            });
+            S4bQ20AnswerListItems.Add(new SelectListItem
+            {
+                Text = "2006 - 2010",
+                Value = "2006 - 2010"
+            });
+            S4bQ20AnswerListItems.Add(new SelectListItem
+            {
+                Text = "2011 - 2015",
+                Value = "2011 - 2015"
+            });
+            S4bQ20AnswerListItems.Add(new SelectListItem
+            {
+                Text = "2016或之后",
+                Value = "2016orlater"
+            });
+        }
+        @Html.DropDownListFor(model => model.S4bQ20Answer, S4bQ20AnswerListItems, "-- 请选择企业成立年份 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
         <label>21. 企业过去两年的营业额及利润率是多少？</label>
         @Html.EditorFor(model => model.S4bQ21Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })

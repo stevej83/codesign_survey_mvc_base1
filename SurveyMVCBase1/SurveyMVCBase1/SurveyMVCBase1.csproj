@@ -200,7 +200,9 @@
     <Content Include="Content\Site_Images\imgLanding.png" />
     <Content Include="Content\Site_Images\scanWechat.JPG" />
     <Content Include="Content\Site_Images\scanWechat.png" />
+    <Content Include="Content\Site_Images\site_logo.png" />
     <Content Include="Content\Site_Images\wallpaper.png" />
+    <Content Include="Content\Site_Images\zyqyjxh_logo.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -360,6 +362,8 @@
     <Content Include="Views\Surveys\Section1\S1PageEnd.cshtml" />
     <Content Include="Views\Surveys\Section2\S2PageEnd.cshtml" />
     <Content Include="WxPayAPI\cert\apiclient_cert.p12" />
+    <Content Include="Views\Surveys\Data.cshtml" />
+    <Content Include="Views\Shared\_Layout_Data.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

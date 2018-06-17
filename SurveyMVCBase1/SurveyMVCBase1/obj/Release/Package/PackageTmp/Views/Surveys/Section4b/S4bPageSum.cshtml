@@ -2,20 +2,156 @@
 
 @{
     Layout = "~/Views/Shared/_Layout_S4b.cshtml";
-    ViewBag.Title = "S4bPageSum";
+    ViewBag.Title = "报告总结";
 }
 
 <div id="target">
 <h2>测试已完成，感谢您的参与</h2>
 <p>&nbsp;</p>
 <p>测试 1 - 3 得分：</p>
-<p>您的基本信息测试得分是 @ViewBag.Section1Score 分 (满分70分)</p>
+<p>您的基本信息测试得分是 @ViewBag.Section1Score 分 (满分80分)</p>
 <p>您的签证知识测试得分是 @ViewBag.Section2Score 分 (满分100分)</p>
 <p>您的英国商业知识测试得分是 @ViewBag.Section3Score 分 (满分100分)</p>
 <p>&nbsp;</p>
 <p>测试总结和建议：</p>
 <p>@ViewBag.Section3Message</p>
+    <p>&nbsp;</p>
+    <p>以下是您的测试记录，您可以在页面下方点击生成报告并保存在本地硬盘以便参考。如需帮助请关注我们的公众号或发邮件将您的测试记录以附件形式一起发给我们，我们会帮助您解答相关问题：</p>
+    <p>&nbsp;</p>
+    <h3>基本信息测试 (@ViewBag.Section1Score/80):</h3>
+    <p>姓名: @ViewBag.Section1Question1Anwser</p>
+    <p>出生年份: @ViewBag.Section1Question2Anwser</p>
+    <p>取得本科学位的国家: @ViewBag.Section1Question3Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section1Question3AnwserMessage<p>
+    <p>本科院校: @ViewBag.Section1Question4Anwser</p>
+    <p>本科专业: @ViewBag.Section1Question5Anwser</p>
+    <p>取得硕士学位的国家: @ViewBag.Section1Question6Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section1Question6AnwserMessage</p>
+    <p>硕士院校: @ViewBag.Section1Question7Anwser</p>
+    <p>硕士专业: @ViewBag.Section1Question8Anwser</p>
+    <p>取得博士学位的国家: @ViewBag.Section1Question9Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section1Question9AnwserMessage</p>
+    <p>博士院校: @ViewBag.Section1Question10Anwser</p>
+    <p>博士专业: @ViewBag.Section1Question11Anwser</p>
+    <p>现/最近工作单位: @ViewBag.Section1Question12Anwser</p>
+    <p>工作经验: @ViewBag.Section1Question13Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section1Question13AnwserMessage</p>
+    <p>工作是否与英国相关: @ViewBag.Section1Question14Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section1Question14AnwserMessage</p>
+    <p>工作职位: @ViewBag.Section1Question15Anwser</p>
+    <p>在英国停留累计实时间: @ViewBag.Section1Question16Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section1Question16AnwserMessage</p>
+    <p>电话: @ViewBag.Section1Question17Anwser</p>
+    <p>邮箱: @ViewBag.Section1Question18Anwser</p>
+    <p>微信号: @ViewBag.Section1Question19Anwser</p>
+    <h3>签证知识测试 (@ViewBag.Section2Score/100):</h3>
+    <p>您申请企业家移民的主要目的是: @ViewBag.Section2Question1Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section2Question1AnwserMessage<p>
+    <p>我可以与其它人以合伙人的方式申请签证吗: @ViewBag.Section2Question2Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section2Question2AnwserMessage<p>
+    <p>对您的英文要求: @ViewBag.Section2Question3Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section2Question3AnwserMessage<p>
+    <p>企业家移民要求的最低投资金额是多少？(以英镑位单位): @ViewBag.Section2Question4Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section2Question4AnwserMessage<p>
+    <p>企业家移民签证的主申请人是否可以为他人工作: @ViewBag.Section2Question5Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section2Question5AnwserMessage<p>
+    <p>我可以带家人来英国吗: @ViewBag.Section2Question6Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section2Question6AnwserMessage<p>
+    <p>您知道2017年有多少来自中国的企业家移民申请被接受吗: @ViewBag.Section2Question7Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section2Question7AnwserMessage<p>
+    <p>我可以加入一家现有的企业吗: @ViewBag.Section2Question8Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section2Question8AnwserMessage<p>
+    <p>3年内需要雇佣多少员工才能符合续签的要求: @ViewBag.Section2Question9Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section2Question9AnwserMessage<p>
+    <p>资金证明信的主要要求是什么: @ViewBag.Section2Question10Anwser</p>
+    <p class="greenFont">反馈: <p>
+    <h3>英国商业知识测试 (@ViewBag.Section3Score/100):</h3>
+    <p>您申请企业家移民的主要目的是: @ViewBag.Section3Question1Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section3Question1AnwserMessage<p>
+    <p>我可以与其它人以合伙人的方式申请签证吗: @ViewBag.Section3Question2Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section3Question2AnwserMessage<p>
+    <p>对您的英文要求: @ViewBag.Section3Question3Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section3Question3AnwserMessage<p>
+    <p>企业家移民要求的最低投资金额是多少？(以英镑位单位): @ViewBag.Section3Question4Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section3Question4AnwserMessage<p>
+    <p>企业家移民签证的主申请人是否可以为他人工作: @ViewBag.Section3Question5Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section3Question5AnwserMessage<p>
+    <p>我可以带家人来英国吗: @ViewBag.Section3Question6Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section3Question6AnwserMessage<p>
+    <p>您知道2017年有多少来自中国的企业家移民申请被接受吗: @ViewBag.Section3Question7Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section3Question7AnwserMessage<p>
+    <p>我可以加入一家现有的企业吗: @ViewBag.Section3Question8Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section3Question8AnwserMessage<p>
+    <p>3年内需要雇佣多少员工才能符合续签的要求: @ViewBag.Section3Question9Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section3Question9AnwserMessage<p>
+    <p>资金证明信的主要要求是什么: @ViewBag.Section3Question10Anwser</p>
+    <p class="greenFont">反馈: @ViewBag.Section3Question10AnwserMessage<p>
+    <h3>加入创业测试:</h3>
+    <p>1. 本测试涉及的英国签证类型是什么？: @ViewBag.Section4bQuestion1Anwser</p>
+    <p>2. 提交的什么签证？: @ViewBag.Section4bQuestion2Anwser</p>
+    <p>3. 为什么提交这个签证？: @ViewBag.Section4bQuestion3Anwser</p>
+    <p>4. 为什么在英国创业？是否考虑过其他国家市场？: @ViewBag.Section4bQuestion4Anwser</p>
+    <p>5. 现有企业的商业模式是什么？: @ViewBag.Section4bQuestion5Anwser</p>
+    <p>6. 商业短期，中期，长期的发展规划，目标是什么？: @ViewBag.Section4bQuestion6Anwser</p>
+    <p>7. 有没有做过市场调查？调查方式是什么？: @ViewBag.Section4bQuestion7Anwser</p>
+    <p>8. 市场调查的结果是什么？: @ViewBag.Section4bQuestion8Anwser</p>
+    <p>9. 为什么要加入一个企业创业？: @ViewBag.Section4bQuestion9Anwser</p>
+    <p>10. 加入的企业叫什么名字？: @ViewBag.Section4bQuestion10Anwser</p>
+    <p>11. 如何找到的加入企业？: @ViewBag.Section4bQuestion11Anwser</p>
+    <p>12. 加入企业现有股东几个？董事几个？持股比例分别是多少？: @ViewBag.Section4bQuestion12Anwser</p>
+    <p>13. 经营场所的邮政编码是什么？: @ViewBag.Section4bQuestion13Anwser</p>
+    <p>14. 经营场所租金一年多少钱？: @ViewBag.Section4bQuestion14Anwser</p>
+    <p>15. 招聘方法是什么？从哪里招聘？: @ViewBag.Section4bQuestion15Anwser</p>
+    <p>16. 招聘成本是多少钱？: @ViewBag.Section4bQuestion16Anwser</p>
+    <p>17. 加入的企业负责人的基本背景是什么？: @ViewBag.Section4bQuestion17Anwser</p>
+    <p>18. 是否见过负责人，上一次见是什么时候？交谈内容主要是什么？: @ViewBag.Section4bQuestion18Anwser</p>
+    <p>19. 企业目前现有员工多少人？: @ViewBag.Section4bQuestion19Anwser</p>
+    <p>20. 企业成立年份？: @ViewBag.Section4bQuestion20Anwser</p>
+    <p>21. 企业过去两年的营业额及利润率是多少？: @ViewBag.Section4bQuestion21Anwser</p>
+    <p>22. 如果亏损，为什么要投资一个现在亏损的企业？: @ViewBag.Section4bQuestion22Anwser</p>
+    <p>23. 如果盈利，企业为什么吸收你的20万英镑投资？: @ViewBag.Section4bQuestion23Anwser</p>
+    <p>24. 投资20万英镑，你占有的股份比例是多少？: @ViewBag.Section4bQuestion24Anwser</p>
+    <p>25. 如果是董事借款，借款的条款是什么？: @ViewBag.Section4bQuestion25Anwser</p>
+    <p>26. 如果是股份比例，为什么占有这个比例？: @ViewBag.Section4bQuestion26Anwser</p>
+    <p>27. 企业的估值方法是什么？: @ViewBag.Section4bQuestion27Anwser</p>
+    <p>28. 你加入企业后，主要负责什么，主要职位是什么？: @ViewBag.Section4bQuestion28Anwser</p>
+    <p>29. 加入企业后，你是否有工资？如果有，多少钱？: @ViewBag.Section4bQuestion29Anwser</p>
+    <p>30. 是否打算新增雇佣员工？: @ViewBag.Section4bQuestion30Anwser</p>
+    <p>31. 什么时候计划雇佣新员工？: @ViewBag.Section4bQuestion31Anwser</p>
+    <p>32. 雇佣的员工职位是什么？: @ViewBag.Section4bQuestion32Anwser</p>
+    <p>33. 招聘的标准是什么？: @ViewBag.Section4bQuestion33Anwser</p>
+    <p>34. 招聘方法是什么？从哪里招聘？: @ViewBag.Section4bQuestion34Anwser</p>
+    <p>35. 招聘成本是多少钱？: @ViewBag.Section4bQuestion35Anwser</p>
+    <p>36. 雇佣员工的工资是多少？: @ViewBag.Section4bQuestion36Anwser</p>
+    <p>37. 如果是贸易类，平均毛利率是多少？: @ViewBag.Section4bQuestion37Anwser</p>
+    <p>38. 税前利润是多少？税后利润是多少？ （3年数据）: @ViewBag.Section4bQuestion38Anwser</p>
+    <p>39. 竞争对手有多少？: @ViewBag.Section4bQuestion39Anwser</p>
+    <p>40. 竞争对手的核心优势是什么？: @ViewBag.Section4bQuestion40Anwser</p>
+    <p>41. 你的商业核心竞争优势是什么？: @ViewBag.Section4bQuestion41Anwser</p>
+    <p>42. 企业是否购买了保险？: @ViewBag.Section4bQuestion42Anwser</p>
+    <p>43. 企业购买了什么类型的保险？: @ViewBag.Section4bQuestion43Anwser</p>
+    <p>44. 保险一年多少钱？: @ViewBag.Section4bQuestion44Anwser</p>
+    <p>45. 公司是否注册了 VAT？: @ViewBag.Section4bQuestion45Anwser</p>
+    <p>46. VAT 的 FULL NAME 是什么？: @ViewBag.Section4bQuestion46Anwser</p>
+    <p>47. VAT 税率是多少？: @ViewBag.Section4bQuestion47Anwser</p>
+    <p>48. 营业税的税率是多少？: @ViewBag.Section4bQuestion48Anwser</p>
+    <p>49. 会计公司的名字，联系人的名字？: @ViewBag.Section4bQuestion49Anwser</p>
+    <p>50. 会计服务一年多少钱？: @ViewBag.Section4bQuestion50Anwser</p>
+    <p>51. 您的最高学历是什么？: @ViewBag.Section4bQuestion51Anwser</p>
+    <p>52. 所学专业是否和创业思路相关联或者有帮助？ 简单阐述，如果有: @ViewBag.Section4bQuestion52Anwser</p>
+    <p>53. 上一次进入英国是什么时候？: @ViewBag.Section4bQuestion53Anwser</p>
+    <p>54. 是否在英国有过工作经验？: @ViewBag.Section4bQuestion54Anwser</p>
+    <p>55. 是否此工作经验与申请加入企业相关？: @ViewBag.Section4bQuestion55Anwser</p>
+    <p>56. 资金来源是什么？: @ViewBag.Section4bQuestion56Anwser</p>
+    <p>57. 如果是父母赠与，父母的工作单位是什么，年薪多少？: @ViewBag.Section4bQuestion57Anwser</p>
+    <p>58. 如果商业失败怎么办？: @ViewBag.Section4bQuestion58Anwser</p>
+    <p>59. 你打算居住在哪里？: @ViewBag.Section4bQuestion59Anwser</p>
+    <p>60. 一年的生活成本是多少？: @ViewBag.Section4bQuestion60Anwser</p>
+    <p>61. 有没有家属同行？: @ViewBag.Section4bQuestion61Anwser</p>
+    <p>62. 配偶是否打算来英国工作？: @ViewBag.Section4bQuestion62Anwser</p>
+    <p>63. 未满18岁子女是否来英国上学？: @ViewBag.Section4bQuestion63Anwser</p>
 </div>
+<p class="greenFont">如果想要了解更详细专业的有关英国企业家移民签证的信息，请关注我们的微信账号或发邮件给我们: admin@ukvisatest.com<p>
 <p>&nbsp;</p>
 <p>请下载浏览您的测试报告：</p>
 <p>

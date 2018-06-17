@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout_S3.cshtml";
-    ViewBag.Title = "S3PageSum";
+    ViewBag.Title = "英国商业知识测试总结";
 }
 
 @using (Html.BeginForm("S3PageSum", "Surveys", FormMethod.Post, new { @class = "cbp-mc-form" }))
@@ -13,7 +13,7 @@
     @Html.HiddenFor(model => model.SurveyID)
 
     <p>测试 1 - 3 得分：</p>
-    <p>您的基本信息测试得分是 @ViewBag.Section1Score 分 (满分70分)</p>
+    <p>您的基本信息测试得分是 @ViewBag.Section1Score 分 (满分80分)</p>
     <p>您的签证知识测试得分是 @ViewBag.Section2Score 分 (满分100分)</p>
     <p>您的英国商业知识测试得分是 @ViewBag.Section3Score 分 (满分100分)</p>
     <p>&nbsp;</p>

@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout_S1.cshtml";
-    ViewBag.Title = "S1Page1";
+    ViewBag.Title = "基本信息";
 }
 
 @using (Html.BeginForm("S1Page1", "Surveys", FormMethod.Post, new { @class = "cbp-mc-form" }))
@@ -13,10 +13,179 @@
         <label>姓名</label>
         @Html.EditorFor(model => model.S1Q1Answer, new { htmlAttributes = new { placeholder = "请填写姓名", @title = "请填写姓名", @required = true, @oninvalid = "this.setCustomValidity('请填写姓名')", @oninput = "setCustomValidity('')" } })
 
-        <label>生日</label>
-        @Html.TextBoxFor(model => model.S1Q2Answer, new { id = "datepicker", @class = "form-control", placeholder = "请填写生日", @title = "请填写生日", @required = true, @oninvalid = "this.setCustomValidity('请填写生日')", @onSelect = "setCustomValidity('')" })
-        
-        <label>本科就读国</label>
+        <label>出生年份</label>
+        @{
+            List<SelectListItem> S1Q2AnswerListItems = new List<SelectListItem>();
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "早于1970",
+                Value = "1969"
+                //Selected = true
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1970",
+                Value = "1970"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1971",
+                Value = "1971"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1972",
+                Value = "1972"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1973",
+                Value = "1973"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1974",
+                Value = "1974"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1975",
+                Value = "1975"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1976",
+                Value = "1976"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1977",
+                Value = "1977"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1978",
+                Value = "1978"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1979",
+                Value = "1979"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1980",
+                Value = "1980"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1981",
+                Value = "1981"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1982",
+                Value = "1982"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1983",
+                Value = "1983"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1984",
+                Value = "1984"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1985",
+                Value = "1985"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1986",
+                Value = "1986"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1987",
+                Value = "1987"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1988",
+                Value = "1988"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1989",
+                Value = "1989"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1990",
+                Value = "1990"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1991",
+                Value = "1991"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1992",
+                Value = "1992"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1993",
+                Value = "1993"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1994",
+                Value = "1994"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1995",
+                Value = "1995"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1996",
+                Value = "1996"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1997",
+                Value = "1997"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1998",
+                Value = "1998"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1999",
+                Value = "1999"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "2000",
+                Value = "2000"
+            });
+            S1Q2AnswerListItems.Add(new SelectListItem
+            {
+                Text = "晚于2000",
+                Value = "2001"
+            });
+        }
+        @Html.DropDownListFor(model => model.S1Q2Answer, S1Q2AnswerListItems, "-- 请选择出生年份 --", new { @class = "form-control", @title = "请选择出生年份", @required = true, @oninvalid = "this.setCustomValidity('请选择出生年份')", @oninput = "setCustomValidity('')" })
+
+        <label>取得本科学位的国家</label>
         @{
             List<SelectListItem> S1Q3AnswerListItems = new List<SelectListItem>();
             S1Q3AnswerListItems.Add(new SelectListItem
@@ -28,11 +197,16 @@
             S1Q3AnswerListItems.Add(new SelectListItem
             {
                 Text = "英国",
-                Value = "UK"    
+                Value = "UK"
             });
             S1Q3AnswerListItems.Add(new SelectListItem
             {
-                Text = "其它",
+                Text = "其它国家",
+                Value = "Other"
+            });
+            S1Q3AnswerListItems.Add(new SelectListItem
+            {
+                Text = "无本科学历",
                 Value = "NA"
             });
         }
@@ -44,7 +218,7 @@
         <label>本科专业</label>
         @Html.EditorFor(model => model.S1Q5Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写本科专业", @title = "请填写本科专业" } })
 
-        <label>硕士所在国</label>
+        <label>取得硕士学位的国家</label>
         @{
             List<SelectListItem> S1Q6AnswerListItems = new List<SelectListItem>();
             S1Q6AnswerListItems.Add(new SelectListItem
@@ -60,7 +234,12 @@
             });
             S1Q6AnswerListItems.Add(new SelectListItem
             {
-                Text = "其它",
+                Text = "其它国家",
+                Value = "Other"
+            });
+            S1Q6AnswerListItems.Add(new SelectListItem
+            {
+                Text = "无硕士学历",
                 Value = "NA"
             });
         }
@@ -71,85 +250,118 @@
 
         <label>硕士专业</label>
         @Html.EditorFor(model => model.S1Q8Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写硕士专业", @title = "请填写硕士专业" } })
+
+        <label>取得博士学位的国家</label>
+        @{
+            List<SelectListItem> S1Q9AnswerListItems = new List<SelectListItem>();
+            S1Q9AnswerListItems.Add(new SelectListItem
+            {
+                Text = "中国",
+                Value = "China"
+                //Selected = true
+            });
+            S1Q9AnswerListItems.Add(new SelectListItem
+            {
+                Text = "英国",
+                Value = "UK"
+            });
+            S1Q9AnswerListItems.Add(new SelectListItem
+            {
+                Text = "其它国家",
+                Value = "Other"
+            });
+            S1Q9AnswerListItems.Add(new SelectListItem
+            {
+                Text = "无博士学历",
+                Value = "NA"
+            });
+        }
+        @Html.DropDownListFor(model => model.S1Q9Answer, S1Q9AnswerListItems, "-- 请选择国家 --", new { @class = "form-control", @title = "请选择国家", @required = true, @oninvalid = "this.setCustomValidity('请选择国家')", @oninput = "setCustomValidity('')" })
+
+        <label>博士院校名称</label>
+        @Html.EditorFor(model => model.S1Q10Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写硕士院校", @title = "请填写硕士院校" } })
     </div>
     <div class="cbp-mc-column">
+        <label>博士专业</label>
+        @Html.EditorFor(model => model.S1Q11Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写硕士专业", @title = "请填写硕士专业" } })
+
         <label>现/最近工作单位</label>
-        @Html.EditorFor(model => model.S1Q9Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写工作单位", @title = "请填写工作单位" } })
+        @Html.EditorFor(model => model.S1Q12Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写工作单位", @title = "请填写工作单位" } })
 
         <label>工作经验</label>
         @{
-            List<SelectListItem> S1Q10AnswerListItems = new List<SelectListItem>();
-            S1Q10AnswerListItems.Add(new SelectListItem
+            List<SelectListItem> S1Q13AnswerListItems = new List<SelectListItem>();
+            S1Q13AnswerListItems.Add(new SelectListItem
             {
                 Text = "一年以内",
                 Value = "exp1"
             });
-            S1Q10AnswerListItems.Add(new SelectListItem
+            S1Q13AnswerListItems.Add(new SelectListItem
             {
                 Text = "一到三年",
                 Value = "exp2"
             });
-            S1Q10AnswerListItems.Add(new SelectListItem
+            S1Q13AnswerListItems.Add(new SelectListItem
             {
                 Text = "三年以上",
                 Value = "exp3"
             });
         }
-        @Html.DropDownListFor(model => model.S1Q10Answer, S1Q10AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+        @Html.DropDownListFor(model => model.S1Q13Answer, S1Q13AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
         <label>工作是否与英国相关</label>
         @{
-            List<SelectListItem> S1Q11AnswerListItems = new List<SelectListItem>();
-            S1Q11AnswerListItems.Add(new SelectListItem
+            List<SelectListItem> S1Q14AnswerListItems = new List<SelectListItem>();
+            S1Q14AnswerListItems.Add(new SelectListItem
             {
                 Text = "是",
                 Value = "yes"
             });
-            S1Q11AnswerListItems.Add(new SelectListItem
+            S1Q14AnswerListItems.Add(new SelectListItem
             {
                 Text = "否",
                 Value = "no"
             });
         }
-        @Html.DropDownListFor(model => model.S1Q11Answer, S1Q11AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+        @Html.DropDownListFor(model => model.S1Q14Answer, S1Q14AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
         <label>工作职位</label>
-        @Html.EditorFor(model => model.S1Q12Answer, new { htmlAttributes = new { @class = "form-control", @title = "请填写工作职位", placeholder = "请填写工作职位" } })
+        @Html.EditorFor(model => model.S1Q15Answer, new { htmlAttributes = new { @class = "form-control", @title = "请填写工作职位", placeholder = "请填写工作职位" } })
 
         <label>在英国停留累计时间</label>
         @{
-            List<SelectListItem> S1Q13AnswerListItems = new List<SelectListItem>();
-            S1Q13AnswerListItems.Add(new SelectListItem
+            List<SelectListItem> S1Q16AnswerListItems = new List<SelectListItem>();
+            S1Q16AnswerListItems.Add(new SelectListItem
             {
                 Text = "半年以内",
                 Value = "time1"
             });
-            S1Q13AnswerListItems.Add(new SelectListItem
+            S1Q16AnswerListItems.Add(new SelectListItem
             {
                 Text = "半年到一年",
                 Value = "time2"
             });
-            S1Q13AnswerListItems.Add(new SelectListItem
+            S1Q16AnswerListItems.Add(new SelectListItem
             {
-                Text = "一年到三年",
+                Text = "一到三年",
                 Value = "time3"
             });
-            S1Q13AnswerListItems.Add(new SelectListItem
+            S1Q16AnswerListItems.Add(new SelectListItem
             {
                 Text = "三年以上",
                 Value = "time4"
             });
         }
-        @Html.DropDownListFor(model => model.S1Q13Answer, S1Q13AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+        @Html.DropDownListFor(model => model.S1Q16Answer, S1Q16AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
         <label>电话</label>
-        @Html.EditorFor(model => model.S1Q14Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写电话 格式： +86-13901882888", @title = "请填写电话", @required = true, @oninvalid = "this.setCustomValidity('请填写电话')", @oninput = "setCustomValidity('')" } })
+        @Html.EditorFor(model => model.S1Q17Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写电话 格式： +44-1234-567890", @title = "请填写电话", @required = true, @oninvalid = "this.setCustomValidity('请填写电话')", @oninput = "setCustomValidity('')" } })
 
         <label>邮箱</label>
-        @Html.TextBoxFor(model => model.S1Q15Answer, new { @class = "form-control", placeholder = "请填写正确格式的电邮", @title = "请填写正确格式的电邮", @required = true, @type = "email", @oninvalid = "this.setCustomValidity('请填写正确格式的电邮')", @oninput = "setCustomValidity('')" })
+        @Html.TextBoxFor(model => model.S1Q18Answer, new { @class = "form-control", placeholder = "请填写正确格式的电邮", @title = "请填写正确格式的电邮", @required = true, @type = "email", @oninvalid = "this.setCustomValidity('请填写正确格式的电邮')", @oninput = "setCustomValidity('')" })
 
         <label>微信号</label>
-        @Html.EditorFor(model => model.S1Q16Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写微信号", @title = "请填写微信号" } })
+        @Html.EditorFor(model => model.S1Q19Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写微信号", @title = "请填写微信号" } })
     </div>
 
     <div class="cbp-mc-submit-wrap"><input class="button" type="submit" value="继续" /></div>
