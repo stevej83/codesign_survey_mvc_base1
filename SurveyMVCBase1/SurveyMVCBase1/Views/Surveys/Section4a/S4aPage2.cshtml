@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout_S4a.cshtml";
-    ViewBag.Title = "S4aPage1 - 英国创业项目测试 - 独立创业";
+    ViewBag.Title = "独立创业 2/2";
 }
 
 @using (Html.BeginForm("S4aPage2", "Surveys", FormMethod.Post, new { @class = "cbp-mc-form" }))
@@ -11,189 +11,262 @@
     @Html.HiddenFor(model => model.SurveyID)
 
     <div class="cbp-mc-column">
-        <label>29. 竞争对手有多少？</label>
-        @Html.EditorFor(model => model.S4aQ29Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+        <label>34. 竞争对手有多少？</label>
+        @Html.EditorFor(model => model.S4aQ34Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>30. 竞争对手的核心优势是什么？</label>
-        @Html.TextAreaFor(model => model.S4aQ30Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+        <label>35. 竞争对手的核心优势是什么？</label>
+        @Html.TextAreaFor(model => model.S4aQ35Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>31. 你的商业核心竞争优势是什么？</label>
-        @Html.TextAreaFor(model => model.S4aQ31Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+        <label>36. 你的商业核心竞争优势是什么？</label>
+        @Html.TextAreaFor(model => model.S4aQ36Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>32. 你有没有合伙人？</label>
+        <label>37. 你有没有合伙人？</label>
         @{
-            List<SelectListItem> S4aQ32AnswerListItems = new List<SelectListItem>();
-            S4aQ32AnswerListItems.Add(new SelectListItem
+            List<SelectListItem> S4aQ37AnswerListItems = new List<SelectListItem>();
+            S4aQ37AnswerListItems.Add(new SelectListItem
             {
                 Text = "有",
                 Value = "有"
             });
-            S4aQ32AnswerListItems.Add(new SelectListItem
+            S4aQ37AnswerListItems.Add(new SelectListItem
             {
                 Text = "没有",
                 Value = "没有"
             });
         }
-        @Html.DropDownListFor(model => model.S4aQ32Answer, S4aQ32AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+        @Html.DropDownListFor(model => model.S4aQ37Answer, S4aQ37AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>33. 合伙人背景是什么？有没有商业经验？</label>
-        @Html.TextAreaFor(model => model.S4aQ33Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+        <label>38. 合伙人背景是什么？有没有商业经验？</label>
+        @Html.TextAreaFor(model => model.S4aQ38Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>34. 打算投资多少钱？</label>
-        @Html.EditorFor(model => model.S4aQ34Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+        <label>39. 打算投资多少钱？</label>
+        @Html.EditorFor(model => model.S4aQ39Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>35. 投资计划花在那些方面？</label>
-        @Html.TextAreaFor(model => model.S4aQ35Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+        <label>40. 投资计划花在那些方面？</label>
+        @Html.TextAreaFor(model => model.S4aQ40Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>36. 什么时候能够实现收支平衡？</label>
-        @Html.EditorFor(model => model.S4aQ36Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
-
-        <label>37. 什么时候能够实现盈利？</label>
-        @Html.EditorFor(model => model.S4aQ37Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
-
-        <label>38. 你是否购买了保险？</label>
+        <label>41. 什么时候公司总体盈利？</label>
         @{
-            List<SelectListItem> S4aQ38AnswerListItems = new List<SelectListItem>();
-            S4aQ38AnswerListItems.Add(new SelectListItem
+            List<SelectListItem> S4aQ41AnswerListItems = new List<SelectListItem>();
+            S4aQ41AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1到6个月",
+                Value = "1到6个月"
+            });
+            S4aQ41AnswerListItems.Add(new SelectListItem
+            {
+                Text = "7到12个月",
+                Value = "7到12个月"
+            });
+            S4aQ41AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1年到1年半",
+                Value = "1年到1年半"
+            });
+            S4aQ41AnswerListItems.Add(new SelectListItem
+            {
+                Text = "1年半到2年",
+                Value = "1年半到2年"
+            });
+            S4aQ41AnswerListItems.Add(new SelectListItem
+            {
+                Text = "3年以内",
+                Value = "3年以内"
+            });
+        }
+        @Html.DropDownListFor(model => model.S4aQ41Answer, S4aQ41AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+        
+
+        <label>42. 您是否给公司购买了商业保险？</label>
+        @{
+            List<SelectListItem> S4aQ42AnswerListItems = new List<SelectListItem>();
+            S4aQ42AnswerListItems.Add(new SelectListItem
             {
                 Text = "是",
                 Value = "买了保险"
             });
-            S4aQ38AnswerListItems.Add(new SelectListItem
+            S4aQ42AnswerListItems.Add(new SelectListItem
             {
                 Text = "否",
                 Value = "没买保险"
             });
         }
-        @Html.DropDownListFor(model => model.S4aQ38Answer, S4aQ38AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+        @Html.DropDownListFor(model => model.S4aQ42Answer, S4aQ42AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>39. 你购买了什么类型的保险？</label>
-        @Html.EditorFor(model => model.S4aQ39Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+        <label>43. 你购买了什么类型的商业保险？</label>
+        @Html.EditorFor(model => model.S4aQ43Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = false, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>40. 保险一年多少钱？</label>
-        @Html.EditorFor(model => model.S4aQ40Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+        <label>44. 商业保险一年多少钱？</label>
+        @Html.EditorFor(model => model.S4aQ44Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = false, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>41. 公司是否注册了VAT？</label>
+        <label>45. 公司是否注册了VAT？</label>
         @{
-            List<SelectListItem> S4aQ41AnswerListItems = new List<SelectListItem>();
-            S4aQ41AnswerListItems.Add(new SelectListItem
+            List<SelectListItem> S4aQ45AnswerListItems = new List<SelectListItem>();
+            S4aQ45AnswerListItems.Add(new SelectListItem
             {
                 Text = "是",
                 Value = "已注册VAT"
             });
-            S4aQ41AnswerListItems.Add(new SelectListItem
+            S4aQ45AnswerListItems.Add(new SelectListItem
             {
                 Text = "否",
                 Value = "没注册VAT"
             });
         }
-        @Html.DropDownListFor(model => model.S4aQ41Answer, S4aQ41AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+        @Html.DropDownListFor(model => model.S4aQ45Answer, S4aQ45AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>42. VAT 的FULL NAME是什么？</label>
-        @Html.EditorFor(model => model.S4aQ42Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
-
-        <label>43. VAT税率是多少？</label>
-        @Html.EditorFor(model => model.S4aQ43Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
-    </div>
-    <div class="cbp-mc-column">
-        <label>44. 营业税的税率是多少？</label>
-        @Html.EditorFor(model => model.S4aQ44Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
-
-        <label>45. 有没有会计？叫什么公司，什么名字？</label>
-        @Html.TextAreaFor(model => model.S4aQ45Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
-
-        <label>46. 会计服务一年多少钱？</label>
+        <label>46. VAT 的FULL NAME是什么？</label>
         @Html.EditorFor(model => model.S4aQ46Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>47. 您的最高学历是什么？</label>
+        <label>47. VAT税率是多少？</label>
+        @Html.EditorFor(model => model.S4aQ47Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+
+        <label>48. 营业税的税率是多少？</label>
+        @Html.EditorFor(model => model.S4aQ48Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+    </div>
+    <div class="cbp-mc-column">
+        <label>49. 会计公司的名字，联系人的名字？</label>
+        @Html.TextAreaFor(model => model.S4aQ49Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+
+        <label>50. 会计服务一年多少钱？</label>
+        @Html.EditorFor(model => model.S4aQ50Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+
+        <label>51. 您的最高学历是什么？</label>
         @{
-            List<SelectListItem> S4aQ47AnswerListItems = new List<SelectListItem>();
-            S4aQ47AnswerListItems.Add(new SelectListItem
+            List<SelectListItem> S4aQ51AnswerListItems = new List<SelectListItem>();
+            S4aQ51AnswerListItems.Add(new SelectListItem
             {
                 Text = "本科",
                 Value = "本科"
             });
-            S4aQ47AnswerListItems.Add(new SelectListItem
+            S4aQ51AnswerListItems.Add(new SelectListItem
             {
                 Text = "硕士",
                 Value = "硕士"
             });
-            S4aQ47AnswerListItems.Add(new SelectListItem
+            S4aQ51AnswerListItems.Add(new SelectListItem
             {
                 Text = "博士",
                 Value = "博士"
             });
         }
-        @Html.DropDownListFor(model => model.S4aQ47Answer, S4aQ47AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+        @Html.DropDownListFor(model => model.S4aQ51Answer, S4aQ51AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>48. 所学专业是否和创业思路相关联或者有帮助？简单阐述，如果有</label>
-        @Html.TextAreaFor(model => model.S4aQ48Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
-
-        <label>49. 上一次进入英国是什么时候？</label>
-        @Html.EditorFor(model => model.S4aQ49Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
-
-        <label>50. 是否在英国有贸易或者商业工作经验？</label>
-        @{
-            List<SelectListItem> S4aQ50AnswerListItems = new List<SelectListItem>();
-            S4aQ50AnswerListItems.Add(new SelectListItem
-            {
-                Text = "是",
-                Value = "有贸易或工作经验"
-            });
-            S4aQ50AnswerListItems.Add(new SelectListItem
-            {
-                Text = "否",
-                Value = "无贸易或工作经验"
-            });
-        }
-        @Html.DropDownListFor(model => model.S4aQ50Answer, S4aQ50AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
-
-        <label>51. 资金来源是什么？</label>
-        @Html.TextAreaFor(model => model.S4aQ51Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
-
-        <label>52. 如果是父母赠与，父母的工作单位是什么，年薪多少？</label>
+        <label>52. 所学专业是否和创业思路相关联或者有帮助？简单阐述，如果有</label>
         @Html.TextAreaFor(model => model.S4aQ52Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>53. 如果商业失败怎么办？</label>
-        @Html.TextAreaFor(model => model.S4aQ53Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+        <label>53. 上一次进入英国是什么时候？</label>
+        @Html.EditorFor(model => model.S4aQ53Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>54. 你打算居住在哪里？</label>
-        @Html.EditorFor(model => model.S4aQ54Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
-
-        <label>55. 一年的生活成本是多少？</label>
-        @Html.EditorFor(model => model.S4aQ55Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
-
-        <label>56. 有没有家属同行？</label>
+        <label>54. 是否在在英国有过工作经验？</label>
         @{
-            List<SelectListItem> S4aQ56AnswerListItems = new List<SelectListItem>();
-            S4aQ56AnswerListItems.Add(new SelectListItem
+            List<SelectListItem> S4aQ54AnswerListItems = new List<SelectListItem>();
+            S4aQ54AnswerListItems.Add(new SelectListItem
+            {
+                Text = "是",
+                Value = "有工作经验"
+            });
+            S4aQ54AnswerListItems.Add(new SelectListItem
+            {
+                Text = "否",
+                Value = "无工作经验"
+            });
+        }
+        @Html.DropDownListFor(model => model.S4aQ54Answer, S4aQ54AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+
+        <label>55. 最近三年是否常驻英国或来过英国多少次？</label>
+        @{
+            List<SelectListItem> S4aQ55AnswerListItems = new List<SelectListItem>();
+            S4aQ55AnswerListItems.Add(new SelectListItem
+            {
+                Text = "最近三年常驻地为英国并且每年居住超过180天",
+                Value = "最近三年常驻地为英国并且每年居住超过180天"
+            });
+            S4aQ55AnswerListItems.Add(new SelectListItem
+            {
+                Text = "最近三年不常驻英国但入境英国次数大于等于10次",
+                Value = "最近三年不常驻英国但入境英国次数大于等于10次"
+            });
+            S4aQ55AnswerListItems.Add(new SelectListItem
+            {
+                Text = "最近三年不常驻英国但入境英国次数大于等于5次",
+                Value = "最近三年不常驻英国但入境英国次数大于等于5次"
+            });
+            S4aQ55AnswerListItems.Add(new SelectListItem
+            {
+                Text = "最近三年不常驻英国但曾经入境并且次数在5次之内",
+                Value = "最近三年不常驻英国但曾经入境并且次数在5次之内"
+            });
+            S4aQ55AnswerListItems.Add(new SelectListItem
+            {
+                Text = "最近三年没有来过英国",
+                Value = "最近三年没有来过英国"
+            });
+        }
+        @Html.DropDownListFor(model => model.S4aQ55Answer, S4aQ55AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+
+        <label>56. 资金来源是什么？</label>
+        @Html.TextAreaFor(model => model.S4aQ56Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+
+        <label>57. 如果是赠与，赠与人的工作单位是什么？年薪多少？</label>
+        @Html.TextAreaFor(model => model.S4aQ57Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+
+        <label>58. 如果商业失败怎么办？</label>
+        @Html.TextAreaFor(model => model.S4aQ58Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+
+        <label>59. 你打算居住在哪里？</label>
+        @Html.EditorFor(model => model.S4aQ59Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+
+        <label>60. 一年的生活成本是多少？</label>
+        @Html.EditorFor(model => model.S4aQ60Answer, new { htmlAttributes = new { @class = "form-control", placeholder = "请填写", @title = "请填写", @required = true, @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+
+        <label>61. 有没有家属同行？</label>
+        @{
+            List<SelectListItem> S4aQ61AnswerListItems = new List<SelectListItem>();
+            S4aQ61AnswerListItems.Add(new SelectListItem
             {
                 Text = "有",
                 Value = "有家属同行"
             });
-            S4aQ56AnswerListItems.Add(new SelectListItem
+            S4aQ61AnswerListItems.Add(new SelectListItem
             {
                 Text = "无",
                 Value = "无家属同行"
             });
         }
-        @Html.DropDownListFor(model => model.S4aQ56Answer, S4aQ56AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+        @Html.DropDownListFor(model => model.S4aQ61Answer, S4aQ61AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>57. 家属是否打算工作？</label>
+        <label>62. 配偶是否打算来英国工作？</label>
         @{
-            List<SelectListItem> S4aQ57AnswerListItems = new List<SelectListItem>();
-            S4aQ57AnswerListItems.Add(new SelectListItem
+            List<SelectListItem> S4aQ62AnswerListItems = new List<SelectListItem>();
+            S4aQ62AnswerListItems.Add(new SelectListItem
             {
                 Text = "是",
-                Value = "家属打算工作"
+                Value = "配偶打算工作"
             });
-            S4aQ57AnswerListItems.Add(new SelectListItem
+            S4aQ62AnswerListItems.Add(new SelectListItem
             {
                 Text = "否",
                 Value = "家属不打算工作"
             });
         }
-        @Html.DropDownListFor(model => model.S4aQ57Answer, S4aQ57AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+        @Html.DropDownListFor(model => model.S4aQ62Answer, S4aQ62AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
+
+        <label>63. 未满18岁子女是否来英国上学？</label>
+        @{
+            List<SelectListItem> S4aQ63AnswerListItems = new List<SelectListItem>();
+            S4aQ63AnswerListItems.Add(new SelectListItem
+            {
+                Text = "未满18岁子女打算来英国上学",
+                Value = "未满18岁子女打算来英国上学"
+            });
+            S4aQ63AnswerListItems.Add(new SelectListItem
+            {
+                Text = "未满18岁子女不打算来英国上学",
+                Value = "未满18岁子女不打算来英国上学"
+            });
+        }
+        @Html.DropDownListFor(model => model.S4aQ63Answer, S4aQ63AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
     </div>
 
     <div class="cbp-mc-submit-wrap"><input class="button" type="submit" value="继续" /></div>

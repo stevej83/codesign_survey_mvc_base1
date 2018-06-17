@@ -153,9 +153,11 @@ footer {
     text-align: right;
 }
 
-.home {
-    width: 100%;
-}
+    footer img {
+        float: left;
+        width: 64px;
+        height: 22px;
+    }
 
     .home img {
         margin-top: 50px;
@@ -216,4 +218,10 @@ footer {
 
 .colFull {
     width: 100%;
+}
+
+.greenFont {
+    color: darkgreen;
+    font-size: 12px;
+    font-weight: 800;
 }

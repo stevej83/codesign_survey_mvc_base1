@@ -1,12 +1,17 @@
 ﻿@{
-    ViewBag.Title = "Error - seesion out";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "页面错误 - 页面显示超时";
 }
 
-<h2>页面错误</h2>
+<div class=" flowchart">
+    <header class="clearfix">
+        <span>企业家移民咨询测试</span>
+    </header>
+    <div class="container">
 
-<p>错误信息：</p>
-<p>@Session["error"]</p>
+        <p>页面错误</p>
 
-<p>
-    @Html.ActionLink("back to index", "Index")
-</p>
+        错误信息： @Session["error"] @Html.ActionLink("点击回到首页", "Index")
+
+    </div>
+</div>
