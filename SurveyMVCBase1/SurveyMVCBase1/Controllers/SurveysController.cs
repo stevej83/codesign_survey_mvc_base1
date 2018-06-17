@@ -374,51 +374,408 @@ namespace SurveyMVCBase1.Controllers
                 ViewBag.dataS3Score = S3Score;
 
                 // Section 1
+                string dataS1Q3Ans = "";
+                string dataS1Q6Ans = "";
+                string dataS1Q9Ans = "";
+                string dataS1Q13Ans = "";
+                string dataS1Q14Ans = "";
+                string dataS1Q16Ans = "";
+
                 ViewBag.dataS1Q1Answer = survey.S1Q1Answer;
                 ViewBag.dataS1Q2Answer = survey.S1Q2Answer;
-                ViewBag.dataS1Q3Answer = survey.S1Q3Answer;
+
+                if (survey.S1Q3Answer == "UK")
+                {
+                    dataS1Q3Ans = "英国";
+                }
+                else if (survey.S1Q3Answer == "China" || survey.S1Q3Answer == "Other")
+                {
+                    dataS1Q3Ans = "中国或其它国家";
+                }
+                else
+                {
+                    dataS1Q3Ans = "无学士学历";
+                }
+                ViewBag.dataS1Q3Answer = dataS1Q3Ans;
+
                 ViewBag.dataS1Q4Answer = survey.S1Q4Answer;
                 ViewBag.dataS1Q5Answer = survey.S1Q5Answer;
-                ViewBag.dataS1Q6Answer = survey.S1Q6Answer;
+
+                if (survey.S1Q6Answer == "UK")
+                {
+                    dataS1Q6Ans = "英国";
+                }
+                else if (survey.S1Q6Answer == "China" || survey.S1Q6Answer == "Other")
+                {
+                    dataS1Q6Ans = "中国或其它国家";
+                }
+                else
+                {
+                    dataS1Q6Ans = "无硕士学历";
+                }
+
+                ViewBag.dataS1Q6Answer = dataS1Q6Ans;
+
                 ViewBag.dataS1Q7Answer = survey.S1Q7Answer;
                 ViewBag.dataS1Q8Answer = survey.S1Q8Answer;
-                ViewBag.dataS1Q9Answer = survey.S1Q9Answer;
+
+                if (survey.S1Q9Answer == "UK")
+                {
+                    dataS1Q9Ans = "英国";
+                }
+                else if (survey.S1Q9Answer == "China" || survey.S1Q9Answer == "Other")
+                {
+                    dataS1Q9Ans = "中国或其它国家";
+                }
+                else
+                {
+                    dataS1Q9Ans = "无硕士学历";
+                }
+
+                ViewBag.dataS1Q9Answer = dataS1Q9Ans;
+
                 ViewBag.dataS1Q10Answer = survey.S1Q10Answer;
                 ViewBag.dataS1Q11Answer = survey.S1Q11Answer;
                 ViewBag.dataS1Q12Answer = survey.S1Q12Answer;
-                ViewBag.dataS1Q13Answer = survey.S1Q13Answer;
-                ViewBag.dataS1Q14Answer = survey.S1Q14Answer;
+
+                if (survey.S1Q13Answer == "exp3")
+                {
+                    dataS1Q13Ans = "三年以上";
+                }
+                else if (survey.S1Q13Answer == "exp2")
+                {
+                    dataS1Q13Ans = "一到三年";
+                }
+                else
+                {
+                    dataS1Q13Ans = "一年以内";
+                }
+
+                ViewBag.dataS1Q113Answer = dataS1Q13Ans;
+
+                if (survey.S1Q14Answer == "yes")
+                {
+                    dataS1Q14Ans = "相关";
+                }
+                else
+                {
+                    dataS1Q14Ans = "不相关";
+                }
+
+                ViewBag.dataS1Q14Answer = dataS1Q14Ans;
                 ViewBag.dataS1Q15Answer = survey.S1Q15Answer;
-                ViewBag.dataS1Q16Answer = survey.S1Q16Answer;
+
+                if (survey.S1Q16Answer == "time4")
+                {
+                    dataS1Q16Ans = "三年以上";
+                }
+                else if (survey.S1Q16Answer == "time3")
+                {
+                    dataS1Q16Ans = "一到三年";
+                }
+                else if (survey.S1Q16Answer == "time2")
+                {
+                    dataS1Q16Ans = "半年到一年";
+                }
+                else
+                {
+                    dataS1Q16Ans = "半年以内";
+                }
+
+                ViewBag.dataS1Q16Answer = dataS1Q16Ans;
                 ViewBag.dataS1Q17Answer = survey.S1Q17Answer;
                 ViewBag.dataS1Q18Answer = survey.S1Q18Answer;
                 ViewBag.dataS1Q19Answer = survey.S1Q19Answer;
 
                 // Section 2
-                ViewBag.dataS2Q1Answer = survey.S2Q1Answer;
-                ViewBag.dataS2Q2Answer = survey.S2Q2Answer;
-                ViewBag.dataS2Q3Answer = survey.S2Q3Answer;
-                ViewBag.dataS2Q4Answer = survey.S2Q4Answer;
-                ViewBag.dataS2Q5Answer = survey.S2Q5Answer;
-                ViewBag.dataS2Q6Answer = survey.S2Q6Answer;
-                ViewBag.dataS2Q7Answer = survey.S2Q7Answer;
-                ViewBag.dataS2Q8Answer = survey.S2Q8Answer;
-                ViewBag.dataS2Q9Answer = survey.S2Q9Answer;
-                ViewBag.dataS2Q10Answer = survey.S2Q10Answer;
+                string dataS2Q1Ans = "";
+                string dataS2Q2Ans = "";
+                string dataS2Q3Ans = "";
+                string dataS2Q4Ans = "";
+                string dataS2Q5Ans = "";
+                string dataS2Q6Ans = "";
+                string dataS2Q7Ans = "";
+                string dataS2Q8Ans = "";
+                string dataS2Q9Ans = "";
+                string dataS2Q10Ans = "";
+
+                if (survey.S2Q1Answer == "immigration")
+                {
+                    dataS2Q1Ans = "移民";
+                }
+                else if (survey.S2Q1Answer == "business")
+                {
+                    dataS2Q1Ans = "创业";
+                }
+                else if (survey.S2Q1Answer == "education")
+                {
+                    dataS2Q1Ans = "孩子教育";
+                }
+
+                ViewBag.dataS2Q1Answer = dataS2Q1Ans;
+
+
+                if (survey.S2Q2Answer == "yes")
+                {
+                    dataS2Q2Ans = "可以";
+                }
+                else if (survey.S2Q2Answer == "no")
+                {
+                    dataS2Q2Ans = "不可以";
+                }
+
+                ViewBag.dataS2Q2Answer = dataS2Q2Ans;
+
+                if (survey.S2Q3Answer == "lessthanielts4")
+                {
+                    dataS2Q3Ans = "雅思 4 分以下";
+                }
+                else if (survey.S2Q3Answer == "ielts4orabove")
+                {
+                    dataS2Q3Ans = "雅思 4 分以上（包括 4 分）";
+                }
+
+                ViewBag.dataS2Q3Answer = dataS2Q3Ans;
+
+                if (survey.S2Q4Answer == "200k")
+                {
+                    dataS2Q4Ans = "20万";
+                }
+                else if (survey.S2Q4Answer == "100k")
+                {
+                    dataS2Q4Ans = "10万";
+                }
+                else if (survey.S2Q4Answer == "50k")
+                {
+                    dataS2Q4Ans = "5万";
+                }
+
+                ViewBag.dataS2Q4Answer = dataS2Q4Ans;
+
+                if (survey.S2Q5Answer == "cantwork")
+                {
+                    dataS2Q5Ans = "不能为他人工作";
+                }
+                else if (survey.S2Q5Answer == "canwork")
+                {
+                    dataS2Q5Ans = "可以为他人工作";
+                }
+
+                ViewBag.dataS2Q5Answer = dataS2Q5Ans;
+
+                if (survey.S2Q6Answer == "can")
+                {
+                    dataS2Q6Ans = "可以";
+                }
+                else if (survey.S2Q6Answer == "cant")
+                {
+                    dataS2Q6Ans = "不可以";
+                }
+
+                ViewBag.dataS2Q6Answer = dataS2Q6Ans;
+
+                if (survey.S2Q7Answer == "100")
+                {
+                    dataS2Q7Ans = "200 左右";
+                }
+                else if (survey.S2Q7Answer == "500")
+                {
+                    dataS2Q7Ans = "500 左右";
+                }
+                else if (survey.S2Q7Answer == "1000")
+                {
+                    dataS2Q7Ans = "1000 左右";
+                }
+
+                ViewBag.dataS2Q7Answer = dataS2Q7Ans;
+
+                if (survey.S2Q8Answer == "can")
+                {
+                    dataS2Q8Ans = "可以";
+                }
+                else if (survey.S2Q8Answer == "cant")
+                {
+                    dataS2Q8Ans = "不可以";
+                }
+
+                ViewBag.dataS2Q8Answer = dataS2Q8Ans;
+
+                if (survey.S2Q9Answer == "2employee")
+                {
+                    dataS2Q9Ans = "2 个全职员工，至少每个员工职位超过 12 个月";
+                }
+                else if (survey.S2Q9Answer == "1employee")
+                {
+                    dataS2Q9Ans = "1 个全职员工，至少职位超过 24 个月";
+                }
+
+                ViewBag.dataS2Q9Answer = dataS2Q9Ans;
+
+                if (survey.S2Q10Answer == "200k")
+                {
+                    dataS2Q10Ans = "能够证明有超过20万英镑的存款";
+                }
+                else if (survey.S2Q10Answer == "freedom")
+                {
+                    dataS2Q10Ans = "能够证明资金可以自由转入英国";
+                }
+                else if (survey.S2Q10Answer == "3months")
+                {
+                    dataS2Q10Ans = "能够证明资金在银行户头超过3个月";
+                }
+
+                ViewBag.dataS2Q10Answer = dataS2Q10Ans;
 
                 // Section 3
-                ViewBag.dataS3Q1Answer = survey.S3Q1Answer;
-                ViewBag.dataS3Q2Answer = survey.S3Q2Answer;
-                ViewBag.dataS3Q3Answer = survey.S3Q3Answer;
-                ViewBag.dataS3Q4Answer = survey.S3Q4Answer;
-                ViewBag.dataS3Q5Answer = survey.S3Q5Answer;
-                ViewBag.dataS3Q6Answer = survey.S3Q6Answer;
-                ViewBag.dataS3Q7Answer = survey.S3Q7Answer;
-                ViewBag.dataS3Q8Answer = survey.S3Q8Answer;
-                ViewBag.dataS3Q9Answer = survey.S3Q9Answer;
-                ViewBag.dataS3Q10Answer = survey.S3Q10Answer;
+                string dataS3Q1Ans = "";
+                string dataS3Q2Ans = "";
+                string dataS3Q3Ans = "";
+                string dataS3Q4Ans = "";
+                string dataS3Q5Ans = "";
+                string dataS3Q6Ans = "";
+                string dataS3Q7Ans = "";
+                string dataS3Q8Ans = "";
+                string dataS3Q9Ans = "";
+                string dataS3Q10Ans = "";
 
-          
+                if (survey.S3Q1Answer == "20pct")
+                {
+                    dataS3Q1Ans = "20%";
+                }
+                else if (survey.S3Q1Answer == "17pct")
+                {
+                    dataS3Q1Ans = "17%";
+                }
+                else if (survey.S3Q1Answer == "14pct")
+                {
+                    dataS3Q1Ans = "14%";
+                }
+
+                ViewBag.dataS3Q1Answer = dataS3Q1Ans;
+
+                if (survey.S3Q2Answer == "yes")
+                {
+                    dataS3Q2Ans = "需要";
+                }
+                else if (survey.S3Q2Answer == "no")
+                {
+                    dataS3Q2Ans = "不需要";
+                }
+
+                ViewBag.dataS3Q2Answer = dataS3Q2Ans;
+
+                if (survey.S3Q3Answer == "6.00")
+                {
+                    dataS3Q3Ans = "6.00";
+                }
+                else if (survey.S3Q3Answer == "7.00")
+                {
+                    dataS3Q3Ans = "7.00";
+                }
+                else if (survey.S3Q3Answer == "8.00")
+                {
+                    dataS3Q3Ans = "8.00";
+                }
+
+                ViewBag.dataS3Q3Answer = dataS3Q3Ans;
+
+                if (survey.S3Q4Answer == "15k")
+                {
+                    dataS3Q4Ans = "1万5千镑";
+                }
+                else if (survey.S3Q4Answer == "25k")
+                {
+                    dataS3Q4Ans = "2万5千镑";
+                }
+                else if (survey.S3Q4Answer == "50k")
+                {
+                    dataS3Q4Ans = "5万镑";
+                }
+
+                ViewBag.dataS3Q4Answer = dataS3Q4Ans;
+
+                if (survey.S3Q5Answer == "1k")
+                {
+                    dataS3Q5Ans = "1千镑";
+                }
+                else if (survey.S3Q5Answer == "2k")
+                {
+                    dataS3Q5Ans = "2千镑";
+                }
+                else if (survey.S3Q5Answer == "5k")
+                {
+                    dataS3Q5Ans = "5千镑";
+                }
+
+                ViewBag.dataS3Q5Answer = dataS3Q5Ans;
+
+                if (survey.S3Q6Answer == "20pct")
+                {
+                    dataS3Q6Ans = "20%";
+                }
+                else if (survey.S3Q6Answer == "25pct")
+                {
+                    dataS3Q6Ans = "25%";
+                }
+                else if (survey.S3Q6Answer == "28pct")
+                {
+                    dataS3Q6Ans = "28%";
+                }
+
+                ViewBag.dataS3Q6Answer = dataS3Q6Ans;
+
+                if (survey.S3Q7Answer == "yes")
+                {
+                    dataS3Q7Ans = "咨询过";
+                }
+                else if (survey.S3Q7Answer == "no")
+                {
+                    dataS3Q7Ans = "从未咨询过";
+                }
+
+                ViewBag.dataS3Q7Answer = dataS3Q7Ans;
+
+                if (survey.S3Q8Answer == "1500")
+                {
+                    dataS3Q8Ans = "1500";
+                }
+                else if (survey.S3Q8Answer == "2500")
+                {
+                    dataS3Q8Ans = "2500";
+                }
+                else if (survey.S3Q8Answer == "3500")
+                {
+                    dataS3Q8Ans = "3500";
+                }
+
+                ViewBag.dataS3Q8Answer = dataS3Q8Ans;
+
+                if (survey.S3Q9Answer == "300")
+                {
+                    dataS3Q9Ans = "300";
+                }
+                else if (survey.S3Q9Answer == "1000")
+                {
+                    dataS3Q9Ans = "1000";
+                }
+                else if (survey.S3Q9Answer == "2000")
+                {
+                    dataS3Q9Ans = "2000";
+                }
+
+                ViewBag.dataS3Q9Answer = dataS3Q9Ans;
+
+                if (survey.S3Q10Answer == "yes")
+                {
+                    dataS3Q10Ans = "理解";
+                }
+                else if (survey.S3Q10Answer == "no")
+                {
+                    dataS3Q10Ans = "不理解";
+                }
+
+                ViewBag.dataS3Q10Answer = dataS3Q10Ans;
+
                 // Section 4
                 if (!string.IsNullOrEmpty(survey.S4aQ1Answer))
                 {
@@ -1862,20 +2219,6 @@ namespace SurveyMVCBase1.Controllers
                 ViewBag.Section1Question10Anwser = survey.S1Q10Answer;
                 ViewBag.Section1Question11Anwser = survey.S1Q11Answer;
                 ViewBag.Section1Question12Anwser = survey.S1Q12Answer;
-
-                if (survey.S1Q13Answer == "exp3")
-                {
-                    S1Q13Ans = "三年以上";
-                    S1Q13Msg = "您的工作经验在三年以上，这有助于您的企业家移民签证申请，此处加10分。";
-                }
-                else
-                {
-                    S1Q13Ans = "少于三年";
-                    S1Q13Msg = "您的工作经验少于三年，这对于企业家移民签证申请没有帮助, 此处不加分。";
-                }
-
-                ViewBag.Section1Question13Anwser = S1Q13Ans;
-                ViewBag.Section1Question13AnwserMessage = S1Q13Msg;
 
                 if (survey.S1Q13Answer == "exp3")
                 {
