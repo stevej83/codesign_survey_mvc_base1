@@ -7,16 +7,16 @@ using SurveyMVCBase1.Models;
 
 namespace SurveyMVCBase1.DAL
 {
-    public class SurveyInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<DataContext>
+    public class SurveyInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<SurveyContext>
     {
-        protected override void Seed(DataContext context)
+        protected override void Seed(SurveyContext context)
         {
             var surveys = new List<Survey>
             {
-                new Survey{SurveyID="HJS82923SD921",StartTime=DateTime.Now.ToString("yyyyMMddHHmmss"),S1Q1Answer="测试员",S1Q2Answer="1985-01-17",S1Q3Answer="",
+                new Survey{SurveyID="HJS82923SD921",StartTime=DateTime.Now.ToString("yyyyMMddHHmmss"),S1Q1Answer="",S1Q2Answer="",S1Q3Answer="",
                     S1Q3Score=0,S1Q4Answer="",S1Q5Answer="",S1Q6Answer="",S1Q6Score=0,
-                    S1Q7Answer="",S1Q8Answer="",S1Q9Answer="",S1Q10Answer="",S1Q10Score=0,S1Q11Answer="",S1Q11Score=0,S1Q12Answer="",S1Q13Answer="",S1Q13Score=0,S1Q14Answer="",
-                    S1Q15Answer="",S1Q16Answer="",
+                    S1Q7Answer="",S1Q8Answer="",S1Q9Answer="",S1Q9Score=0,S1Q10Answer="",S1Q11Answer="",S1Q12Answer="",S1Q13Answer="",S1Q13Score=0,S1Q14Answer="",S1Q14Score=0,
+                    S1Q15Answer="",S1Q16Answer="",S1Q16Score=0,S1Q17Answer="",S1Q18Answer="",S1Q19Answer="",
                     S2Q1Answer="",S2Q1Score=0,S2Q2Answer="",S2Q2Score=0,S2Q3Answer="",S2Q3Score=0,S2Q4Answer="",S2Q4Score=0,S2Q5Answer="",S2Q5Score=0,S2Q6Answer="",S2Q6Score=0,
                     S2Q7Answer ="",S2Q7Score=0,S2Q8Answer="",S2Q8Score=0,S2Q9Answer="",S2Q9Score=0,S2Q10Answer="",S2Q10Score=0,
                     S3Q1Answer="",S3Q1Score=0,S3Q2Answer="",S3Q2Score=0,S3Q3Answer="",S3Q3Score=0,S3Q4Answer="",S3Q4Score=0,S3Q5Answer="",S3Q5Score=0,S3Q6Answer="",S3Q6Score=0,
@@ -28,14 +28,14 @@ namespace SurveyMVCBase1.DAL
                     S4aQ33Answer="",S4aQ34Answer="",S4aQ35Answer="",S4aQ36Answer="",S4aQ37Answer="",S4aQ38Answer="",S4aQ39Answer="",S4aQ40Answer="",
                     S4aQ41Answer="",S4aQ42Answer="",S4aQ43Answer="",S4aQ44Answer="",S4aQ45Answer="",S4aQ46Answer="",S4aQ47Answer="",S4aQ48Answer="",
                     S4aQ49Answer="",S4aQ50Answer="",S4aQ51Answer="",S4aQ52Answer="",S4aQ53Answer="",S4aQ54Answer="",S4aQ55Answer="",S4aQ56Answer="",
-                    S4aQ57Answer="",
+                    S4aQ57Answer="",S4aQ58Answer="",S4aQ59Answer="",S4aQ60Answer="",S4aQ61Answer="",S4aQ62Answer="",S4aQ63Answer="",
                     S4bQ1Answer ="",S4bQ2Answer="",S4bQ3Answer="",S4bQ4Answer ="",S4bQ5Answer="",S4bQ6Answer="",S4bQ7Answer ="",S4bQ8Answer="",S4bQ9Answer="",
                     S4bQ10Answer ="",S4bQ11Answer="",S4bQ12Answer="",S4bQ13Answer ="",S4bQ14Answer="",S4bQ15Answer="",S4bQ16Answer ="",S4bQ17Answer="",S4bQ18Answer="",
                     S4bQ19Answer ="",S4bQ20Answer="",S4bQ21Answer="",S4bQ22Answer ="",S4bQ23Answer="",S4bQ24Answer="",S4bQ25Answer ="",S4bQ26Answer="",S4bQ27Answer="",
                     S4bQ28Answer ="",S4bQ29Answer="",S4bQ30Answer="",S4bQ31Answer ="",S4bQ32Answer="",S4bQ33Answer="",S4bQ34Answer ="",S4bQ35Answer="",S4bQ36Answer="",
                     S4bQ37Answer ="",S4bQ38Answer="",S4bQ39Answer="",S4bQ40Answer ="",S4bQ41Answer="",S4bQ42Answer="",S4bQ43Answer ="",S4bQ44Answer="",S4bQ45Answer="",
                     S4bQ46Answer ="",S4bQ47Answer="",S4bQ48Answer="",S4bQ49Answer ="",S4bQ50Answer="",S4bQ51Answer="",S4bQ52Answer ="",S4bQ53Answer="",S4bQ54Answer="",
-                    S4bQ55Answer ="",S4bQ56Answer="",S4bQ57Answer="",S4bQ58Answer ="",S4bQ59Answer="",S4bQ60Answer="",S4bQ61Answer =""}
+                    S4bQ55Answer ="",S4bQ56Answer="",S4bQ57Answer="",S4bQ58Answer ="",S4bQ59Answer="",S4bQ60Answer="",S4bQ61Answer ="",S4bQ62Answer ="",S4bQ63Answer =""}
             };
 
             surveys.ForEach(s => context.Surveys.Add(s));
