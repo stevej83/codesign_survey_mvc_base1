@@ -33,20 +33,45 @@
     <script src="@Url.Content("~/Scripts/jquery-3.1.1.min.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")"></script>
 
-    <!-- Code to wire up your DatePicker -->
+    <!-- Show multiline editorfor / textareafor -->
     <script type="text/javascript">
         $(function () {
-            // This will make every element with the class "date-picker" into a DatePicker element
-            $("#datepicker").datepicker({
-                changeMonth: true,
-                changeYear: true,
-                yearRange: '1920:2020',
-                dateFormat: 'yy-mm-dd',
-                defaultDate: new Date(1985, 00, 01)
-            });
+            var xS4bQ3 = $('#contS4bQ3AnsVar').val();
+            var xS4bQ4 = $('#contS4bQ4AnsVar').val();
+            var xS4bQ5 = $('#contS4bQ5AnsVar').val();
+            var xS4bQ6 = $('#contS4bQ6AnsVar').val();
+            var xS4bQ7 = $('#contS4bQ7AnsVar').val();
+            var xS4bQ8 = $('#contS4bQ8AnsVar').val();
+            var xS4bQ9 = $('#contS4bQ9AnsVar').val();
+            var xS4bQ11 = $('#contS4bQ11AnsVar').val();
+            var xS4bQ12 = $('#contS4bQ12AnsVar').val();
+            var xS4bQ17 = $('#contS4bQ17AnsVar').val();
+            var xS4bQ18 = $('#contS4bQ18AnsVar').val();
+            var xS4bQ22 = $('#contS4bQ22AnsVar').val();
+            var xS4bQ23 = $('#contS4bQ23AnsVar').val();
+            var xS4bQ25 = $('#contS4bQ25AnsVar').val();
+            var xS4bQ26 = $('#contS4bQ26AnsVar').val();
+            var xS4bQ28 = $('#contS4bQ28AnsVar').val();
+
+            $('#S4bQ3Answer').val(xS4bQ3.toString());
+            $('#S4bQ4Answer').val(xS4bQ4.toString());
+            $('#S4bQ5Answer').val(xS4bQ5.toString());
+            $('#S4bQ6Answer').val(xS4bQ6.toString());
+            $('#S4bQ7Answer').val(xS4bQ7.toString());
+            $('#S4bQ8Answer').val(xS4bQ8.toString());
+            $('#S4bQ9Answer').val(xS4bQ9.toString());
+            $('#S4bQ11Answer').val(xS4bQ11.toString());
+            $('#S4bQ12Answer').val(xS4bQ12.toString());
+            $('#S4bQ17Answer').val(xS4bQ17.toString());
+            $('#S4bQ18Answer').val(xS4bQ18.toString());
+            $('#S4bQ22Answer').val(xS4bQ22.toString());
+            $('#S4bQ23Answer').val(xS4bQ23.toString());
+            $('#S4bQ25Answer').val(xS4bQ25.toString());
+            $('#S4bQ26Answer').val(xS4bQ26.toString());
+            $('#S4bQ28Answer').val(xS4bQ28.toString());
         })
     </script>
-    <!-- end of jquery datepicker -->
+    <!-- end -->
 
     @Scripts.Render("~/bundles/jsdoc")
     @RenderSection("scripts", required: false)

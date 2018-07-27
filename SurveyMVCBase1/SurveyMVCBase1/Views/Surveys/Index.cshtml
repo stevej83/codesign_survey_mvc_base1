@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SurveyMVCBase1.Models.Survey>
+﻿@model SurveyMVCBase1.Models.Survey
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,6 +11,14 @@
         <h1>企业家移民咨询测试</h1>
         <p>本测试由 "英中企业家协会" 倾力打造，旨在评估申请人是否适合申请英国 Tier 1 企业家移民签证，并通过问题的回答，让申请人对英国企业家签证有更全面的了解。如果您已经做好答题准备，请点击下方按钮开始测试。</p>
         @Html.ActionLink("开始", "Workflow", null, new { @class = "button" })
+        <br />
+        <hr />
+        <p>请输入测试码然后点击 "继续测试" 按键 继续未完测试，输入测试码时请切换为 <b>英文输入法</b>&nbsp;并&nbsp;<b>包涵连接符号</b>。</p>
+@using (Html.BeginForm("Continue", "Surveys", FormMethod.Post, new { @class = "cbp-mc-form" }))
+{
+        @Html.Editor("testCodeId", new { htmlAttributes = new { placeholder = "请输入测试码", @title = "请输入测试码", @oninvalid = "this.setCustomValidity('请输入测试码')", @oninput = "setCustomValidity('')" } })
+        <button type="submit" class="button">继续测试</button>
+}
     </div>
 </div>
 

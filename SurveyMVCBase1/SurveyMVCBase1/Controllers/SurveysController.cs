@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Web.Mvc;
 using WxPayAPI;
@@ -21,7 +22,440 @@ namespace SurveyMVCBase1.Controllers
             return View();
         }
 
+        // Post: Continue
+        [HttpPost, ActionName("Continue")]
+        public ActionResult ContinuePost()
+        {
+            string surveyId = "";
+            surveyId = Request.Form["testCodeId"];
 
+            int S1Score = 0;
+            int S2Score = 0;
+            int S3Score = 0;
+
+            Survey survey = db.Surveys.Find(surveyId);
+            if (survey != null)
+            {
+                Session["viewKey"] = surveyId;
+
+                S1Score = survey.S1Q3Score + survey.S1Q6Score + survey.S1Q9Score + survey.S1Q13Score + survey.S1Q14Score + survey.S1Q16Score;
+                S2Score = survey.S2Q1Score + survey.S2Q2Score + survey.S2Q3Score + survey.S2Q4Score + survey.S2Q5Score + survey.S2Q6Score + survey.S2Q7Score + survey.S2Q8Score + survey.S2Q9Score + survey.S2Q10Score;
+                S3Score = survey.S3Q1Score + survey.S3Q2Score + survey.S3Q3Score + survey.S3Q4Score + survey.S3Q5Score + survey.S3Q6Score + survey.S3Q7Score + survey.S3Q8Score + survey.S3Q9Score + survey.S3Q10Score;
+
+                if (S1Score >= 30 && S2Score < 60)
+                {
+                    return RedirectToAction("S2Page1");
+                }
+                else if (S2Score >= 60 && S3Score == 0)
+                {
+                    return RedirectToAction("S3Page1");
+                }
+                else if (S3Score > 0 && string.IsNullOrEmpty(survey.S4aQ1Answer.Trim()) && string.IsNullOrEmpty(survey.S4bQ1Answer.Trim()))
+                {
+                    return RedirectToAction("S3PageSum");
+                }
+                else if (!string.IsNullOrEmpty(survey.S4aQ1Answer.Trim()) && string.IsNullOrEmpty(survey.S4aQ34Answer.Trim()))
+                {
+                    Session["contS4aQ1Ans"] = survey.S4aQ1Answer;
+                    Session["contS4aQ2Ans"] = survey.S4aQ2Answer;
+                    Session["contS4aQ3Ans"] = survey.S4aQ3Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4aQ4Answer))
+                    {
+                        Session["contS4aQ4Ans"] = survey.S4aQ4Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ4Ans"] = null;
+                    }
+
+                    Session["contS4aQ5Ans"] = survey.S4aQ5Answer;
+                    Session["contS4aQ6Ans"] = survey.S4aQ6Answer;
+                    Session["contS4aQ7Ans"] = survey.S4aQ7Answer;
+                    Session["contS4aQ8Ans"] = survey.S4aQ8Answer;
+                    Session["contS4aQ9Ans"] = survey.S4aQ9Answer;
+                    Session["contS4aQ10Ans"] = survey.S4aQ10Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4aQ11Answer))
+                    {
+                        Session["contS4aQ11Ans"] = survey.S4aQ11Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ11Ans"] = null;
+                    }
+                    
+                    Session["contS4aQ12Ans"] = survey.S4aQ12Answer;
+                    Session["contS4aQ13Ans"] = survey.S4aQ13Answer;
+                    Session["contS4aQ14Ans"] = survey.S4aQ14Answer;
+                    Session["contS4aQ15Ans"] = survey.S4aQ15Answer;
+                    Session["contS4aQ16Ans"] = survey.S4aQ16Answer;
+                    Session["contS4aQ17Ans"] = survey.S4aQ17Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4aQ18Answer))
+                    {
+                        Session["contS4aQ18Ans"] = survey.S4aQ18Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ18Ans"] = null;
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S4aQ19Answer))
+                    {
+                        Session["contS4aQ19Ans"] = survey.S4aQ19Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ19Ans"] = null;
+                    }
+
+                    Session["contS4aQ20Ans"] = survey.S4aQ20Answer;
+                    Session["contS4aQ21Ans"] = survey.S4aQ21Answer;
+                    Session["contS4aQ22Ans"] = survey.S4aQ22Answer;
+                    Session["contS4aQ23Ans"] = survey.S4aQ23Answer;
+                    Session["contS4aQ24Ans"] = survey.S4aQ24Answer;
+                    Session["contS4aQ25Ans"] = survey.S4aQ25Answer;
+                    Session["contS4aQ26Ans"] = survey.S4aQ26Answer;
+                    Session["contS4aQ27Ans"] = survey.S4aQ27Answer;
+                    Session["contS4aQ28Ans"] = survey.S4aQ28Answer;
+                    Session["contS4aQ29Ans"] = survey.S4aQ29Answer;
+                    Session["contS4aQ30Ans"] = survey.S4aQ30Answer;
+                    Session["contS4aQ31Ans"] = survey.S4aQ31Answer;
+                    Session["contS4aQ32Ans"] = survey.S4aQ32Answer;
+                    Session["contS4aQ33Ans"] = survey.S4aQ33Answer;
+                    return RedirectToAction("S4aPage1");
+                }
+                else if (!string.IsNullOrEmpty(survey.S4aQ34Answer))
+                {
+                    Session["contS4aQ34Ans"] = survey.S4aQ34Answer;
+                    Session["contS4aQ35Ans"] = survey.S4aQ35Answer;
+                    Session["contS4aQ36Ans"] = survey.S4aQ36Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4aQ37Answer))
+                    {
+                        Session["contS4aQ37Ans"] = survey.S4aQ37Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ37Ans"] = null;
+                    }
+
+
+                    Session["contS4aQ38Ans"] = survey.S4aQ38Answer;
+                    Session["contS4aQ39Ans"] = survey.S4aQ39Answer;
+                    Session["contS4aQ40Ans"] = survey.S4aQ40Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4aQ41Answer))
+                    {
+                        Session["contS4aQ41Ans"] = survey.S4aQ41Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ41Ans"] = null;
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S4aQ42Answer))
+                    {
+                        Session["contS4aQ42Ans"] = survey.S4aQ42Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ42Ans"] = null;
+                    }
+
+                    Session["contS4aQ43Ans"] = survey.S4aQ43Answer;
+                    Session["contS4aQ44Ans"] = survey.S4aQ44Answer;
+ 
+                    if (!string.IsNullOrEmpty(survey.S4aQ45Answer))
+                    {
+                        Session["contS4aQ45Ans"] = survey.S4aQ45Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ45Ans"] = null;
+                    }
+
+                    Session["contS4aQ46Ans"] = survey.S4aQ46Answer;
+                    Session["contS4aQ47Ans"] = survey.S4aQ47Answer;
+                    Session["contS4aQ48Ans"] = survey.S4aQ48Answer;
+                    Session["contS4aQ49Ans"] = survey.S4aQ49Answer;
+                    Session["contS4aQ50Ans"] = survey.S4aQ50Answer;
+                    
+                    if (!string.IsNullOrEmpty(survey.S4aQ51Answer))
+                    {
+                        Session["contS4aQ51Ans"] = survey.S4aQ51Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ51Ans"] = null;
+                    }
+
+                    Session["contS4aQ52Ans"] = survey.S4aQ52Answer;
+                    Session["contS4aQ53Ans"] = survey.S4aQ53Answer;
+                    
+                    if (!string.IsNullOrEmpty(survey.S4aQ54Answer))
+                    {
+                        Session["contS4aQ54Ans"] = survey.S4aQ54Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ54Ans"] = null;
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S4aQ55Answer))
+                    {
+                        Session["contS4aQ55Ans"] = survey.S4aQ55Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ55Ans"] = null;
+                    }
+
+                    Session["contS4aQ56Ans"] = survey.S4aQ56Answer;
+                    Session["contS4aQ57Ans"] = survey.S4aQ57Answer;
+                    Session["contS4aQ58Ans"] = survey.S4aQ58Answer;
+                    Session["contS4aQ59Ans"] = survey.S4aQ59Answer;
+                    Session["contS4aQ60Ans"] = survey.S4aQ60Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4aQ61Answer))
+                    {
+                        Session["contS4aQ61Ans"] = survey.S4aQ61Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ61Ans"] = null;
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S4aQ62Answer))
+                    {
+                        Session["contS4aQ62Ans"] = survey.S4aQ62Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ62Ans"] = null;
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S4aQ63Answer))
+                    {
+                        Session["contS4aQ63Ans"] = survey.S4aQ63Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ63Ans"] = null;
+                    }
+
+                    return RedirectToAction("S4aPage2");
+                }
+                else if (!string.IsNullOrEmpty(survey.S4bQ1Answer) && string.IsNullOrEmpty(survey.S4bQ30Answer))
+                {
+                    Session["contS4bQ1Ans"] = survey.S4bQ1Answer;
+                    Session["contS4bQ2Ans"] = survey.S4bQ2Answer;
+                    Session["contS4bQ3Ans"] = survey.S4bQ3Answer;
+                    Session["contS4bQ4Ans"] = survey.S4bQ4Answer;
+                    Session["contS4bQ5Ans"] = survey.S4bQ5Answer;
+                    Session["contS4bQ6Ans"] = survey.S4bQ6Answer;
+                    Session["contS4bQ7Ans"] = survey.S4bQ7Answer;
+                    Session["contS4bQ8Ans"] = survey.S4bQ8Answer;
+                    Session["contS4bQ9Ans"] = survey.S4bQ9Answer;
+                    Session["contS4bQ10Ans"] = survey.S4bQ10Answer;
+                    Session["contS4bQ11Ans"] = survey.S4bQ11Answer;
+                    Session["contS4bQ12Ans"] = survey.S4bQ12Answer;
+                    Session["contS4bQ13Ans"] = survey.S4bQ13Answer;
+                    Session["contS4bQ14Ans"] = survey.S4bQ14Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4bQ15Answer))
+                    {
+                        Session["contS4bQ15Ans"] = survey.S4bQ15Answer;
+                    }
+                    else
+                    {
+                        Session["contS4bQ15Ans"] = null;
+                    }
+
+                    Session["contS4bQ16Ans"] = survey.S4bQ16Answer;
+                    Session["contS4bQ17Ans"] = survey.S4bQ17Answer;
+                    Session["contS4bQ18Ans"] = survey.S4bQ18Answer;
+                    Session["contS4bQ19Ans"] = survey.S4bQ19Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4bQ20Answer))
+                    {
+                        Session["contS4bQ20Ans"] = survey.S4bQ20Answer;
+                    }
+                    else
+                    {
+                        Session["contS4bQ20Ans"] = null;
+                    }
+
+                    Session["contS4bQ21Ans"] = survey.S4bQ21Answer;
+                    Session["contS4bQ22Ans"] = survey.S4bQ22Answer;
+                    Session["contS4bQ23Ans"] = survey.S4bQ23Answer;
+                    Session["contS4bQ24Ans"] = survey.S4bQ24Answer;
+                    Session["contS4bQ25Ans"] = survey.S4bQ25Answer;
+                    Session["contS4bQ26Ans"] = survey.S4bQ26Answer;
+                    Session["contS4bQ27Ans"] = survey.S4bQ27Answer;
+                    Session["contS4bQ28Ans"] = survey.S4bQ28Answer;
+                    Session["contS4bQ29Ans"] = survey.S4bQ29Answer;
+
+                    return RedirectToAction("S4bPage1");
+                }
+                else if (!string.IsNullOrEmpty(survey.S4bQ30Answer))
+                {
+                    if (!string.IsNullOrEmpty(survey.S4bQ30Answer))
+                    {
+                        Session["contS4bQ30Ans"] = survey.S4bQ30Answer;
+                    }
+                    else
+                    {
+                        Session["contS4bQ30Ans"] = null;
+                    }
+
+                    Session["contS4bQ31Ans"] = survey.S4bQ31Answer;
+                    Session["contS4bQ32Ans"] = survey.S4bQ32Answer;
+                    Session["contS4bQ33Ans"] = survey.S4bQ33Answer;
+                    Session["contS4bQ34Ans"] = survey.S4bQ34Answer;
+                    Session["contS4bQ35Ans"] = survey.S4bQ35Answer;
+                    Session["contS4bQ36Ans"] = survey.S4bQ36Answer;
+                    Session["contS4bQ37Ans"] = survey.S4bQ37Answer;
+                    Session["contS4bQ38Ans"] = survey.S4bQ38Answer;
+                    Session["contS4bQ39Ans"] = survey.S4bQ39Answer;
+                    Session["contS4bQ40Ans"] = survey.S4bQ40Answer;
+                    Session["contS4bQ41Ans"] = survey.S4bQ41Answer;
+                    Session["contS4bQ42Ans"] = survey.S4bQ42Answer;
+                    Session["contS4bQ43Ans"] = survey.S4bQ43Answer;
+                    Session["contS4bQ44Ans"] = survey.S4bQ44Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4bQ45Answer))
+                    {
+                        Session["contS4bQ45Ans"] = survey.S4bQ45Answer;
+                    }
+                    else
+                    {
+                        Session["contS4bQ45Ans"] = null;
+                    }
+
+                    Session["contS4bQ46Ans"] = survey.S4bQ46Answer;
+                    Session["contS4bQ47Ans"] = survey.S4bQ47Answer;
+                    Session["contS4bQ48Ans"] = survey.S4bQ48Answer;
+                    Session["contS4bQ49Ans"] = survey.S4bQ49Answer;
+                    Session["contS4bQ50Ans"] = survey.S4bQ50Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4bQ51Answer))
+                    {
+                        Session["contS4bQ51Ans"] = survey.S4bQ51Answer;
+                    }
+                    else
+                    {
+                        Session["contS4bQ51Ans"] = null;
+                    }
+
+                    Session["contS4bQ52Ans"] = survey.S4bQ52Answer;
+                    Session["contS4bQ53Ans"] = survey.S4bQ53Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4bQ54Answer))
+                    {
+                        Session["contS4bQ54Ans"] = survey.S4bQ54Answer;
+                    }
+                    else
+                    {
+                        Session["contS4bQ54Ans"] = null;
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S4bQ55Answer))
+                    {
+                        Session["contS4bQ55Ans"] = survey.S4bQ55Answer;
+                    }
+                    else
+                    {
+                        Session["contS4bQ55Ans"] = null;
+                    }
+
+                    Session["contS4bQ56Ans"] = survey.S4bQ56Answer;
+                    Session["contS4bQ57Ans"] = survey.S4bQ57Answer;
+                    Session["contS4bQ58Ans"] = survey.S4bQ58Answer;
+                    Session["contS4bQ59Ans"] = survey.S4bQ59Answer;
+                    Session["contS4bQ60Ans"] = survey.S4bQ60Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4bQ61Answer))
+                    {
+                        Session["contS4bQ61Ans"] = survey.S4bQ61Answer;
+                    }
+                    else
+                    {
+                        Session["contS4bQ61Ans"] = null;
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S4bQ62Answer))
+                    {
+                        Session["contS4bQ62Ans"] = survey.S4bQ62Answer;
+                    }
+                    else
+                    {
+                        Session["contS4bQ62Ans"] = null;
+                    }
+
+                    if (!string.IsNullOrEmpty(survey.S4bQ63Answer))
+                    {
+                        Session["contS4bQ63Ans"] = survey.S4bQ63Answer;
+                    }
+                    else
+                    {
+                        Session["contS4bQ63Ans"] = null;
+                    }
+                    
+                    return RedirectToAction("S4bPage2");
+                }
+            }
+
+            Session["error"] = "您的测试码无效，请重新测试。";
+            return View("Error");
+        }
+
+        public class EmailBusiness
+        {
+            public MailAddress to { get; set; }
+            public MailAddress from { get; set; }
+            public string sub { get; set; }
+            public string body { get; set; }
+            public string ToAdmin()
+            {
+                string feedback = "";
+                EmailBusiness me = new EmailBusiness();
+
+                var m = new MailMessage()
+                {
+
+                    Subject = sub,
+                    Body = body,
+                    IsBodyHtml = true
+                };
+                to = new MailAddress("jinyue306@gmail.com", "Administrator");
+                m.To.Add(to);
+                m.From = new MailAddress(from.ToString());
+                m.Sender = to;
+
+
+                SmtpClient smtp = new SmtpClient
+                {
+                    Host = "smtp.ukvisatest.com",
+                    Port = 25,
+                    Credentials = new NetworkCredential("", "Dut930611jk"),
+                    EnableSsl = true
+                };
+
+                try
+                {
+                    smtp.Send(m);
+                    feedback = "Message sent to insurance";
+                }
+                catch (Exception e)
+                {
+                    feedback = "Message not sent retry" + e.Message;
+                }
+                return feedback;
+            }
+
+        }
         /// <summary>
         /// 模式一
         /// </summary>
@@ -29,22 +463,22 @@ namespace SurveyMVCBase1.Controllers
         //[HttpPost]
         //public ActionResult GetQRCode1()
         //{
-            //object objResult = "";
-            //string strProductID = Request.Form["productId"];
-            //string strQRCodeStr = GetPrePayUrl(strProductID);
-            //string strQRCodeStr = GetPrePayUrl("123456789");
+        //object objResult = "";
+        //string strProductID = Request.Form["productId"];
+        //string strQRCodeStr = GetPrePayUrl(strProductID);
+        //string strQRCodeStr = GetPrePayUrl("123456789");
 
 
-            //if (!string.IsNullOrWhiteSpace(strProductID))
-            //if (!string.IsNullOrWhiteSpace(strQRCodeStr))
-            //{
-                //objResult = new { result = true, str = strQRCodeStr };
-            //}
-            //else
-            //{
-                //objResult = new { result = false };
-            //}
-            //return Json(objResult);
+        //if (!string.IsNullOrWhiteSpace(strProductID))
+        //if (!string.IsNullOrWhiteSpace(strQRCodeStr))
+        //{
+        //objResult = new { result = true, str = strQRCodeStr };
+        //}
+        //else
+        //{
+        //objResult = new { result = false };
+        //}
+        //return Json(objResult);
         //}
         /**
         * 生成扫描支付模式一URL
@@ -53,16 +487,16 @@ namespace SurveyMVCBase1.Controllers
         */
         //public string GetPrePayUrl(string productId)
         //{
-            //WxPayData data = new WxPayData();
-            //data.SetValue("appid", WxPayConfig.APPID);//公众帐号id
-            //data.SetValue("mch_id", WxPayConfig.MCHID);//商户号
-            //data.SetValue("time_stamp", WxPayApi.GenerateTimeStamp());//时间戳
-            //data.SetValue("nonce_str", WxPayApi.GenerateNonceStr());//随机字符串
-            //data.SetValue("product_id", productId);//商品ID
-            //data.SetValue("sign", data.MakeSign());//签名
-            //string str = ToUrlParams(data.GetValues());//转换为URL串
-            //string url = "weixin://wxpay/bizpayurl?" + str;
-            //return url;
+        //WxPayData data = new WxPayData();
+        //data.SetValue("appid", WxPayConfig.APPID);//公众帐号id
+        //data.SetValue("mch_id", WxPayConfig.MCHID);//商户号
+        //data.SetValue("time_stamp", WxPayApi.GenerateTimeStamp());//时间戳
+        //data.SetValue("nonce_str", WxPayApi.GenerateNonceStr());//随机字符串
+        //data.SetValue("product_id", productId);//商品ID
+        //data.SetValue("sign", data.MakeSign());//签名
+        //string str = ToUrlParams(data.GetValues());//转换为URL串
+        //string url = "weixin://wxpay/bizpayurl?" + str;
+        //return url;
         //}
         /**
        * 参数数组转换为url格式
@@ -71,24 +505,389 @@ namespace SurveyMVCBase1.Controllers
        */
         //private string ToUrlParams(SortedDictionary<string, object> map)
         //{
-            //string buff = "";
-            //foreach (KeyValuePair<string, object> pair in map)
-            //{
-                //buff += pair.Key + "=" + pair.Value + "&";
-            //}
-            //buff = buff.Trim('&');
-            //return buff;
+        //string buff = "";
+        //foreach (KeyValuePair<string, object> pair in map)
+        //{
+        //buff += pair.Key + "=" + pair.Value + "&";
+        //}
+        //buff = buff.Trim('&');
+        //return buff;
         //}
 
+        // redirect page to SectionSaved
+        public ActionResult SectionSaved()
+        {
+            ViewBag.UserTestCode = Session["viewKey"].ToString();
+            return View();
+        }
+
+        // redirect section4a from section2 to section1
+        public ActionResult SectionBack4a()
+        {
+            string surveyId = "";
+            surveyId = Session["viewKey"].ToString();
+
+            Survey survey = db.Surveys.Find(surveyId);
+            if (survey != null)
+            {
+                Session["contS4aQ1Ans"] = survey.S4aQ1Answer;
+                Session["contS4aQ2Ans"] = survey.S4aQ2Answer;
+                Session["contS4aQ3Ans"] = survey.S4aQ3Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4aQ4Answer))
+                {
+                    Session["contS4aQ4Ans"] = survey.S4aQ4Answer;
+                }
+                else
+                {
+                    Session["contS4aQ4Ans"] = null;
+                }
+
+                Session["contS4aQ5Ans"] = survey.S4aQ5Answer;
+                Session["contS4aQ6Ans"] = survey.S4aQ6Answer;
+                Session["contS4aQ7Ans"] = survey.S4aQ7Answer;
+                Session["contS4aQ8Ans"] = survey.S4aQ8Answer;
+                Session["contS4aQ9Ans"] = survey.S4aQ9Answer;
+                Session["contS4aQ10Ans"] = survey.S4aQ10Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4aQ11Answer))
+                {
+                    Session["contS4aQ11Ans"] = survey.S4aQ11Answer;
+                }
+                else
+                {
+                    Session["contS4aQ11Ans"] = null;
+                }
+
+                Session["contS4aQ12Ans"] = survey.S4aQ12Answer;
+                Session["contS4aQ13Ans"] = survey.S4aQ13Answer;
+                Session["contS4aQ14Ans"] = survey.S4aQ14Answer;
+                Session["contS4aQ15Ans"] = survey.S4aQ15Answer;
+                Session["contS4aQ16Ans"] = survey.S4aQ16Answer;
+                Session["contS4aQ17Ans"] = survey.S4aQ17Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4aQ18Answer))
+                {
+                    Session["contS4aQ18Ans"] = survey.S4aQ18Answer;
+                }
+                else
+                {
+                    Session["contS4aQ18Ans"] = null;
+                }
+
+                if (!string.IsNullOrEmpty(survey.S4aQ19Answer))
+                {
+                    Session["contS4aQ19Ans"] = survey.S4aQ19Answer;
+                }
+                else
+                {
+                    Session["contS4aQ19Ans"] = null;
+                }
+
+                Session["contS4aQ20Ans"] = survey.S4aQ20Answer;
+                Session["contS4aQ21Ans"] = survey.S4aQ21Answer;
+                Session["contS4aQ22Ans"] = survey.S4aQ22Answer;
+                Session["contS4aQ23Ans"] = survey.S4aQ23Answer;
+                Session["contS4aQ24Ans"] = survey.S4aQ24Answer;
+                Session["contS4aQ25Ans"] = survey.S4aQ25Answer;
+                Session["contS4aQ26Ans"] = survey.S4aQ26Answer;
+                Session["contS4aQ27Ans"] = survey.S4aQ27Answer;
+                Session["contS4aQ28Ans"] = survey.S4aQ28Answer;
+                Session["contS4aQ29Ans"] = survey.S4aQ29Answer;
+                Session["contS4aQ30Ans"] = survey.S4aQ30Answer;
+                Session["contS4aQ31Ans"] = survey.S4aQ31Answer;
+                Session["contS4aQ32Ans"] = survey.S4aQ32Answer;
+                Session["contS4aQ33Ans"] = survey.S4aQ33Answer;
+                Session["contS4aQ34Ans"] = survey.S4aQ34Answer;
+                Session["contS4aQ35Ans"] = survey.S4aQ35Answer;
+                Session["contS4aQ36Ans"] = survey.S4aQ36Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4aQ37Answer))
+                {
+                    Session["contS4aQ37Ans"] = survey.S4aQ37Answer;
+                }
+                else
+                {
+                    Session["contS4aQ37Ans"] = null;
+                }
 
 
+                Session["contS4aQ38Ans"] = survey.S4aQ38Answer;
+                Session["contS4aQ39Ans"] = survey.S4aQ39Answer;
+                Session["contS4aQ40Ans"] = survey.S4aQ40Answer;
 
-        // direct to page - Workflow
+                if (!string.IsNullOrEmpty(survey.S4aQ41Answer))
+                {
+                    Session["contS4aQ41Ans"] = survey.S4aQ41Answer;
+                }
+                else
+                {
+                    Session["contS4aQ41Ans"] = null;
+                }
+
+                if (!string.IsNullOrEmpty(survey.S4aQ42Answer))
+                {
+                    Session["contS4aQ42Ans"] = survey.S4aQ42Answer;
+                }
+                else
+                {
+                    Session["contS4aQ42Ans"] = null;
+                }
+
+                Session["contS4aQ43Ans"] = survey.S4aQ43Answer;
+                Session["contS4aQ44Ans"] = survey.S4aQ44Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4aQ45Answer))
+                {
+                    Session["contS4aQ45Ans"] = survey.S4aQ45Answer;
+                }
+                else
+                {
+                    Session["contS4aQ45Ans"] = null;
+                }
+
+                Session["contS4aQ46Ans"] = survey.S4aQ46Answer;
+                Session["contS4aQ47Ans"] = survey.S4aQ47Answer;
+                Session["contS4aQ48Ans"] = survey.S4aQ48Answer;
+                Session["contS4aQ49Ans"] = survey.S4aQ49Answer;
+                Session["contS4aQ50Ans"] = survey.S4aQ50Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4aQ51Answer))
+                {
+                    Session["contS4aQ51Ans"] = survey.S4aQ51Answer;
+                }
+                else
+                {
+                    Session["contS4aQ51Ans"] = null;
+                }
+
+                Session["contS4aQ52Ans"] = survey.S4aQ52Answer;
+                Session["contS4aQ53Ans"] = survey.S4aQ53Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4aQ54Answer))
+                {
+                    Session["contS4aQ54Ans"] = survey.S4aQ54Answer;
+                }
+                else
+                {
+                    Session["contS4aQ54Ans"] = null;
+                }
+
+                if (!string.IsNullOrEmpty(survey.S4aQ55Answer))
+                {
+                    Session["contS4aQ55Ans"] = survey.S4aQ55Answer;
+                }
+                else
+                {
+                    Session["contS4aQ55Ans"] = null;
+                }
+
+                Session["contS4aQ56Ans"] = survey.S4aQ56Answer;
+                Session["contS4aQ57Ans"] = survey.S4aQ57Answer;
+                Session["contS4aQ58Ans"] = survey.S4aQ58Answer;
+                Session["contS4aQ59Ans"] = survey.S4aQ59Answer;
+                Session["contS4aQ60Ans"] = survey.S4aQ60Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4aQ61Answer))
+                {
+                    Session["contS4aQ61Ans"] = survey.S4aQ61Answer;
+                }
+                else
+                {
+                    Session["contS4aQ61Ans"] = null;
+                }
+
+                if (!string.IsNullOrEmpty(survey.S4aQ62Answer))
+                {
+                    Session["contS4aQ62Ans"] = survey.S4aQ62Answer;
+                }
+                else
+                {
+                    Session["contS4aQ62Ans"] = null;
+                }
+
+                if (!string.IsNullOrEmpty(survey.S4aQ63Answer))
+                {
+                    Session["contS4aQ63Ans"] = survey.S4aQ63Answer;
+                }
+                else
+                {
+                    Session["contS4aQ63Ans"] = null;
+                }
+            }
+
+            return View("Section4a/S4aPage1");
+        }
+
+        // redirect section4b from section2 to section1
+        public ActionResult SectionBack4b()
+        {
+            string surveyId = "";
+            surveyId = Session["viewKey"].ToString();
+
+            Survey survey = db.Surveys.Find(surveyId);
+            if (survey != null)
+            {
+                Session["contS4bQ1Ans"] = survey.S4bQ1Answer;
+                Session["contS4bQ2Ans"] = survey.S4bQ2Answer;
+                Session["contS4bQ3Ans"] = survey.S4bQ3Answer;
+                Session["contS4bQ4Ans"] = survey.S4bQ4Answer;
+                Session["contS4bQ5Ans"] = survey.S4bQ5Answer;
+                Session["contS4bQ6Ans"] = survey.S4bQ6Answer;
+                Session["contS4bQ7Ans"] = survey.S4bQ7Answer;
+                Session["contS4bQ8Ans"] = survey.S4bQ8Answer;
+                Session["contS4bQ9Ans"] = survey.S4bQ9Answer;
+                Session["contS4bQ10Ans"] = survey.S4bQ10Answer;
+                Session["contS4bQ11Ans"] = survey.S4bQ11Answer;
+                Session["contS4bQ12Ans"] = survey.S4bQ12Answer;
+                Session["contS4bQ13Ans"] = survey.S4bQ13Answer;
+                Session["contS4bQ14Ans"] = survey.S4bQ14Answer;
+                
+                if (!string.IsNullOrEmpty(survey.S4bQ15Answer))
+                {
+                    Session["contS4bQ15Ans"] = survey.S4bQ15Answer;
+                }
+                else
+                {
+                    Session["contS4bQ15Ans"] = null;
+                }
+
+                Session["contS4bQ16Ans"] = survey.S4bQ16Answer;
+                Session["contS4bQ17Ans"] = survey.S4bQ17Answer;
+                Session["contS4bQ18Ans"] = survey.S4bQ18Answer;
+                Session["contS4bQ19Ans"] = survey.S4bQ19Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4bQ20Answer))
+                {
+                    Session["contS4bQ20Ans"] = survey.S4bQ20Answer;
+                }
+                else
+                {
+                    Session["contS4bQ20Ans"] = null;
+                }
+
+                Session["contS4bQ21Ans"] = survey.S4bQ21Answer;
+                Session["contS4bQ22Ans"] = survey.S4bQ22Answer;
+                Session["contS4bQ23Ans"] = survey.S4bQ23Answer;
+                Session["contS4bQ24Ans"] = survey.S4bQ24Answer;
+                Session["contS4bQ25Ans"] = survey.S4bQ25Answer;
+                Session["contS4bQ26Ans"] = survey.S4bQ26Answer;
+                Session["contS4bQ27Ans"] = survey.S4bQ27Answer;
+                Session["contS4bQ28Ans"] = survey.S4bQ28Answer;
+                Session["contS4bQ29Ans"] = survey.S4bQ29Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4bQ30Answer))
+                {
+                    Session["contS4bQ30Ans"] = survey.S4bQ30Answer;
+                }
+                else
+                {
+                    Session["contS4bQ30Ans"] = null;
+                }
+
+                Session["contS4bQ31Ans"] = survey.S4bQ31Answer;
+                Session["contS4bQ32Ans"] = survey.S4bQ32Answer;
+                Session["contS4bQ33Ans"] = survey.S4bQ33Answer;
+                Session["contS4bQ34Ans"] = survey.S4bQ34Answer;
+                Session["contS4bQ35Ans"] = survey.S4bQ35Answer;
+                Session["contS4bQ36Ans"] = survey.S4bQ36Answer;
+                Session["contS4bQ37Ans"] = survey.S4bQ37Answer;
+                Session["contS4bQ38Ans"] = survey.S4bQ38Answer;
+                Session["contS4bQ39Ans"] = survey.S4bQ39Answer;
+                Session["contS4bQ40Ans"] = survey.S4bQ40Answer;
+                Session["contS4bQ41Ans"] = survey.S4bQ41Answer;
+                Session["contS4bQ42Ans"] = survey.S4bQ42Answer;
+                Session["contS4bQ43Ans"] = survey.S4bQ43Answer;
+                Session["contS4bQ44Ans"] = survey.S4bQ44Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4bQ45Answer))
+                {
+                    Session["contS4bQ45Ans"] = survey.S4bQ45Answer;
+                }
+                else
+                {
+                    Session["contS4bQ45Ans"] = null;
+                }
+
+                Session["contS4bQ46Ans"] = survey.S4bQ46Answer;
+                Session["contS4bQ47Ans"] = survey.S4bQ47Answer;
+                Session["contS4bQ48Ans"] = survey.S4bQ48Answer;
+                Session["contS4bQ49Ans"] = survey.S4bQ49Answer;
+                Session["contS4bQ50Ans"] = survey.S4bQ50Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4bQ51Answer))
+                {
+                    Session["contS4bQ51Ans"] = survey.S4bQ51Answer;
+                }
+                else
+                {
+                    Session["contS4bQ51Ans"] = null;
+                }
+
+                Session["contS4bQ52Ans"] = survey.S4bQ52Answer;
+                Session["contS4bQ53Ans"] = survey.S4bQ53Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4bQ54Answer))
+                {
+                    Session["contS4bQ54Ans"] = survey.S4bQ54Answer;
+                }
+                else
+                {
+                    Session["contS4bQ54Ans"] = null;
+                }
+
+                if (!string.IsNullOrEmpty(survey.S4bQ55Answer))
+                {
+                    Session["contS4bQ55Ans"] = survey.S4bQ55Answer;
+                }
+                else
+                {
+                    Session["contS4bQ55Ans"] = null;
+                }
+
+                Session["contS4bQ56Ans"] = survey.S4bQ56Answer;
+                Session["contS4bQ57Ans"] = survey.S4bQ57Answer;
+                Session["contS4bQ58Ans"] = survey.S4bQ58Answer;
+                Session["contS4bQ59Ans"] = survey.S4bQ59Answer;
+                Session["contS4bQ60Ans"] = survey.S4bQ60Answer;
+
+                if (!string.IsNullOrEmpty(survey.S4bQ61Answer))
+                {
+                    Session["contS4bQ61Ans"] = survey.S4bQ61Answer;
+                }
+                else
+                {
+                    Session["contS4bQ61Ans"] = null;
+                }
+
+                if (!string.IsNullOrEmpty(survey.S4bQ62Answer))
+                {
+                    Session["contS4bQ62Ans"] = survey.S4bQ62Answer;
+                }
+                else
+                {
+                    Session["contS4bQ62Ans"] = null;
+                }
+
+                if (!string.IsNullOrEmpty(survey.S4bQ63Answer))
+                {
+                    Session["contS4bQ63Ans"] = survey.S4bQ63Answer;
+                }
+                else
+                {
+                    Session["contS4bQ63Ans"] = null;
+                }
+            }
+
+            return View("Section4b/S4bPage1");
+        }
+
+        // redirect page to Workflow
         public ActionResult Workflow()
         {
             //Survey survyCreate = new Survey();
             //survyCreate.SurveyID = Guid.NewGuid().ToString();
-
+            Session.RemoveAll();
             return View();
         }
 
@@ -1171,7 +1970,7 @@ namespace SurveyMVCBase1.Controllers
         // Post: S1PageSum
         [HttpPost, ActionName("S1PageSum")]
         [ValidateAntiForgeryToken]
-        public ActionResult S1PageSumPost()
+        public ActionResult S1PageSumPost(string command)
         {
             string id = "";
             if (Session["viewKey"] != null)
@@ -1184,7 +1983,16 @@ namespace SurveyMVCBase1.Controllers
                 return View("Error");
             }
 
-            return RedirectToAction("S2Page1");
+            if (command.Equals("继续"))
+            {
+                return RedirectToAction("S2Page1");
+            }
+            else if (command.Equals("保存并退出"))
+            {
+                return RedirectToAction("SectionSaved");
+            }
+
+            return View("Error");
         }
 
         // Get: S1PageEnd
@@ -1205,7 +2013,7 @@ namespace SurveyMVCBase1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
+            ViewBag.UserTestCode = Session["viewKey"].ToString();
             return View("Section1/S1PageEnd");
         }
 
@@ -1469,7 +2277,7 @@ namespace SurveyMVCBase1.Controllers
         // Post: S2PageSum
         [HttpPost, ActionName("S2PageSum")]
         [ValidateAntiForgeryToken]
-        public ActionResult S2PageSumPost()
+        public ActionResult S2PageSumPost(string command)
         {
             string id = "";
             if (Session["viewKey"] != null)
@@ -1482,7 +2290,16 @@ namespace SurveyMVCBase1.Controllers
                 return View("Error");
             }
 
-            return RedirectToAction("S3Page1");
+            if (command.Equals("继续"))
+            {
+                return RedirectToAction("S3Page1");
+            }
+            else if (command.Equals("保存并退出"))
+            {
+                return RedirectToAction("SectionSaved");
+            }
+
+            return View("Error");
         }
 
         // Get: S2PageEnd
@@ -1503,7 +2320,7 @@ namespace SurveyMVCBase1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
+            ViewBag.UserTestCode = Session["viewKey"].ToString();
             return View("Section2/S2PageEnd");
         }
 
@@ -1835,6 +2652,10 @@ namespace SurveyMVCBase1.Controllers
             {
                 return RedirectToAction("S4bPage1");
             }
+            else if (Section4 == "保存并退出")
+            {
+                return RedirectToAction("SectionSaved");
+            }
             else
             {
                 Session["error"] = "Section4 interaction error, please contact admin";
@@ -1875,7 +2696,7 @@ namespace SurveyMVCBase1.Controllers
         // Post: S4aPage1
         [HttpPost, ActionName("S4aPage1")]
         [ValidateAntiForgeryToken]
-        public ActionResult S4aPage1Post()
+        public ActionResult S4aPage1Post(string command)
         {
             string id = "";
             if (Session["viewKey"] != null)
@@ -1898,7 +2719,15 @@ namespace SurveyMVCBase1.Controllers
                         try
                         {
                             db.SaveChanges();
-                            return RedirectToAction("S4aPage2");
+
+                            if (command.Equals("继续"))
+                            {
+                                return RedirectToAction("S4aPage2");
+                            }
+                            else if (command.Equals("保存并退出"))
+                            {
+                                return RedirectToAction("SectionSaved");
+                            }
                         }
                         catch (RetryLimitExceededException)
                         {
@@ -1954,7 +2783,7 @@ namespace SurveyMVCBase1.Controllers
         // Post: S4aPage2
         [HttpPost, ActionName("S4aPage2")]
         [ValidateAntiForgeryToken]
-        public ActionResult S4aPage2Post()
+        public ActionResult S4aPage2Post(string command)
         {
             string id = "";
             if (Session["viewKey"] != null)
@@ -1977,7 +2806,18 @@ namespace SurveyMVCBase1.Controllers
                         try
                         {
                             db.SaveChanges();
-                            return RedirectToAction("S4aPageSum");
+                            if (command.Equals("继续"))
+                            {
+                                return RedirectToAction("S4aPageSum");
+                            }
+                            else if (command.Equals("回到独立创业测试第一部分"))
+                            {
+                                return RedirectToAction("SectionBack4a");
+                            }
+                            else if (command.Equals("保存并退出"))
+                            {
+                                return RedirectToAction("SectionSaved");
+                            }
                         }
                         catch (RetryLimitExceededException)
                         {
@@ -2723,7 +3563,7 @@ namespace SurveyMVCBase1.Controllers
         // Post: S4bPage1
         [HttpPost, ActionName("S4bPage1")]
         [ValidateAntiForgeryToken]
-        public ActionResult S4bPage1Post()
+        public ActionResult S4bPage1Post(string command)
         {
             string id = "";
             if (Session["viewKey"] != null)
@@ -2746,7 +3586,14 @@ namespace SurveyMVCBase1.Controllers
                         try
                         {
                             db.SaveChanges();
-                            return RedirectToAction("S4bPage2");
+                            if (command.Equals("继续"))
+                            {
+                                return RedirectToAction("S4bPage2");
+                            }
+                            else if (command.Equals("保存并退出"))
+                            {
+                                return RedirectToAction("SectionSaved");
+                            }
                         }
                         catch (RetryLimitExceededException)
                         {
@@ -2802,7 +3649,7 @@ namespace SurveyMVCBase1.Controllers
         // Post: S4bPage2
         [HttpPost, ActionName("S4bPage2")]
         [ValidateAntiForgeryToken]
-        public ActionResult S4bPage2Post()
+        public ActionResult S4bPage2Post(string command)
         {
             string id = "";
             if (Session["viewKey"] != null)
@@ -2825,7 +3672,18 @@ namespace SurveyMVCBase1.Controllers
                         try
                         {
                             db.SaveChanges();
-                            return RedirectToAction("S4bPageSum");
+                            if (command.Equals("继续"))
+                            {
+                                return RedirectToAction("S4bPageSum");
+                            }
+                            else if (command.Equals("回到加入创业测试第一部分"))
+                            {
+                                return RedirectToAction("SectionBack4b");
+                            }
+                            else if (command.Equals("保存并退出"))
+                            {
+                                return RedirectToAction("SectionSaved");
+                            }
                         }
                         catch (RetryLimitExceededException)
                         {
