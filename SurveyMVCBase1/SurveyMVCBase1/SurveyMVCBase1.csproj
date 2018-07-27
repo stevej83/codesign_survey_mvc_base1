@@ -364,6 +364,10 @@
     <Content Include="WxPayAPI\cert\apiclient_cert.p12" />
     <Content Include="Views\Surveys\Data.cshtml" />
     <Content Include="Views\Shared\_Layout_Data.cshtml" />
+    <Content Include="Views\Surveys\SectionSaved.cshtml" />
+    <Content Include="Views\Shared\_Layout_Save.cshtml" />
+    <Content Include="Views\Shared\_Layout_S4a2.cshtml" />
+    <Content Include="Views\Shared\_Layout_S4b2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

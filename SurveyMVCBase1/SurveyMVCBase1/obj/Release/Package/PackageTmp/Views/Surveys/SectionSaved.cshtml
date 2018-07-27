@@ -1,0 +1,16 @@
+﻿@model SurveyMVCBase1.Models.Survey
+
+@{
+    Layout = "~/Views/Shared/_Layout_Save.cshtml";
+    ViewBag.Title = "保存并退出";
+}
+
+<h2>感谢您的参与</h2>
+<p>
+    您的测试记录已被保存，如果之后想要继续测试，请在首页输入您的测试码继续测试流程。
+</p>
+
+<p>请妥善保存您的测试码以便之后继续并完成测试流程。</p>
+<p>您的测试码：@ViewBag.UserTestCode</p>
+
+
