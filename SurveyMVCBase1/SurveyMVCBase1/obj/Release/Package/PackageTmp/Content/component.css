@@ -366,6 +366,7 @@
 
 @media screen and (max-width: 55em) {
   .home .description {
+    top: 10%;
     margin: 0 15px;
     width: calc(100% - 30px);
   }

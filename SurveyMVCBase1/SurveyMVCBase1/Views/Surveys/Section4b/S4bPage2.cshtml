@@ -32,10 +32,12 @@
     var contS4bQ62AnsVar = @Session["contS4bQ62Ans"];
     bool contS4bQ62AnsBool1 = false;
     bool contS4bQ62AnsBool2 = false;
+    bool contS4bQ62AnsBool3 = false;
 
     var contS4bQ63AnsVar = @Session["contS4bQ63Ans"];
     bool contS4bQ63AnsBool1 = false;
     bool contS4bQ63AnsBool2 = false;
+    bool contS4bQ63AnsBool3 = false;
 }
 
 @using (Html.BeginForm("S4bPage2", "Surveys", FormMethod.Post, new { @class = "cbp-mc-form" }))
@@ -96,16 +98,18 @@
 
     if (contS4bQ62AnsVar != null)
     {
-        if (contS4bQ62AnsVar.ToString() == "yes") { contS4bQ62AnsBool1 = true; contS4bQ62AnsBool2 = false; }
-        else if (contS4bQ62AnsVar.ToString() == "no") { contS4bQ62AnsBool1 = false; contS4bQ62AnsBool2 = true; }
-        else { contS4bQ62AnsBool1 = false; contS4bQ62AnsBool2 = false; }
+        if (contS4bQ62AnsVar.ToString() == "yes") { contS4bQ62AnsBool1 = true; contS4bQ62AnsBool2 = false; contS4bQ62AnsBool3 = false; }
+        else if (contS4bQ62AnsVar.ToString() == "no") { contS4bQ62AnsBool1 = false; contS4bQ62AnsBool2 = true; contS4bQ62AnsBool3 = false; }
+        else if (contS4bQ62AnsVar.ToString() == "nopartner") { contS4bQ62AnsBool1 = false; contS4bQ62AnsBool2 = false; contS4bQ62AnsBool3 = true; }
+        else { contS4bQ62AnsBool1 = false; contS4bQ62AnsBool2 = false; contS4bQ62AnsBool3 = false; }
     }
 
     if (contS4bQ63AnsVar != null)
     {
-        if (contS4bQ63AnsVar.ToString() == "yes") { contS4bQ63AnsBool1 = true; contS4bQ63AnsBool2 = false; }
-        else if (contS4bQ63AnsVar.ToString() == "no") { contS4bQ63AnsBool1 = false; contS4bQ63AnsBool2 = true; }
-        else { contS4bQ63AnsBool1 = false; contS4bQ63AnsBool2 = false; }
+        if (contS4bQ63AnsVar.ToString() == "yes") { contS4bQ63AnsBool1 = true; contS4bQ63AnsBool2 = false; contS4bQ63AnsBool3 = false; }
+        else if (contS4bQ63AnsVar.ToString() == "no") { contS4bQ63AnsBool1 = false; contS4bQ63AnsBool2 = true; contS4bQ63AnsBool3 = false; }
+        else if (contS4bQ63AnsVar.ToString() == "nochild") { contS4bQ63AnsBool1 = false; contS4bQ63AnsBool2 = false; contS4bQ63AnsBool3 = true; }
+        else { contS4bQ63AnsBool1 = false; contS4bQ63AnsBool2 = false; contS4bQ63AnsBool3 = false; }
     }
     <label>企业家移民咨询测试 - 加入创业 (2/2)</label>
     <div class="cbp-mc-column">
@@ -203,7 +207,7 @@
         <label>50. 会计服务一年多少钱？</label>
         @Html.EditorFor(model => model.S4bQ50Answer, new { htmlAttributes = new { @class = "form-control", Value = @Session["contS4bQ50Ans"], placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>51. 您的最高学历是什么？</label>
+        <label>51. 申请人的最高学历是什么？</label>
         @{
             List<SelectListItem> S4bQ51AnswerListItems = new List<SelectListItem>();
             S4bQ51AnswerListItems.Add(new SelectListItem
@@ -278,7 +282,7 @@
         <label>58. 如果商业失败怎么办？</label>
         @Html.TextAreaFor(model => model.S4bQ58Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>59. 你打算居住在哪里？</label>
+        <label>59. 申请人打算居住在哪里？</label>
         @Html.EditorFor(model => model.S4bQ59Answer, new { htmlAttributes = new { @class = "form-control", Value = @Session["contS4bQ59Ans"], placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
         <label>60. 一年的生活成本是多少？</label>
@@ -317,6 +321,12 @@
                 Value = "no",
                 Selected = contS4bQ62AnsBool2
             });
+            S4bQ62AnswerListItems.Add(new SelectListItem
+            {
+                Text = "无配偶",
+                Value = "nopartner",
+                Selected = contS4bQ62AnsBool3
+            });
         }
         @Html.DropDownListFor(model => model.S4bQ62Answer, S4bQ62AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
@@ -334,6 +344,12 @@
                 Text = "否",
                 Value = "no",
                 Selected = contS4bQ63AnsBool2
+            });
+            S4bQ63AnswerListItems.Add(new SelectListItem
+            {
+                Text = "无子女",
+                Value = "nochild",
+                Selected = contS4bQ63AnsBool3
             });
         }
         @Html.DropDownListFor(model => model.S4bQ63Answer, S4bQ63AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })

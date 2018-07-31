@@ -6,6 +6,9 @@
     var contS4aQ37AnsVar = @Session["contS4aQ37Ans"];
     bool contS4aQ37AnsBool1 = false;
     bool contS4aQ37AnsBool2 = false;
+    var contS4aQ40AnsVar = @Session["contS4aQ40Ans"];
+    bool contS4aQ40AnsBool1 = false;
+    bool contS4aQ40AnsBool2 = false;
     var contS4aQ41AnsVar = @Session["contS4aQ41Ans"];
     bool contS4aQ41AnsBool1 = false;
     bool contS4aQ41AnsBool2 = false;
@@ -37,9 +40,11 @@
     var contS4aQ62AnsVar = @Session["contS4aQ62Ans"];
     bool contS4aQ62AnsBool1 = false;
     bool contS4aQ62AnsBool2 = false;
+    bool contS4aQ62AnsBool3 = false;
     var contS4aQ63AnsVar = @Session["contS4aQ63Ans"];
     bool contS4aQ63AnsBool1 = false;
     bool contS4aQ63AnsBool2 = false;
+    bool contS4aQ63AnsBool3 = false;
 }
 
 @using (Html.BeginForm("S4aPage2", "Surveys", FormMethod.Post, new { @class = "cbp-mc-form" }))
@@ -51,7 +56,7 @@
     <input type="hidden" value="@Session["contS4aQ35Ans"]" id="contS4aQ35AnsVar" />
     <input type="hidden" value="@Session["contS4aQ36Ans"]" id="contS4aQ36AnsVar" />
     <input type="hidden" value="@Session["contS4aQ38Ans"]" id="contS4aQ38AnsVar" />
-    <input type="hidden" value="@Session["contS4aQ40Ans"]" id="contS4aQ40AnsVar" />
+    <input type="hidden" value="@Session["contS4aQ39Ans"]" id="contS4aQ39AnsVar" />
     <input type="hidden" value="@Session["contS4aQ49Ans"]" id="contS4aQ49AnsVar" />
     <input type="hidden" value="@Session["contS4aQ52Ans"]" id="contS4aQ52AnsVar" />
     <input type="hidden" value="@Session["contS4aQ56Ans"]" id="contS4aQ56AnsVar" />
@@ -64,6 +69,13 @@
         if (contS4aQ37AnsVar.ToString() == "yes") { contS4aQ37AnsBool1 = true; contS4aQ37AnsBool2 = false; }
         else if (contS4aQ37AnsVar.ToString() == "no") { contS4aQ37AnsBool1 = false; contS4aQ37AnsBool2 = true; }
         else { contS4aQ37AnsBool1 = false; contS4aQ37AnsBool2 = false; }
+    }
+
+    if (contS4aQ40AnsVar != null)
+    {
+        if (contS4aQ40AnsVar.ToString() == "yes") { contS4aQ40AnsBool1 = true; contS4aQ40AnsBool2 = false; }
+        else if (contS4aQ40AnsVar.ToString() == "no") { contS4aQ40AnsBool1 = false; contS4aQ40AnsBool2 = true; }
+        else { contS4aQ40AnsBool1 = false; contS4aQ40AnsBool2 = false; }
     }
 
     if (contS4aQ41AnsVar != null)
@@ -124,16 +136,18 @@
 
     if (contS4aQ62AnsVar != null)
     {
-        if (contS4aQ62AnsVar.ToString() == "yes") { contS4aQ62AnsBool1 = true; contS4aQ62AnsBool2 = false; }
-        else if (contS4aQ62AnsVar.ToString() == "no") { contS4aQ62AnsBool1 = false; contS4aQ62AnsBool2 = true; }
-        else { contS4aQ62AnsBool1 = false; contS4aQ62AnsBool2 = false; }
+        if (contS4aQ62AnsVar.ToString() == "yes") { contS4aQ62AnsBool1 = true; contS4aQ62AnsBool2 = false; contS4aQ62AnsBool3 = false; }
+        else if (contS4aQ62AnsVar.ToString() == "no") { contS4aQ62AnsBool1 = false; contS4aQ62AnsBool2 = true; contS4aQ62AnsBool3 = false; }
+        else if (contS4aQ62AnsVar.ToString() == "nopartner") { contS4aQ62AnsBool1 = false; contS4aQ62AnsBool2 = false; contS4aQ62AnsBool3 = true; }
+        else { contS4aQ62AnsBool1 = false; contS4aQ62AnsBool2 = false; contS4aQ62AnsBool3 = false; }
     }
 
     if (contS4aQ63AnsVar != null)
     {
-        if (contS4aQ63AnsVar.ToString() == "yes") { contS4aQ63AnsBool1 = true; contS4aQ63AnsBool2 = false; }
-        else if (contS4aQ63AnsVar.ToString() == "no") { contS4aQ63AnsBool1 = false; contS4aQ63AnsBool2 = true; }
-        else { contS4aQ63AnsBool1 = false; contS4aQ63AnsBool2 = false; }
+        if (contS4aQ63AnsVar.ToString() == "yes") { contS4aQ63AnsBool1 = true; contS4aQ63AnsBool2 = false; contS4aQ63AnsBool3 = false; }
+        else if (contS4aQ63AnsVar.ToString() == "no") { contS4aQ63AnsBool1 = false; contS4aQ63AnsBool2 = true; contS4aQ63AnsBool3 = false; }
+        else if (contS4aQ63AnsVar.ToString() == "nochild") { contS4aQ63AnsBool1 = false; contS4aQ63AnsBool2 = false; contS4aQ63AnsBool3 = true; }
+        else { contS4aQ63AnsBool1 = false; contS4aQ63AnsBool2 = false; contS4aQ63AnsBool3 = false; }
     }
     <label>企业家移民咨询测试 - 独立创业 (2/2)</label>
     <div class="cbp-mc-column">
@@ -143,10 +157,10 @@
         <label>35. 竞争对手的核心优势是什么？</label>
         @Html.EditorFor(model => model.S4aQ35Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>36. 你的商业核心竞争优势是什么？</label>
+        <label>36. 申请人的商业核心竞争优势是什么？</label>
         @Html.EditorFor(model => model.S4aQ36Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>37. 你有没有合伙人？</label>
+        <label>37. 申请人有没有合伙人？</label>
         @{
             List<SelectListItem> S4aQ37AnswerListItems = new List<SelectListItem>();
             S4aQ37AnswerListItems.Add(new SelectListItem
@@ -167,11 +181,26 @@
         <label>38. 合伙人背景是什么？有没有商业经验？</label>
         @Html.EditorFor(model => model.S4aQ38Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>39. 打算投资多少钱？</label>
-        @Html.EditorFor(model => model.S4aQ39Answer, new { htmlAttributes = new { @class = "form-control", Value = @Session["contS4aQ39Ans"], placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+        <label>39. 打算投资多少钱？ 投资计划花在那些方面？</label>
+        @Html.EditorFor(model => model.S4aQ39Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>40. 投资计划花在那些方面？</label>
-        @Html.EditorFor(model => model.S4aQ40Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
+        <label>40. 投资资金是否已经以现金存款的形式存在申请人的名下？</label>
+        @{
+            List<SelectListItem> S4aQ40AnswerListItems = new List<SelectListItem>();
+            S4aQ40AnswerListItems.Add(new SelectListItem
+            {
+                Text = "是",
+                Value = "yes",
+                Selected = contS4aQ40AnsBool1
+            });
+            S4aQ40AnswerListItems.Add(new SelectListItem
+            {
+                Text = "否",
+                Value = "no",
+                Selected = contS4aQ40AnsBool2
+            });
+        }
+        @Html.DropDownListFor(model => model.S4aQ40Answer, S4aQ40AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
         <label>41. 什么时候公司总体盈利？</label>
         @{
@@ -210,7 +239,7 @@
         @Html.DropDownListFor(model => model.S4aQ41Answer, S4aQ41AnswerListItems, "-- 请选择 --", new { @class = "form-control", @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
         
 
-        <label>42. 您是否给公司购买了商业保险？</label>
+        <label>42. 申请人是否给公司购买了商业保险？</label>
         @{
             List<SelectListItem> S4aQ42AnswerListItems = new List<SelectListItem>();
             S4aQ42AnswerListItems.Add(new SelectListItem
@@ -228,7 +257,7 @@
         }
         @Html.DropDownListFor(model => model.S4aQ42Answer, S4aQ42AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>43. 你购买了什么类型的商业保险？</label>
+        <label>43. 申请人购买了什么类型的商业保险？</label>
         @Html.EditorFor(model => model.S4aQ43Answer, new { htmlAttributes = new { @class = "form-control", Value = @Session["contS4aQ43Ans"], placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
         <label>44. 商业保险一年多少钱？</label>
@@ -268,7 +297,7 @@
         <label>50. 会计服务一年多少钱？</label>
         @Html.EditorFor(model => model.S4aQ50Answer, new { htmlAttributes = new { @class = "form-control", Value = @Session["contS4aQ50Ans"], placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>51. 您的最高学历是什么？</label>
+        <label>51. 申请人的最高学历是什么？</label>
         @{
             List<SelectListItem> S4aQ51AnswerListItems = new List<SelectListItem>();
             S4aQ51AnswerListItems.Add(new SelectListItem
@@ -361,7 +390,7 @@
         <label>58. 如果商业失败怎么办？</label>
         @Html.EditorFor(model => model.S4aQ58Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>59. 你打算居住在哪里？</label>
+        <label>59. 申请人打算居住在哪里？</label>
         @Html.EditorFor(model => model.S4aQ59Answer, new { htmlAttributes = new { @class = "form-control", Value = @Session["contS4aQ59Ans"], placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
         <label>60. 一年的生活成本是多少？</label>
@@ -400,6 +429,12 @@
                 Value = "no",
                 Selected = contS4aQ62AnsBool2
             });
+            S4aQ62AnswerListItems.Add(new SelectListItem
+            {
+                Text = "无配偶",
+                Value = "nopartner",
+                Selected = contS4aQ62AnsBool3
+            });
         }
         @Html.DropDownListFor(model => model.S4aQ62Answer, S4aQ62AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
@@ -417,6 +452,12 @@
                 Text = "否",
                 Value = "no",
                 Selected = contS4aQ63AnsBool2
+            });
+            S4aQ63AnswerListItems.Add(new SelectListItem
+            {
+                Text = "无子女",
+                Value = "nochild",
+                Selected = contS4aQ63AnsBool3
             });
         }
         @Html.DropDownListFor(model => model.S4aQ63Answer, S4aQ63AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })

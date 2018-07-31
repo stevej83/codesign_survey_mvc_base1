@@ -9,9 +9,9 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.SurveyID)
-    <label>企业家移民咨询测试 - 英国商业知识测试</label>
+    <label style="color: #808080">企业家移民咨询测试 - 英国商业知识测试</label>
     <div class="cbp-mc-column">
-        <label>英国的 VAT 税率是多少？</label>
+        <label>英国的 VAT 税率是多少？<br />&nbsp;</label>
         @{
             List<SelectListItem> S3Q1AnswerListItems = new List<SelectListItem>();
             S3Q1AnswerListItems.Add(new SelectListItem
@@ -48,75 +48,75 @@
         }
         @Html.DropDownListFor(model => model.S3Q2Answer, S3Q2AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>有关员工每小时最低工资，下面哪个数据是合法的最低数据？</label>
+        <label>在英国，雇主支付给一位30岁员工的每小时工资，下面哪一个数据是符合目前法律要求的？</label>
         <!-- 截至到2018年6月，英国最低工资是每小时 7.83 镑 -->
         @{
             List<SelectListItem> S3Q3AnswerListItems = new List<SelectListItem>();
             S3Q3AnswerListItems.Add(new SelectListItem
             {
-                Text = "6.00",
-                Value = "6.00"
+                Text = "6.50英镑/小时",
+                Value = "65"
             });
             S3Q3AnswerListItems.Add(new SelectListItem
             {
-                Text = "7.00",
-                Value = "7.00"
+                Text = "7.50英镑/小时",
+                Value = "75"
             });
             S3Q3AnswerListItems.Add(new SelectListItem
 
             {
-                Text = "8.00",
-                Value = "8.00"
+                Text = "8.50英镑/小时",
+                Value = "85"
             });
         }
         @Html.DropDownListFor(model => model.S3Q3Answer, S3Q3AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>聘请一位有3年工作经验的项目开发经理需要支付的年薪是多少？</label>
+        <label>聘请一位有3年工作经验的项目开发经理需要支付的年薪是多少英镑？</label>
         @{
             List<SelectListItem> S3Q4AnswerListItems = new List<SelectListItem>();
             S3Q4AnswerListItems.Add(new SelectListItem
             {
-                Text = "1万5千镑",
-                Value = "15k"
+                Text = "20,000",
+                Value = "20k"
             });
             S3Q4AnswerListItems.Add(new SelectListItem
             {
-                Text = "2万5千镑",
-                Value = "25k"
+                Text = "35,000",
+                Value = "35k"
             });
             S3Q4AnswerListItems.Add(new SelectListItem
 
             {
-                Text = "5万镑",
+                Text = "50,000",
                 Value = "50k"
             });
         }
         @Html.DropDownListFor(model => model.S3Q4Answer, S3Q4AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>在伦敦市 zone2 范围内可供4人用的办公室一个月的租金是多少钱？</label>
+        <label>在伦敦市 zone2 范围内可供4人用的办公室一个月的租金是多少英镑？</label>
         @{
             List<SelectListItem> S3Q5AnswerListItems = new List<SelectListItem>();
             S3Q5AnswerListItems.Add(new SelectListItem
             {
-                Text = "1千镑",
+                Text = "1,000",
                 Value = "1k"
             });
             S3Q5AnswerListItems.Add(new SelectListItem
             {
-                Text = "2千镑",
+                Text = "2,000",
                 Value = "2k"
             });
             S3Q5AnswerListItems.Add(new SelectListItem
 
             {
-                Text = "5千镑",
+                Text = "5,000",
                 Value = "5k"
             });
         }
         @Html.DropDownListFor(model => model.S3Q5Answer, S3Q5AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
     </div>
     <div class="cbp-mc-column">
-        <label>员工年收入两万四千英镑应纳税工资部分缴纳比例是多少？</label>
+        <label>一名英国公司员工在2016/2017财年的税前工资收入为24,000英镑，在扣除个人免税额后的应纳税工资部分，需缴纳的个人所得税适用税率是多少？</label>
         @{
             List<SelectListItem> S3Q6AnswerListItems = new List<SelectListItem>();
             S3Q6AnswerListItems.Add(new SelectListItem
@@ -138,77 +138,77 @@
         }
         @Html.DropDownListFor(model => model.S3Q6Answer, S3Q6AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>您是否咨询过移民律师或类似的企业家签证持有人？</label>
+        <label>申请人是否咨询过移民律师或类似的企业家签证持有人？</label>
         @{
             List<SelectListItem> S3Q7AnswerListItems = new List<SelectListItem>();
             S3Q7AnswerListItems.Add(new SelectListItem
             {
-                Text = "咨询过",
+                Text = "是",
                 Value = "yes"
             });
             S3Q7AnswerListItems.Add(new SelectListItem
             {
-                Text = "从未咨询过",
+                Text = "否",
                 Value = "no"
             });
         }
         @Html.DropDownListFor(model => model.S3Q7Answer, S3Q7AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>聘请使用会计服务的普遍价位是多少？(以英镑为单位)</label>
+        <label>英国的普通微型企业聘请会计的服务费约多少英镑？<br />&nbsp;</label>
         @{
             List<SelectListItem> S3Q8AnswerListItems = new List<SelectListItem>();
             S3Q8AnswerListItems.Add(new SelectListItem
             {
-                Text = "1500",
-                Value = "1500"
+                Text = "500",
+                Value = "500"
             });
             S3Q8AnswerListItems.Add(new SelectListItem
             {
-                Text = "2500",
-                Value = "2500"
+                Text = "1,500",
+                Value = "1500"
             });
             S3Q8AnswerListItems.Add(new SelectListItem
 
             {
-                Text = "3500",
-                Value = "3500"
+                Text = "2,500",
+                Value = "2500"
             });
         }
         @Html.DropDownListFor(model => model.S3Q8Answer, S3Q8AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>每年作为中小企业雇主购买保险费用是多少？</label>
+        <label>一家英国电商公司有5个雇员，该公司购买雇主责任险的保险费是多少英镑？</label>
         @{
             List<SelectListItem> S3Q9AnswerListItems = new List<SelectListItem>();
             S3Q9AnswerListItems.Add(new SelectListItem
             {
-                Text = "300",
-                Value = "300"
+                Text = "100",
+                Value = "100"
             });
             S3Q9AnswerListItems.Add(new SelectListItem
             {
-                Text = "1000",
-                Value = "1000"
+                Text = "500",
+                Value = "500"
             });
             S3Q9AnswerListItems.Add(new SelectListItem
 
             {
-                Text = "2000",
-                Value = "2000"
+                Text = "1,000",
+                Value = "1,000"
             });
         }
         @Html.DropDownListFor(model => model.S3Q9Answer, S3Q9AnswerListItems, "-- 请选择 --", new { @class = "form-control", @title = "请选择", @required = true, @oninvalid = "this.setCustomValidity('请选择')", @oninput = "setCustomValidity('')" })
 
-        <label>你理解在英国董事和股东之间的区别吗？</label>
+        <label>申请人是否理解在英国董事和股东之间的区别？</label>
         @{
             List<SelectListItem> S3Q10AnswerListItems = new List<SelectListItem>();
             S3Q10AnswerListItems.Add(new SelectListItem
             {
-                Text = "理解",
+                Text = "是",
                 Value = "yes"
             });
             S3Q10AnswerListItems.Add(new SelectListItem
             {
-                Text = "不理解",
+                Text = "否",
                 Value = "no"
             });
         }

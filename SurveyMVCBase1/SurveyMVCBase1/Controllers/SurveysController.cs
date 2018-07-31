@@ -144,7 +144,15 @@ namespace SurveyMVCBase1.Controllers
 
                     Session["contS4aQ38Ans"] = survey.S4aQ38Answer;
                     Session["contS4aQ39Ans"] = survey.S4aQ39Answer;
-                    Session["contS4aQ40Ans"] = survey.S4aQ40Answer;
+
+                    if (!string.IsNullOrEmpty(survey.S4aQ40Answer))
+                    {
+                        Session["contS4aQ40Ans"] = survey.S4aQ40Answer;
+                    }
+                    else
+                    {
+                        Session["contS4aQ40Ans"] = null;
+                    }
 
                     if (!string.IsNullOrEmpty(survey.S4aQ41Answer))
                     {
@@ -1314,113 +1322,117 @@ namespace SurveyMVCBase1.Controllers
                 ViewBag.dataS2Q1Answer = dataS2Q1Ans;
 
 
-                if (survey.S2Q2Answer == "yes")
+                if (survey.S2Q2Answer == "lessthanielts4")
                 {
-                    dataS2Q2Ans = "可以";
+                    dataS2Q2Ans = "雅思 4 分以下";
                 }
-                else if (survey.S2Q2Answer == "no")
+                else if (survey.S2Q2Answer == "ielts4orabove")
                 {
-                    dataS2Q2Ans = "不可以";
+                    dataS2Q2Ans = "雅思 4 分以上（包括 4 分）";
                 }
 
                 ViewBag.dataS2Q2Answer = dataS2Q2Ans;
 
-                if (survey.S2Q3Answer == "lessthanielts4")
+                if (survey.S2Q3Answer == "200k")
                 {
-                    dataS2Q3Ans = "雅思 4 分以下";
+                    dataS2Q3Ans = "20万";
                 }
-                else if (survey.S2Q3Answer == "ielts4orabove")
+                else if (survey.S2Q3Answer == "100k")
                 {
-                    dataS2Q3Ans = "雅思 4 分以上（包括 4 分）";
+                    dataS2Q3Ans = "10万";
+                }
+                else if (survey.S2Q3Answer == "50k")
+                {
+                    dataS2Q3Ans = "5万";
                 }
 
                 ViewBag.dataS2Q3Answer = dataS2Q3Ans;
 
                 if (survey.S2Q4Answer == "200k")
                 {
-                    dataS2Q4Ans = "20万";
+                    dataS2Q4Ans = "超过20万英镑";
                 }
-                else if (survey.S2Q4Answer == "100k")
+                else if (survey.S2Q4Answer == "freedom")
                 {
-                    dataS2Q4Ans = "10万";
+                    dataS2Q4Ans = "资金可以自由转入英国";
                 }
-                else if (survey.S2Q4Answer == "50k")
+                else if (survey.S2Q4Answer == "3months")
                 {
-                    dataS2Q4Ans = "5万";
+                    dataS2Q4Ans = "资金在银行户头超过3个月";
                 }
 
                 ViewBag.dataS2Q4Answer = dataS2Q4Ans;
 
-                if (survey.S2Q5Answer == "cantwork")
+                if (survey.S2Q5Answer == "945")
                 {
-                    dataS2Q5Ans = "不能为他人工作";
+                    dataS2Q5Ans = "945";
                 }
-                else if (survey.S2Q5Answer == "canwork")
+                else if (survey.S2Q5Answer == "1890")
                 {
-                    dataS2Q5Ans = "可以为他人工作";
+                    dataS2Q5Ans = "1,890";
+                }
+                else if (survey.S2Q5Answer == "3310")
+                {
+                    dataS2Q5Ans = "3,310";
                 }
 
                 ViewBag.dataS2Q5Answer = dataS2Q5Ans;
 
-                if (survey.S2Q6Answer == "can")
+                if (survey.S2Q6Answer == "yes")
                 {
-                    dataS2Q6Ans = "可以";
+                    dataS2Q6Ans = "是";
                 }
-                else if (survey.S2Q6Answer == "cant")
+                else if (survey.S2Q6Answer == "no")
                 {
-                    dataS2Q6Ans = "不可以";
+                    dataS2Q6Ans = "否";
                 }
 
                 ViewBag.dataS2Q6Answer = dataS2Q6Ans;
 
-                if (survey.S2Q7Answer == "100")
+                if (survey.S2Q7Answer == "yes")
                 {
-                    dataS2Q7Ans = "200 左右";
+                    dataS2Q7Ans = "是";
                 }
-                else if (survey.S2Q7Answer == "500")
+                else if (survey.S2Q7Answer == "no")
                 {
-                    dataS2Q7Ans = "500 左右";
-                }
-                else if (survey.S2Q7Answer == "1000")
-                {
-                    dataS2Q7Ans = "1000 左右";
+                    dataS2Q7Ans = "否";
                 }
 
                 ViewBag.dataS2Q7Answer = dataS2Q7Ans;
 
-                if (survey.S2Q8Answer == "can")
+                if (survey.S2Q8Answer == "yes")
                 {
-                    dataS2Q8Ans = "可以";
+                    dataS2Q8Ans = "是";
                 }
-                else if (survey.S2Q8Answer == "cant")
+                else if (survey.S2Q8Answer == "no")
                 {
-                    dataS2Q8Ans = "不可以";
+                    dataS2Q8Ans = "否";
                 }
 
                 ViewBag.dataS2Q8Answer = dataS2Q8Ans;
 
-                if (survey.S2Q9Answer == "2employee")
+                if (survey.S2Q9Answer == "yes")
                 {
-                    dataS2Q9Ans = "2 个全职员工，至少每个员工职位超过 12 个月";
+                    dataS2Q9Ans = "是";
                 }
-                else if (survey.S2Q9Answer == "1employee")
+                else if (survey.S2Q9Answer == "no")
                 {
-                    dataS2Q9Ans = "1 个全职员工，至少职位超过 24 个月";
+                    dataS2Q9Ans = "否";
                 }
 
                 ViewBag.dataS2Q9Answer = dataS2Q9Ans;
 
-                if (survey.S2Q10Answer == "200k")
+                if (survey.S2Q10Answer == "200")
                 {
-                    dataS2Q10Ans = "能够证明有超过20万英镑的存款";
+                    dataS2Q10Ans = "200 左右";
                 }
-                else if (survey.S2Q10Answer == "freedom")
+                else if (survey.S2Q10Answer == "500")
                 {
-                    dataS2Q10Ans = "能够证明资金可以自由转入英国";
+                    dataS2Q10Ans = "500 左右";
                 }
-                else if (survey.S2Q10Answer == "3months")
+                else if (survey.S2Q10Answer == "1000")
                 {
-                    dataS2Q10Ans = "能够证明资金在银行户头超过3个月";
+                    dataS2Q10Ans = "1000 左右";
                 }
 
                 ViewBag.dataS2Q10Answer = dataS2Q10Ans;
@@ -1463,47 +1475,47 @@ namespace SurveyMVCBase1.Controllers
 
                 ViewBag.dataS3Q2Answer = dataS3Q2Ans;
 
-                if (survey.S3Q3Answer == "6.00")
+                if (survey.S3Q3Answer == "65")
                 {
-                    dataS3Q3Ans = "6.00";
+                    dataS3Q3Ans = "6.50英镑/小时";
                 }
-                else if (survey.S3Q3Answer == "7.00")
+                else if (survey.S3Q3Answer == "75")
                 {
-                    dataS3Q3Ans = "7.00";
+                    dataS3Q3Ans = "7.50英镑/小时";
                 }
-                else if (survey.S3Q3Answer == "8.00")
+                else if (survey.S3Q3Answer == "85")
                 {
-                    dataS3Q3Ans = "8.00";
+                    dataS3Q3Ans = "8.50英镑/小时";
                 }
 
                 ViewBag.dataS3Q3Answer = dataS3Q3Ans;
 
-                if (survey.S3Q4Answer == "15k")
+                if (survey.S3Q4Answer == "20k")
                 {
-                    dataS3Q4Ans = "1万5千镑";
+                    dataS3Q4Ans = "20,000";
                 }
-                else if (survey.S3Q4Answer == "25k")
+                else if (survey.S3Q4Answer == "35k")
                 {
-                    dataS3Q4Ans = "2万5千镑";
+                    dataS3Q4Ans = "35,000";
                 }
                 else if (survey.S3Q4Answer == "50k")
                 {
-                    dataS3Q4Ans = "5万镑";
+                    dataS3Q4Ans = "50,000";
                 }
 
                 ViewBag.dataS3Q4Answer = dataS3Q4Ans;
 
                 if (survey.S3Q5Answer == "1k")
                 {
-                    dataS3Q5Ans = "1千镑";
+                    dataS3Q5Ans = "1,000";
                 }
                 else if (survey.S3Q5Answer == "2k")
                 {
-                    dataS3Q5Ans = "2千镑";
+                    dataS3Q5Ans = "2,000";
                 }
                 else if (survey.S3Q5Answer == "5k")
                 {
-                    dataS3Q5Ans = "5千镑";
+                    dataS3Q5Ans = "5,000";
                 }
 
                 ViewBag.dataS3Q5Answer = dataS3Q5Ans;
@@ -1525,52 +1537,52 @@ namespace SurveyMVCBase1.Controllers
 
                 if (survey.S3Q7Answer == "yes")
                 {
-                    dataS3Q7Ans = "咨询过";
+                    dataS3Q7Ans = "是";
                 }
                 else if (survey.S3Q7Answer == "no")
                 {
-                    dataS3Q7Ans = "从未咨询过";
+                    dataS3Q7Ans = "否";
                 }
 
                 ViewBag.dataS3Q7Answer = dataS3Q7Ans;
 
-                if (survey.S3Q8Answer == "1500")
+                if (survey.S3Q8Answer == "500")
                 {
-                    dataS3Q8Ans = "1500";
+                    dataS3Q8Ans = "500";
+                }
+                else if (survey.S3Q8Answer == "1500")
+                {
+                    dataS3Q8Ans = "1,500";
                 }
                 else if (survey.S3Q8Answer == "2500")
                 {
-                    dataS3Q8Ans = "2500";
-                }
-                else if (survey.S3Q8Answer == "3500")
-                {
-                    dataS3Q8Ans = "3500";
+                    dataS3Q8Ans = "2,500";
                 }
 
                 ViewBag.dataS3Q8Answer = dataS3Q8Ans;
 
-                if (survey.S3Q9Answer == "300")
+                if (survey.S3Q9Answer == "100")
                 {
-                    dataS3Q9Ans = "300";
+                    dataS3Q9Ans = "100";
+                }
+                else if (survey.S3Q9Answer == "500")
+                {
+                    dataS3Q9Ans = "500";
                 }
                 else if (survey.S3Q9Answer == "1000")
                 {
-                    dataS3Q9Ans = "1000";
-                }
-                else if (survey.S3Q9Answer == "2000")
-                {
-                    dataS3Q9Ans = "2000";
+                    dataS3Q9Ans = "1,000";
                 }
 
                 ViewBag.dataS3Q9Answer = dataS3Q9Ans;
 
                 if (survey.S3Q10Answer == "yes")
                 {
-                    dataS3Q10Ans = "理解";
+                    dataS3Q10Ans = "是";
                 }
                 else if (survey.S3Q10Answer == "no")
                 {
-                    dataS3Q10Ans = "不理解";
+                    dataS3Q10Ans = "否";
                 }
 
                 ViewBag.dataS3Q10Answer = dataS3Q10Ans;
@@ -2146,7 +2158,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q2Answer))
                     {
-                        if (survey.S2Q2Answer == "yes")
+                        if (survey.S2Q2Answer == "ielts4orabove")
                         {
                             S2Q2ScoreLocal = 10;
                         }
@@ -2154,7 +2166,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q3Answer))
                     {
-                        if (survey.S2Q3Answer == "ielts4orabove")
+                        if (survey.S2Q3Answer == "200k")
                         {
                             S2Q3ScoreLocal = 10;
                         }
@@ -2162,7 +2174,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q4Answer))
                     {
-                        if (survey.S2Q4Answer == "200k")
+                        if (survey.S2Q4Answer == "freedom")
                         {
                             S2Q4ScoreLocal = 10;
                         }
@@ -2170,7 +2182,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q5Answer))
                     {
-                        if (survey.S2Q5Answer == "cantwork")
+                        if (survey.S2Q5Answer == "3310")
                         {
                             S2Q5ScoreLocal = 10;
                         }
@@ -2178,7 +2190,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q6Answer))
                     {
-                        if (survey.S2Q6Answer == "can")
+                        if (survey.S2Q6Answer == "no")
                         {
                             S2Q6ScoreLocal = 10;
                         }
@@ -2186,7 +2198,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q7Answer))
                     {
-                        if (survey.S2Q7Answer == "100")
+                        if (survey.S2Q7Answer == "yes")
                         {
                             S2Q7ScoreLocal = 10;
                         }
@@ -2194,7 +2206,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q8Answer))
                     {
-                        if (survey.S2Q8Answer == "can")
+                        if (survey.S2Q8Answer == "yes")
                         {
                             S2Q8ScoreLocal = 10;
                         }
@@ -2202,7 +2214,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q9Answer))
                     {
-                        if (survey.S2Q9Answer == "2employee")
+                        if (survey.S2Q9Answer == "yes")
                         {
                             S2Q9ScoreLocal = 10;
                         }
@@ -2210,7 +2222,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S2Q10Answer))
                     {
-                        if (survey.S2Q10Answer == "freedom")
+                        if (survey.S2Q10Answer == "200")
                         {
                             S2Q10ScoreLocal = 10;
                         }
@@ -2461,7 +2473,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S3Q3Answer))
                     {
-                        if (survey.S3Q3Answer == "8.00")
+                        if (survey.S3Q3Answer == "85")
                         {
                             S3Q3ScoreLocal = 10;
                         }
@@ -2469,7 +2481,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S3Q4Answer))
                     {
-                        if (survey.S3Q4Answer == "25k")
+                        if (survey.S3Q4Answer == "35k")
                         {
                             S3Q4ScoreLocal = 10;
                         }
@@ -2501,7 +2513,7 @@ namespace SurveyMVCBase1.Controllers
 
                     if (!string.IsNullOrEmpty(survey.S3Q8Answer))
                     {
-                        if (survey.S3Q8Answer == "2500")
+                        if (survey.S3Q8Answer == "1500")
                         {
                             S3Q8ScoreLocal = 10;
                         }
@@ -2509,7 +2521,7 @@ namespace SurveyMVCBase1.Controllers
                         
                     if (!string.IsNullOrEmpty(survey.S3Q9Answer))
                     {
-                        if (survey.S3Q9Answer == "1000")
+                        if (survey.S3Q9Answer == "500")
                         {
                             S3Q9ScoreLocal = 10;
                         }
@@ -3316,39 +3328,39 @@ namespace SurveyMVCBase1.Controllers
                 ViewBag.Section3Question2Anwser = S3Q2Ans;
                 ViewBag.Section3Question2AnwserMessage = S3Q2Msg;
 
-                if (survey.S3Q3Answer == "6.00")
+                if (survey.S3Q3Answer == "65")
                 {
-                    S3Q3Ans = "6.00";
+                    S3Q3Ans = "6.50英镑/小时";
                     S3Q3Msg = "截至到2018年6月，英国最低工资是每小时 7.83 镑, 您的答案不正确，此处不加分。";
                 }
-                else if (survey.S3Q3Answer == "7.00")
+                else if (survey.S3Q3Answer == "75")
                 {
-                    S3Q3Ans = "7.00";
+                    S3Q3Ans = "7.50英镑/小时";
                     S3Q3Msg = "截至到2018年6月，英国最低工资是每小时 7.83 镑, 您的答案不正确，此处不加分。";
                 }
-                else if (survey.S3Q3Answer == "8.00")
+                else if (survey.S3Q3Answer == "85")
                 {
-                    S3Q3Ans = "8.00";
+                    S3Q3Ans = "8.50英镑/小时";
                     S3Q3Msg = "截至到2018年6月，英国最低工资是每小时 7.83 镑, 您的答案正确，此处加10分。";
                 }
 
                 ViewBag.Section3Question3Anwser = S3Q3Ans;
                 ViewBag.Section3Question3AnwserMessage = S3Q3Msg;
 
-                if (survey.S3Q4Answer == "15k")
+                if (survey.S3Q4Answer == "20k")
                 {
-                    S3Q4Ans = "1万5千镑";
-                    S3Q4Msg = "聘请一位有3年工作经验的项目开发经理需要支付2万5千镑左右的年薪，您的答案不正确，此处不加分。";
+                    S3Q4Ans = "20,000";
+                    S3Q4Msg = "聘请一位有3年工作经验的项目开发经理需要支付3万5千镑左右的年薪，您的答案不正确，此处不加分。";
                 }
-                else if (survey.S3Q4Answer == "25k")
+                else if (survey.S3Q4Answer == "35k")
                 {
-                    S3Q4Ans = "2万5千镑";
+                    S3Q4Ans = "35,000";
                     S3Q4Msg = "您的答案正确，此处加10分。";
                 }
                 else if (survey.S3Q4Answer == "50k")
                 {
-                    S3Q4Ans = "5万镑";
-                    S3Q4Msg = "聘请一位有3年工作经验的项目开发经理需要支付2万5千镑左右的年薪，您的答案不正确，此处不加分。";
+                    S3Q4Ans = "50,000";
+                    S3Q4Msg = "聘请一位有3年工作经验的项目开发经理需要支付3万5千镑左右的年薪，您的答案不正确，此处不加分。";
                 }
 
                 ViewBag.Section3Question4Anwser = S3Q4Ans;
@@ -3356,17 +3368,17 @@ namespace SurveyMVCBase1.Controllers
 
                 if (survey.S3Q5Answer == "1k")
                 {
-                    S3Q5Ans = "1千镑";
+                    S3Q5Ans = "1,000";
                     S3Q5Msg = "ZONE2四人办公室一个月租金是2千镑左右，您的答案不正确，此处不加分。";
                 }
                 else if (survey.S3Q5Answer == "2k")
                 {
-                    S3Q5Ans = "2千镑";
+                    S3Q5Ans = "2,000";
                     S3Q5Msg = "您的答案正确，此处加10分。";
                 }
                 else if (survey.S3Q5Answer == "5k")
                 {
-                    S3Q5Ans = "5千镑";
+                    S3Q5Ans = "5,000";
                     S3Q5Msg = "ZONE2四人办公室一个月租金是2千镑左右，您的答案不正确，此处不加分。";
                 }
 
@@ -3406,39 +3418,39 @@ namespace SurveyMVCBase1.Controllers
                 ViewBag.Section3Question7Anwser = S3Q7Ans;
                 ViewBag.Section3Question7AnwserMessage = S3Q7Msg;
 
-                if (survey.S3Q8Answer == "1500")
+                if (survey.S3Q8Answer == "500")
                 {
-                    S3Q8Ans = "1500";
-                    S3Q8Msg = "会计服务费用在2500镑左右，您的答案不正确，此处不加分。";
+                    S3Q8Ans = "500";
+                    S3Q8Msg = "会计服务费用在1500镑左右，您的答案不正确，此处不加分。";
+                }
+                else if (survey.S3Q8Answer == "1500")
+                {
+                    S3Q8Ans = "1,500";
+                    S3Q8Msg = "您的答案正确，此处加10分。";
                 }
                 else if (survey.S3Q8Answer == "2500")
                 {
-                    S3Q8Ans = "2500";
-                    S3Q8Msg = "您的答案正确，此处加10分。";
-                }
-                else if (survey.S3Q8Answer == "3500")
-                {
-                    S3Q8Ans = "3500";
-                    S3Q8Msg = "会计服务费用在2500镑左右，您的答案不正确，此处不加分。";
+                    S3Q8Ans = "2,500";
+                    S3Q8Msg = "会计服务费用在1500镑左右，您的答案不正确，此处不加分。";
                 }
 
                 ViewBag.Section3Question8Anwser = S3Q8Ans;
                 ViewBag.Section3Question8AnwserMessage = S3Q8Msg;
 
-                if (survey.S3Q9Answer == "300")
+                if (survey.S3Q9Answer == "100")
                 {
-                    S3Q9Ans = "300";
-                    S3Q9Msg = "公司每年保险费用在1000镑左右，您的答案不正确，此处不加分。";
+                    S3Q9Ans = "100";
+                    S3Q9Msg = "公司每年保险费用在500镑左右，您的答案不正确，此处不加分。";
+                }
+                else if (survey.S3Q9Answer == "500")
+                {
+                    S3Q9Ans = "500";
+                    S3Q9Msg = "您的答案正确，此处加10分。";
                 }
                 else if (survey.S3Q9Answer == "1000")
                 {
-                    S3Q9Ans = "1000";
-                    S3Q9Msg = "您的答案正确，此处加10分。";
-                }
-                else if (survey.S3Q9Answer == "2000")
-                {
-                    S3Q9Ans = "2000";
-                    S3Q9Msg = "公司每年保险费用在1000镑左右，您的答案不正确，此处不加分。";
+                    S3Q9Ans = "1,000";
+                    S3Q9Msg = "公司每年保险费用在500镑左右，您的答案不正确，此处不加分。";
                 }
 
                 ViewBag.Section3Question9Anwser = S3Q9Ans;
@@ -4023,29 +4035,34 @@ namespace SurveyMVCBase1.Controllers
                 ViewBag.Section2Question1Anwser = S2Q1Ans;
                 ViewBag.Section2Question1AnwserMessage = S2Q1Msg;
 
-                if (survey.S2Q2Answer == "yes")
+                if (survey.S2Q2Answer == "lessthanielts4")
                 {
-                    S2Q2Ans = "可以";
-                    S2Q2Msg = "答案正确，此处加10分。";
+                    S2Q2Ans = "雅思 4 分以下";
+                    S2Q2Msg = "企业家移民申请对英文的要求是雅思4分或以上，此处不加分。";
                 }
-                else if (survey.S2Q2Answer == "no")
+                else if (survey.S2Q2Answer == "ielts4orabove")
                 {
-                    S2Q2Ans = "不可以";
-                    S2Q2Msg = "您可以与其它人以合伙人的方式申请企业家移民签证，要想了解更多信息请联系我们，此处不加分。";
+                    S2Q2Ans = "雅思 4 分以上（包括 4 分）";
+                    S2Q2Msg = "答案正确，此处加10分。";
                 }
 
                 ViewBag.Section2Question2Anwser = S2Q2Ans;
                 ViewBag.Section2Question2AnwserMessage = S2Q2Msg;
 
-                if (survey.S2Q3Answer == "lessthanielts4")
+                if (survey.S2Q3Answer == "200k")
                 {
-                    S2Q3Ans = "雅思 4 分以下";
-                    S2Q3Msg = "企业家移民签证的最低雅思分数要求是4分。您的答案不正确，此处不加分。";
-                }
-                else if (survey.S2Q3Answer == "ielts4orabove")
-                {
-                    S2Q3Ans = "雅思 4 分以上（包括 4 分）";
+                    S2Q3Ans = "20万";
                     S2Q3Msg = "答案正确，此处加10分。";
+                }
+                else if (survey.S2Q3Answer == "100k")
+                {
+                    S2Q3Ans = "10万";
+                    S2Q3Msg = "企业家移民要求的最低投资金额是20万英镑，您的答案不正确，此处不加分。";
+                }
+                else if (survey.S2Q3Answer == "50k")
+                {
+                    S2Q3Ans = "5万";
+                    S2Q3Msg = "企业家移民要求的最低投资金额是20万英镑，您的答案不正确，此处不加分。";
                 }
 
                 ViewBag.Section2Question3Anwser = S2Q3Ans;
@@ -4053,112 +4070,112 @@ namespace SurveyMVCBase1.Controllers
 
                 if (survey.S2Q4Answer == "200k")
                 {
-                    S2Q4Ans = "20万";
+                    S2Q4Ans = "超过20万英镑";
+                    S2Q4Msg = "银行证明信最重要信息是能够显示申请人的资金可以自由转入英国，您的答案不正确，此处不加分。";
+                }
+                else if (survey.S2Q4Answer == "freedom")
+                {
+                    S2Q4Ans = "资金可以自由转入英国";
                     S2Q4Msg = "答案正确，此处加10分。";
                 }
-                else if (survey.S2Q4Answer == "100k")
+                else if (survey.S2Q4Answer == "3months")
                 {
-                    S2Q4Ans = "10万";
-                    S2Q4Msg = "企业家移民要求的最低投资金额是20万英镑，您的答案不正确，此处不加分。";
-                }
-                else if (survey.S2Q4Answer == "50k")
-                {
-                    S2Q4Ans = "5万";
-                    S2Q4Msg = "企业家移民要求的最低投资金额是20万英镑，您的答案不正确，此处不加分。";
+                    S2Q4Ans = "资金在银行户头超过3个月";
+                    S2Q4Msg = "银行证明信最重要信息是能够显示申请人的资金可以自由转入英国，您的答案不正确，此处不加分。";
                 }
 
                 ViewBag.Section2Question4Anwser = S2Q4Ans;
                 ViewBag.Section2Question4AnwserMessage = S2Q4Msg;
 
-                if (survey.S2Q5Answer == "cantwork")
+                if (survey.S2Q5Answer == "945")
                 {
-                    S2Q5Ans = "不能为他人工作";
-                    S2Q5Msg = "答案正确，此处加10分。";
+                    S2Q5Ans = "945";
+                    S2Q5Msg = "答案是3310英镑，您的回答不正确，此处不加分。";
                 }
-                else if (survey.S2Q5Answer == "canwork")
+                else if (survey.S2Q5Answer == "1890")
                 {
-                    S2Q5Ans = "可以为他人工作";
-                    S2Q5Msg = "企业家移民签证的主申请人是不可以为他人工作的。您的答案不正确，此处不加分。";
+                    S2Q5Ans = "1,890";
+                    S2Q5Msg = "答案是3310英镑，您的回答不正确，此处不加分。";
+                }
+                else if (survey.S2Q5Answer == "3310")
+                {
+                    S2Q5Ans = "3,310";
+                    S2Q5Msg = "答案正确，此处加10分。";
                 }
 
                 ViewBag.Section2Question5Anwser = S2Q5Ans;
                 ViewBag.Section2Question5AnwserMessage = S2Q5Msg;
 
-                if (survey.S2Q6Answer == "can")
+                if (survey.S2Q6Answer == "yes")
                 {
-                    S2Q6Ans = "可以";
-                    S2Q6Msg = "答案正确，此处加10分。";
+                    S2Q6Ans = "是";
+                    S2Q6Msg = "企业家移民签证主申请人是不可以为他人工作的，您的答案不正确，此处不加分。";
                 }
-                else if (survey.S2Q6Answer == "cant")
+                else if (survey.S2Q6Answer == "no")
                 {
-                    S2Q6Ans = "不可以";
-                    S2Q6Msg = "企业家移民签证的主申请人是可以带自己的配偶和未满18岁的小孩来英国的。您的答案不正确，此处不加分。";
+                    S2Q6Ans = "否";
+                    S2Q6Msg = "答案正确，此处加10分。";
                 }
 
                 ViewBag.Section2Question6Anwser = S2Q6Ans;
                 ViewBag.Section2Question6AnwserMessage = S2Q6Msg;
 
-                if (survey.S2Q7Answer == "100")
+                if (survey.S2Q7Answer == "yes")
                 {
-                    S2Q7Ans = "200 左右";
+                    S2Q7Ans = "是";
                     S2Q7Msg = "答案正确，此处加10分。";
                 }
-                else if (survey.S2Q7Answer == "500")
+                else if (survey.S2Q7Answer == "no")
                 {
-                    S2Q7Ans = "500 左右";
-                    S2Q7Msg = "正确答案为100人左右，您的答案不正确，此处不加分。";
-                }
-                else if (survey.S2Q7Answer == "1000")
-                {
-                    S2Q7Ans = "1000 左右";
-                    S2Q7Msg = "正确答案为100人左右，您的答案不正确，此处不加分。";
+                    S2Q7Ans = "否";
+                    S2Q7Msg = "企业家签证主申请人的家属（配偶，未成年子女）是可以申请家属类签证的，您的答案不正确，此处不加分。";
                 }
 
                 ViewBag.Section2Question7Anwser = S2Q7Ans;
                 ViewBag.Section2Question7AnwserMessage = S2Q7Msg;
 
-                if (survey.S2Q8Answer == "can")
+                if (survey.S2Q8Answer == "yes")
                 {
-                    S2Q8Ans = "可以";
+                    S2Q8Ans = "是";
                     S2Q8Msg = "答案正确，此处加10分。";
                 }
-                else if (survey.S2Q8Answer == "cant")
+                else if (survey.S2Q8Answer == "no")
                 {
-                    S2Q8Ans = "不可以";
-                    S2Q8Msg = "企业家移民分独立创业和加入创业两种模式，您的答案不正确，此处不加分。";
+                    S2Q8Ans = "否";
+                    S2Q8Msg = "企业家移民签证分两种模式，独立创业或加入创业，如果申请人选择加入创业模式，申请人是需要加入一家英国当地现有企业的，您的回答不正确，此处不加分。";
                 }
 
                 ViewBag.Section2Question8Anwser = S2Q8Ans;
                 ViewBag.Section2Question8AnwserMessage = S2Q8Msg;
 
-                if (survey.S2Q9Answer == "2employee")
+                if (survey.S2Q9Answer == "yes")
                 {
-                    S2Q9Ans = "2 个全职员工，至少每个员工职位超过 12 个月";
+                    S2Q9Ans = "是";
                     S2Q9Msg = "答案正确，此处加10分。";
                 }
-                else if (survey.S2Q9Answer == "1employee")
+                else if (survey.S2Q9Answer == "no")
                 {
-                    S2Q9Ans = "1 个全职员工，至少职位超过 24 个月";
-                    S2Q9Msg = "企业家需要在3年内雇佣2个持有英国护照的全职员工，并且至少每位员工在职要超过12个月，您的答案不正确，此处不加分。";
+                    S2Q9Ans = "否";
+                    S2Q9Msg = "申请企业家签证的成年人是需要提供无犯罪记录证明的，您的答案不正确，此处不加分。";
                 }
 
                 ViewBag.Section2Question9Anwser = S2Q9Ans;
                 ViewBag.Section2Question9AnwserMessage = S2Q9Msg;
 
-                if (survey.S2Q10Answer == "200k")
+                if (survey.S2Q10Answer == "200")
                 {
-                    S2Q10Ans = "能够证明有超过20万英镑的存款";
-                    S2Q10Msg = "证明信的最关键要素是能够证明资金可以自由转入英国，您的答案不正确，此处不加分。";
-                }
-                else if (survey.S2Q10Answer == "freedom")
-                {
-                    S2Q10Ans = "能够证明资金可以自由转入英国";
+                    S2Q10Ans = "200 左右";
                     S2Q10Msg = "答案正确，此处加10分。";
                 }
-                else if (survey.S2Q10Answer == "3months")
+                else if (survey.S2Q10Answer == "500")
                 {
-                    S2Q10Ans = "能够证明资金在银行户头超过3个月";
-                    S2Q10Msg = "证明信的最关键要素是能够证明资金可以自由转入英国，您的答案不正确，此处不加分。";
+                    S2Q10Ans = "500 左右";
+                    S2Q10Msg = "2017年获批的中国申请人大概在200左右，您的答案不正确，此处不加分。";
+                }
+                else if (survey.S2Q10Answer == "1000")
+                {
+                    S2Q10Ans = "1000 左右";
+                    S2Q10Msg = "2017年获批的中国申请人大概在200左右，您的答案不正确，此处不加分。";
                 }
 
                 ViewBag.Section2Question10Anwser = S2Q10Ans;
@@ -4197,39 +4214,39 @@ namespace SurveyMVCBase1.Controllers
                 ViewBag.Section3Question2Anwser = S3Q2Ans;
                 ViewBag.Section3Question2AnwserMessage = S3Q2Msg;
 
-                if (survey.S3Q3Answer == "6.00")
+                if (survey.S3Q3Answer == "65")
                 {
-                    S3Q3Ans = "6.00";
+                    S3Q3Ans = "6.50英镑/小时";
                     S3Q3Msg = "截至到2018年6月，英国最低工资是每小时 7.83 镑, 您的答案不正确，此处不加分。";
                 }
-                else if (survey.S3Q3Answer == "7.00")
+                else if (survey.S3Q3Answer == "75")
                 {
-                    S3Q3Ans = "7.00";
+                    S3Q3Ans = "7.50英镑/小时";
                     S3Q3Msg = "截至到2018年6月，英国最低工资是每小时 7.83 镑, 您的答案不正确，此处不加分。";
                 }
-                else if (survey.S3Q3Answer == "8.00")
+                else if (survey.S3Q3Answer == "85")
                 {
-                    S3Q3Ans = "8.00";
+                    S3Q3Ans = "8.50英镑/小时";
                     S3Q3Msg = "截至到2018年6月，英国最低工资是每小时 7.83 镑, 您的答案正确，此处加10分。";
                 }
 
                 ViewBag.Section3Question3Anwser = S3Q3Ans;
                 ViewBag.Section3Question3AnwserMessage = S3Q3Msg;
 
-                if (survey.S3Q4Answer == "15k")
+                if (survey.S3Q4Answer == "20k")
                 {
-                    S3Q4Ans = "1万5千镑";
-                    S3Q4Msg = "聘请一位有3年工作经验的项目开发经理需要支付2万5千镑左右的年薪，您的答案不正确，此处不加分。";
+                    S3Q4Ans = "20,000";
+                    S3Q4Msg = "聘请一位有3年工作经验的项目开发经理需要支付3万5千镑左右的年薪，您的答案不正确，此处不加分。";
                 }
-                else if (survey.S3Q4Answer == "25k")
+                else if (survey.S3Q4Answer == "35k")
                 {
-                    S3Q4Ans = "2万5千镑";
+                    S3Q4Ans = "35,000";
                     S3Q4Msg = "您的答案正确，此处加10分。";
                 }
                 else if (survey.S3Q4Answer == "50k")
                 {
-                    S3Q4Ans = "5万镑";
-                    S3Q4Msg = "聘请一位有3年工作经验的项目开发经理需要支付2万5千镑左右的年薪，您的答案不正确，此处不加分。";
+                    S3Q4Ans = "50,000";
+                    S3Q4Msg = "聘请一位有3年工作经验的项目开发经理需要支付3万5千镑左右的年薪，您的答案不正确，此处不加分。";
                 }
 
                 ViewBag.Section3Question4Anwser = S3Q4Ans;
@@ -4237,17 +4254,17 @@ namespace SurveyMVCBase1.Controllers
 
                 if (survey.S3Q5Answer == "1k")
                 {
-                    S3Q5Ans = "1千镑";
+                    S3Q5Ans = "1,000";
                     S3Q5Msg = "ZONE2四人办公室一个月租金是2千镑左右，您的答案不正确，此处不加分。";
                 }
                 else if (survey.S3Q5Answer == "2k")
                 {
-                    S3Q5Ans = "2千镑";
+                    S3Q5Ans = "2,000";
                     S3Q5Msg = "您的答案正确，此处加10分。";
                 }
                 else if (survey.S3Q5Answer == "5k")
                 {
-                    S3Q5Ans = "5千镑";
+                    S3Q5Ans = "5,000";
                     S3Q5Msg = "ZONE2四人办公室一个月租金是2千镑左右，您的答案不正确，此处不加分。";
                 }
 
@@ -4287,58 +4304,53 @@ namespace SurveyMVCBase1.Controllers
                 ViewBag.Section3Question7Anwser = S3Q7Ans;
                 ViewBag.Section3Question7AnwserMessage = S3Q7Msg;
 
-                if (survey.S3Q8Answer == "1500")
+                if (survey.S3Q8Answer == "500")
                 {
-                    S3Q8Ans = "1500";
-                    S3Q8Msg = "会计服务费用在2500镑左右，您的答案不正确，此处不加分。";
+                    S3Q8Ans = "500";
+                    S3Q8Msg = "会计服务费用在1500镑左右，您的答案不正确，此处不加分。";
+                }
+                else if (survey.S3Q8Answer == "1500")
+                {
+                    S3Q8Ans = "1,500";
+                    S3Q8Msg = "您的答案正确，此处加10分。";
                 }
                 else if (survey.S3Q8Answer == "2500")
                 {
-                    S3Q8Ans = "2500";
-                    S3Q8Msg = "您的答案正确，此处加10分。";
-                }
-                else if (survey.S3Q8Answer == "3500")
-                {
-                    S3Q8Ans = "3500";
-                    S3Q8Msg = "会计服务费用在2500镑左右，您的答案不正确，此处不加分。";
+                    S3Q8Ans = "2,500";
+                    S3Q8Msg = "会计服务费用在1500镑左右，您的答案不正确，此处不加分。";
                 }
 
                 ViewBag.Section3Question8Anwser = S3Q8Ans;
                 ViewBag.Section3Question8AnwserMessage = S3Q8Msg;
 
-                if (survey.S3Q9Answer == "")
+                if (survey.S3Q9Answer == "100")
                 {
-                    S3Q9Ans = "";
-                    S3Q9Msg = "您的答案不正确，此处不加分。";
+                    S3Q9Ans = "100";
+                    S3Q9Msg = "您的答案不正确，此处不加分。一家英国电商公司有5个雇员，该公司购买雇主责任险的保险费是在500英镑上下。";
                 }
-                else if (survey.S3Q9Answer == "")
+                else if (survey.S3Q9Answer == "500")
                 {
-                    S3Q9Ans = "";
+                    S3Q9Ans = "500";
                     S3Q9Msg = "您的答案正确，此处加10分。";
                 }
-                else if (survey.S3Q9Answer == "")
+                else if (survey.S3Q9Answer == "1000")
                 {
-                    S3Q9Ans = "";
-                    S3Q9Msg = "您的答案不正确，此处不加分。";
+                    S3Q9Ans = "1,000";
+                    S3Q9Msg = "您的答案不正确，此处不加分。一家英国电商公司有5个雇员，该公司购买雇主责任险的保险费是在500英镑上下。";
                 }
 
                 ViewBag.Section3Question9Anwser = S3Q9Ans;
                 ViewBag.Section3Question9AnwserMessage = S3Q9Msg;
 
-                if (survey.S3Q10Answer == "")
+                if (survey.S3Q10Answer == "yes")
                 {
-                    S3Q10Ans = "";
-                    S3Q10Msg = "您的答案不正确，此处不加分。";
-                }
-                else if (survey.S3Q10Answer == "")
-                {
-                    S3Q10Ans = "";
+                    S3Q10Ans = "是";
                     S3Q10Msg = "您的答案正确，此处加10分。";
                 }
-                else if (survey.S3Q10Answer == "")
+                else if (survey.S3Q10Answer == "no")
                 {
-                    S3Q10Ans = "";
-                    S3Q10Msg = "您的答案不正确，此处不加分。";
+                    S3Q10Ans = "否";
+                    S3Q10Msg = "您的答案不正确，此处不加分。请进一步了解在英国董事和股东之间的区别。";
                 }
 
                 ViewBag.Section3Question10Anwser = S3Q10Ans;

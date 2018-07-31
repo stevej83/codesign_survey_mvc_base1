@@ -220,10 +220,10 @@
         <label>22. 如果亏损，为什么要投资一个现在亏损的企业？</label>
         @Html.EditorFor(model => model.S4bQ22Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>23. 如果盈利，企业为什么吸收你的20万英镑投资？</label>
+        <label>23. 如果盈利，企业为什么吸收申请人的20万英镑投资？</label>
         @Html.EditorFor(model => model.S4bQ23Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>24. 投资20万英镑，你占有的股份比例是多少？</label>
+        <label>24. 投资20万英镑，申请人占有的股份比例是多少？</label>
         @Html.EditorFor(model => model.S4bQ24Answer, new { htmlAttributes = new { @class = "form-control", Value = @Session["contS4bQ24Ans"], placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
         <label>25. 如果是董事借款，借款的条款是什么？</label>
@@ -235,10 +235,10 @@
         <label>27. 企业的估值方法是什么？</label>
         @Html.EditorFor(model => model.S4bQ27Answer, new { htmlAttributes = new { @class = "form-control", Value = @Session["contS4bQ27Ans"], placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>28. 你加入企业后，主要负责什么，主要职位是什么？</label>
+        <label>28. 申请人加入企业后，主要负责什么，主要职位是什么？</label>
         @Html.EditorFor(model => model.S4bQ28Answer, new { htmlAttributes = new { @class = "form-control", rows = 5, placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
 
-        <label>29. 加入企业后，你是否有工资？如果有，多少钱？</label>
+        <label>29. 加入企业后，申请人是否有工资？如果有，多少钱？</label>
         @Html.EditorFor(model => model.S4bQ29Answer, new { htmlAttributes = new { @class = "form-control", Value = @Session["contS4bQ29Ans"], placeholder = "请填写", @title = "请填写", @oninvalid = "this.setCustomValidity('请填写')", @oninput = "setCustomValidity('')" } })
     </div>
 
